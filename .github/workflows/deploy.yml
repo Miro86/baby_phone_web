@@ -24,8 +24,10 @@ jobs:
       - name: Install, build, and upload Astro site
         uses: withastro/action@v6
         env:
-          SITE_URL: https://minidodoapps.de
-          BASE_PATH: /
+          # These defaults make the project work at the repository Pages URL.
+          # Set matching repository variables when the custom domain goes live.
+          SITE_URL: ${{ vars.SITE_URL || 'https://miro86.github.io' }}
+          BASE_PATH: ${{ vars.BASE_PATH || '/baby_phone_web' }}
 
   deploy:
     needs: build
