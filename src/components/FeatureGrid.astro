@@ -1,0 +1,50 @@
+---
+const features = [
+  {
+    icon: "☎",
+    color: "bg-[#dceeff] text-[#3f83b3]",
+    title: "A phone children already understand",
+    copy: "Tap the colorful keypad, choose an animal, and begin a friendly pretend call with its name and sound.",
+  },
+  {
+    icon: "♬",
+    color: "bg-[#fff0c4] text-[#af7922]",
+    title: "67 memorable animal sounds",
+    copy: "Explore familiar farm friends and animals from the forest, water, polar regions, safari, and beyond.",
+  },
+  {
+    icon: "文",
+    color: "bg-[#f4e6ff] text-[#7d5ead]",
+    title: "Names in seven languages",
+    copy: "Switch between English, German, French, Italian, Spanish, Croatian, and Serbian for playful language exposure.",
+  },
+  {
+    icon: "✓",
+    color: "bg-[#e7f8d5] text-[#5b8d3c]",
+    title: "Calm, child-friendly design",
+    copy: "Large touch targets, cheerful colors, clear labels, and a simple flow help young children explore with confidence.",
+  },
+  {
+    icon: "♙",
+    color: "bg-[#ffe1e5] text-[#bc5a68]",
+    title: "Protected grown-up choices",
+    copy: "A parental gate separates children from purchase and settings areas that are intended for adults.",
+  },
+  {
+    icon: "◌",
+    color: "bg-[#dff7f4] text-[#387f7b]",
+    title: "Ad-free by design",
+    copy: "No third-party advertising interrupts the experience. Optional animal packs are one-time purchases, not subscriptions.",
+  },
+];
+---
+
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {features.map((feature) => (
+    <article class="group rounded-[1.8rem] border border-white bg-white/78 p-6 shadow-[var(--shadow-card)] transition duration-300 hover:-translate-y-1 hover:bg-white">
+      <span class:list={["flex size-12 items-center justify-center rounded-2xl text-xl font-black", feature.color]} aria-hidden="true">{feature.icon}</span>
+      <h3 class="mt-5 font-[var(--font-display)] text-xl font-black leading-6 tracking-[-0.025em] text-ink">{feature.title}</h3>
+      <p class="mt-3 text-sm leading-7 text-ink-soft">{feature.copy}</p>
+    </article>
+  ))}
+</div>

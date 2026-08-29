@@ -1,0 +1,77 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import CallToAction from "../components/CallToAction.astro";
+import parentalGate from "../../assets/screenshot-parental-gate.png";
+import { withBase } from "../utils/urls";
+
+const parentFaqs = [
+  { q: "Can children make real phone calls?", a: "No. The phone interface is pretend play inside the app. It does not place telephone calls or connect children with other people." },
+  { q: "Are there third-party ads?", a: "No. Baby Phone: Animal Sounds is presented without third-party advertising." },
+  { q: "Is there a subscription?", a: "No. The app may offer optional animal packs as one-time in-app purchases, but there is no recurring subscription." },
+  { q: "What does the parental gate protect?", a: "The parental gate separates child-facing play from settings and purchase choices intended for a grown-up." },
+  { q: "Is this a formal language-learning program?", a: "No. It is a playful educational experience designed for early exposure to animal names and sounds, and it works best alongside conversation and shared play." },
+];
+---
+
+<BaseLayout title="For Parents" description="A clear parent guide to Baby Phone: Animal Sounds, including the parental gate, ad-free design, one-time purchases, privacy approach, and safe use.">
+  <section class="relative overflow-hidden bg-[linear-gradient(145deg,#fff2ce,#ffe2dc_55%,#e5ddff)] py-16 sm:py-24">
+    <div class="container-shell grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+      <div>
+        <span class="eyebrow">For parents & caregivers</span>
+        <h1 class="mt-5 max-w-3xl font-[var(--font-display)] text-[clamp(3rem,7vw,5.8rem)] font-black leading-[0.92] tracking-[-0.06em] text-ink">Gentle play, with grown-up choices kept separate.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">A colorful animal experience for young children, with no third-party ads, no subscription, and a parental gate around adult-facing areas.</p>
+      </div>
+      <div class="mx-auto max-w-[22rem] rotate-2 overflow-hidden rounded-[2.5rem] border-[7px] border-white shadow-[0_30px_70px_rgba(47,73,112,0.23)]">
+        <Image src={parentalGate} alt="The app's parental gate asks a simple arithmetic question before opening grown-up controls" width={520} widths={[320,420,520]} sizes="(max-width: 1024px) 80vw, 360px" format="webp" quality={82} loading="eager" class="aspect-[1320/2868] w-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="container-shell">
+      <SectionHeading eyebrow="The parent promise" title="Clear choices, without unwanted interruptions" copy="The app is built around a short set of practical safeguards that are easy for grown-ups to understand." />
+      <div class="mt-12 grid gap-4 md:grid-cols-3">
+        <article class="rounded-[1.8rem] bg-[#e9f8dc] p-7 shadow-[var(--shadow-card)]"><span class="text-2xl" aria-hidden="true">✓</span><h2 class="mt-4 font-[var(--font-display)] text-2xl font-black text-ink">No third-party ads</h2><p class="mt-3 text-sm leading-7 text-ink-soft">Play is not interrupted by advertising, behavioral targeting, or ad-network prompts.</p></article>
+        <article class="rounded-[1.8rem] bg-[#dfefff] p-7 shadow-[var(--shadow-card)]"><span class="text-2xl" aria-hidden="true">♙</span><h2 class="mt-4 font-[var(--font-display)] text-2xl font-black text-ink">Parental gate</h2><p class="mt-3 text-sm leading-7 text-ink-soft">Adult-facing settings and purchase choices are separated from the main child experience.</p></article>
+        <article class="rounded-[1.8rem] bg-[#ffe7d9] p-7 shadow-[var(--shadow-card)]"><span class="text-2xl" aria-hidden="true">1×</span><h2 class="mt-4 font-[var(--font-display)] text-2xl font-black text-ink">No subscription</h2><p class="mt-3 text-sm leading-7 text-ink-soft">Optional themed packs are one-time purchases processed through the Apple App Store or Google Play.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="scroll-mt-24 bg-[#edf7ff] py-16 sm:py-24">
+    <div class="container-shell grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionHeading align="left" eyebrow="Privacy in plain language" title="Designed to keep personal data out of play" copy="The current app experience does not require a child account, social profile, camera, microphone recording, precise location, or advertising identifier." />
+        <p class="mt-6 text-sm leading-7 text-ink-soft">Support emails are handled separately and should be sent by a parent or legal guardian. Apple or Google independently processes downloads and purchases made through its store under its own privacy terms.</p>
+        <a href={withBase("privacy/")} class="mt-7 inline-flex min-h-12 items-center rounded-full bg-ink px-6 py-3 text-sm font-black text-white">Read the full privacy policy <span class="ml-2" aria-hidden="true">→</span></a>
+      </div>
+      <div class="rounded-[2rem] border border-white bg-white/78 p-7 shadow-[var(--shadow-soft)] sm:p-9">
+        <h2 class="font-[var(--font-display)] text-2xl font-black text-ink">Shared play works best</h2>
+        <ul class="mt-6 grid gap-4 text-sm leading-7 text-ink-soft">
+          <li class="flex gap-3"><span class="font-black text-leaf-deep" aria-hidden="true">01</span><span>Choose languages together and repeat new animal names out loud.</span></li>
+          <li class="flex gap-3"><span class="font-black text-leaf-deep" aria-hidden="true">02</span><span>Keep device volume at a comfortable level and balance app time with active, offline play.</span></li>
+          <li class="flex gap-3"><span class="font-black text-leaf-deep" aria-hidden="true">03</span><span>Use the purchase approval and family controls provided by your device’s app store.</span></li>
+          <li class="flex gap-3"><span class="font-black text-leaf-deep" aria-hidden="true">04</span><span>Contact us if anything behaves unexpectedly; a grown-up should send the message.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="container-shell max-w-4xl">
+      <SectionHeading eyebrow="Parent FAQ" title="The practical details" />
+      <div class="mt-10 grid gap-3">
+        {parentFaqs.map((faq, index) => (
+          <details class="group rounded-[1.4rem] border border-[#e7eceb] bg-white px-5 py-1 shadow-[0_8px_26px_rgba(47,73,112,0.07)]" open={index === 0}>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-black text-ink marker:hidden">{faq.q}<span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#edf5f7] text-lg transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+            <p class="max-w-3xl pb-5 pr-8 text-sm leading-7 text-ink-soft">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>

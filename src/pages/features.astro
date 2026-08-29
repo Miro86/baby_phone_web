@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import ScreenshotGallery from "../components/ScreenshotGallery.astro";
+import CallToAction from "../components/CallToAction.astro";
+import { appFacts } from "../config";
+
+const categories = [
+  { icon: "🐄", title: "Farm Animals", description: "15 friendly farm animals included with the app." },
+  { icon: "🦁", title: "Safari & Wild", description: "Meet bold animals from grasslands and the wild." },
+  { icon: "🦉", title: "Forest & Backyard", description: "Discover familiar visitors and woodland neighbors." },
+  { icon: "🐧", title: "Water & Polar", description: "Explore animals from oceans and icy habitats." },
+  { icon: "🦜", title: "Exotic & Fun Favorites", description: "A colorful collection of memorable animal friends." },
+];
+---
+
+<BaseLayout title="Features" description="Explore all Baby Phone: Animal Sounds features: 67 sounds, five animal categories, seven languages, parental controls, and an ad-free child-friendly design.">
+  <section class="relative overflow-hidden bg-[linear-gradient(145deg,#e6f5ff,#f6ddf1_58%,#ffe7d9)] py-16 sm:py-24">
+    <div class="container-shell text-center">
+      <span class="eyebrow">Everything inside</span>
+      <h1 class="mx-auto mt-5 max-w-4xl font-[var(--font-display)] text-[clamp(3rem,7vw,5.8rem)] font-black leading-[0.92] tracking-[-0.06em] text-ink">A world of animals at their fingertips.</h1>
+      <p class="section-copy">Designed for simple, self-directed play with enough variety for children and grown-ups to keep discovering together.</p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="container-shell">
+      <SectionHeading eyebrow="The experience" title="Simple to start. Delightful to explore." copy="The app combines familiar phone play, expressive animal characters, and clear spoken names with carefully separated grown-up controls." />
+      <div class="mt-12"><FeatureGrid /></div>
+    </div>
+  </section>
+
+  <section class="bg-[#edf7ff] py-16 sm:py-24">
+    <div class="container-shell">
+      <SectionHeading eyebrow="Five playful categories" title={`${appFacts.sounds} animal sounds, from the farm to the wild`} copy="Start with the included farm collection, then grown-ups can optionally unlock more themed packs with a one-time purchase." />
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {categories.map((category, index) => (
+          <article class:list={["rounded-[1.8rem] border border-white p-6 text-center shadow-[var(--shadow-card)]", ["bg-[#fff0c4]", "bg-[#e8f7d7]", "bg-[#dceeff]", "bg-[#e0f6f3]", "bg-[#f2e7ff]"][index]]}>
+            <span class="text-4xl" aria-hidden="true">{category.icon}</span>
+            <h2 class="mt-4 font-[var(--font-display)] text-lg font-black leading-5 text-ink">{category.title}</h2>
+            <p class="mt-3 text-sm leading-6 text-ink-soft">{category.description}</p>
+          </article>
+        ))}
+      </div>
+      <p class="mx-auto mt-6 max-w-2xl text-center text-sm leading-7 text-ink-soft">Availability and prices for optional packs are shown in your device’s app store and may vary by country. There is no recurring subscription.</p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="container-shell">
+      <SectionHeading eyebrow="Real app previews" title="See the full play flow" copy="From choosing a language to calling an animal and entering the parent area, these are real screens from Baby Phone: Animal Sounds." />
+      <div class="mt-12"><ScreenshotGallery extended /></div>
+    </div>
+  </section>
+
+  <section class="pb-20 sm:pb-28">
+    <div class="container-shell rounded-[2.2rem] bg-[#fff0d7] p-7 sm:p-12">
+      <SectionHeading eyebrow="Available languages" title="Seven ways to say every name" copy="A grown-up can choose any combination of supported languages for playful listening and repetition." />
+      <ul class="mx-auto mt-9 flex max-w-4xl flex-wrap justify-center gap-3" aria-label="Supported languages">
+        {appFacts.languages.map((language) => <li class="rounded-full bg-white px-5 py-3 text-sm font-black text-ink shadow-[0_6px_18px_rgba(47,73,112,0.08)]">{language}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CallToAction />
+</BaseLayout>

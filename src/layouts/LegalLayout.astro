@@ -1,0 +1,31 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { siteConfig } from "../config";
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+}
+
+const { title, description, eyebrow } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="relative overflow-hidden border-b border-[#e5eceb] py-16 sm:py-20">
+    <div aria-hidden="true" class="absolute -left-20 top-0 size-72 rounded-full bg-peach/55 blur-3xl"></div>
+    <div aria-hidden="true" class="absolute -right-24 top-10 size-80 rounded-full bg-lilac/35 blur-3xl"></div>
+    <div class="container-shell relative max-w-4xl text-center">
+      <span class="eyebrow">{eyebrow}</span>
+      <h1 class="mt-5 font-[var(--font-display)] text-[clamp(2.5rem,7vw,5rem)] font-black leading-[0.98] tracking-[-0.055em] text-ink">{title}</h1>
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-8 text-ink-soft sm:text-lg">{description}</p>
+      <p class="mt-4 text-xs font-black uppercase tracking-[0.14em] text-[#8090a3]">Effective and last updated: {siteConfig.lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-20">
+    <article class="legal-copy container-shell max-w-4xl rounded-[2rem] border border-white bg-white/82 px-6 py-9 shadow-[var(--shadow-soft)] sm:px-12 sm:py-12">
+      <slot />
+    </article>
+  </section>
+</BaseLayout>

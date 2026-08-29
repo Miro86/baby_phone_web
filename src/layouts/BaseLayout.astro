@@ -1,0 +1,88 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import promoBanner from "../../assets/promo-banner.png";
+import appIcon from "../../assets/app-icon.png";
+import { siteConfig } from "../config";
+import { withBase } from "../utils/urls";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  image = promoBanner.src,
+  noindex = false,
+  schema,
+} = Astro.props;
+
+const pageTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const imageUrl = Astro.site ? new URL(image, Astro.site) : new URL(image, Astro.url);
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: canonical.href,
+  inLanguage: "en",
+  isPartOf: {
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: Astro.site?.href ?? canonical.origin,
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.owner} />
+    <meta name="application-name" content={siteConfig.name} />
+    <meta name="theme-color" content="#fffaf2" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="icon" type="image/png" href={appIcon.src} />
+    <link rel="apple-touch-icon" href={appIcon.src} />
+    <link rel="manifest" href={withBase("site.webmanifest")} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="500" />
+    <meta property="og:image:alt" content="Baby Phone: Animal Sounds with the friendly Mini Dodo chick and animal characters" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema ?? defaultSchema)}></script>
+  </head>
+  <body>
+    <a href="#main-content" class="fixed left-4 top-3 z-[100] -translate-y-24 rounded-full bg-ink px-5 py-3 text-sm font-extrabold text-white transition focus:translate-y-0">Skip to content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

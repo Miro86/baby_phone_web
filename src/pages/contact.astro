@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config";
+import { withBase } from "../utils/urls";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: `Contact ${siteConfig.brand}`,
+  description: `Contact ${siteConfig.owner} for Baby Phone: Animal Sounds support, privacy, or legal questions.`,
+  mainEntity: {
+    "@type": "Organization",
+    name: siteConfig.brand,
+    founder: { "@type": "Person", name: siteConfig.owner },
+    email: siteConfig.email,
+  },
+};
+---
+
+<BaseLayout title="Contact" description={`Contact ${siteConfig.owner} at ${siteConfig.brand} for Baby Phone: Animal Sounds support, privacy requests, or legal questions.`} schema={schema}>
+  <section class="relative overflow-hidden bg-[linear-gradient(145deg,#e4f5ff,#f6e2f3_55%,#ffe7da)] py-16 sm:py-24">
+    <div class="container-shell text-center">
+      <span class="eyebrow">Get in touch</span>
+      <h1 class="mx-auto mt-5 max-w-4xl font-[var(--font-display)] text-[clamp(3rem,7vw,5.8rem)] font-black leading-[0.92] tracking-[-0.06em] text-ink">A real person is on the other end.</h1>
+      <p class="section-copy">Questions about the app, a purchase, privacy, or anything that did not work as expected? Send a message and include only the details needed to help.</p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+    <div class="container-shell grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+      <article class="rounded-[2rem] border border-white bg-white/84 p-7 shadow-[var(--shadow-soft)] sm:p-10">
+        <span class="flex size-13 items-center justify-center rounded-2xl bg-[#dceeff] text-sky-deep" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="size-6" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
+        </span>
+        <h2 class="mt-6 font-[var(--font-display)] text-3xl font-black tracking-[-0.035em] text-ink">Email Mini Dodo Apps</h2>
+        <p class="mt-4 max-w-2xl leading-8 text-ink-soft">Email is the official support and legal contact channel for Baby Phone: Animal Sounds.</p>
+        <a href={`mailto:${siteConfig.email}?subject=Baby%20Phone%3A%20Animal%20Sounds`} class="mt-7 inline-flex min-h-14 items-center justify-center rounded-full bg-ink px-7 py-3 text-sm font-black text-white shadow-[0_12px_28px_rgba(33,51,79,0.2)]">{siteConfig.email}</a>
+
+        <dl class="mt-9 grid gap-5 border-t border-[#e8eeed] pt-7 sm:grid-cols-2">
+          <div><dt class="text-xs font-black uppercase tracking-[0.14em] text-[#8090a3]">Developer & contact</dt><dd class="mt-2 font-black text-ink">{siteConfig.owner}</dd></div>
+          <div><dt class="text-xs font-black uppercase tracking-[0.14em] text-[#8090a3]">Studio name</dt><dd class="mt-2 font-black text-ink">{siteConfig.brand}</dd></div>
+          <div><dt class="text-xs font-black uppercase tracking-[0.14em] text-[#8090a3]">Product</dt><dd class="mt-2 font-black text-ink">{siteConfig.name}</dd></div>
+          <div><dt class="text-xs font-black uppercase tracking-[0.14em] text-[#8090a3]">Primary language</dt><dd class="mt-2 font-black text-ink">English</dd></div>
+        </dl>
+      </article>
+
+      <aside class="rounded-[2rem] bg-[#fff0d7] p-7 sm:p-10">
+        <h2 class="font-[var(--font-display)] text-2xl font-black tracking-[-0.03em] text-ink">Help us help you</h2>
+        <p class="mt-3 text-sm leading-7 text-ink-soft">A useful support message usually includes:</p>
+        <ul class="mt-6 grid gap-4 text-sm leading-6 text-ink-soft">
+          <li class="flex gap-3"><span class="font-black text-[#b5753f]">01</span><span>Your device model and iOS or Android version.</span></li>
+          <li class="flex gap-3"><span class="font-black text-[#b5753f]">02</span><span>What you expected and what happened instead.</span></li>
+          <li class="flex gap-3"><span class="font-black text-[#b5753f]">03</span><span>The language or animal pack involved, if relevant.</span></li>
+          <li class="flex gap-3"><span class="font-black text-[#b5753f]">04</span><span>For privacy requests, use “Privacy request” in the subject.</span></li>
+        </ul>
+        <div class="mt-7 rounded-[1.3rem] bg-white/70 p-5 text-sm leading-7 text-ink-soft">
+          <strong class="text-ink">Please protect children’s privacy.</strong> A parent or legal guardian should contact us. Do not include a child’s full name, photo, voice recording, address, or other unnecessary personal information.
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="pb-20 sm:pb-28">
+    <div class="container-shell flex flex-col items-center justify-between gap-6 rounded-[2rem] bg-[#eaf7df] p-7 text-center sm:p-10 lg:flex-row lg:text-left">
+      <div><h2 class="font-[var(--font-display)] text-2xl font-black text-ink">Looking for a policy?</h2><p class="mt-2 text-sm leading-7 text-ink-soft">Our privacy and terms pages include the details for families, stores, and reviewers.</p></div>
+      <div class="flex flex-wrap justify-center gap-3"><a href={withBase("privacy/")} class="rounded-full bg-white px-5 py-3 text-sm font-black text-ink">Privacy policy</a><a href={withBase("terms/")} class="rounded-full bg-white px-5 py-3 text-sm font-black text-ink">Terms of service</a></div>
+    </div>
+  </section>
+</BaseLayout>

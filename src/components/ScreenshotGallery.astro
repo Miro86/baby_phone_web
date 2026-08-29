@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets";
+import dialer from "../../assets/screenshot-animal-dialer.png";
+import dogCall from "../../assets/screenshot-dog-call.png";
+import library from "../../assets/screenshot-animal-library.png";
+import languages from "../../assets/screenshot-seven-languages.png";
+import goatCall from "../../assets/screenshot-goat-call.png";
+import parentGate from "../../assets/screenshot-parental-gate.png";
+import packs from "../../assets/screenshot-animal-packs.png";
+import catCall from "../../assets/screenshot-cat-call.png";
+
+interface Props {
+  extended?: boolean;
+}
+
+const { extended = false } = Astro.props;
+const screenshots = [
+  { src: dialer, title: "Dial and call", alt: "Colorful toy phone keypad used to call animals" },
+  { src: library, title: "Meet 67 animals", alt: "Farm animal library with dog, cat, cow, pig, sheep, horse, duck, chicken, rooster, goose, goat, and donkey" },
+  { src: languages, title: "Choose a language", alt: "Language selector with English, German, French, Italian, Spanish, Croatian, and Serbian" },
+  { src: parentGate, title: "Parent-only access", alt: "Parental gate with a simple arithmetic challenge for grown-up access" },
+  { src: dogCall, title: "Call a dog", alt: "Friendly dog answering an animal call on a farm" },
+  { src: catCall, title: "Call a cat", alt: "Friendly orange cat answering an animal call on a farm" },
+  { src: goatCall, title: "Call a goat", alt: "Friendly goat answering an animal call on a farm" },
+  { src: packs, title: "More worlds to explore", alt: "Optional one-time animal packs for safari, forest, water, polar, and exotic categories" },
+];
+const visibleScreenshots = extended ? screenshots : screenshots.slice(0, 6);
+---
+
+<div class="-mx-4 overflow-x-auto px-4 pb-8 [scrollbar-width:thin] [scrollbar-color:#b9c5d4_transparent] sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
+  <div class="flex min-w-max snap-x snap-mandatory gap-5 lg:min-w-0 lg:grid lg:grid-cols-3 xl:grid-cols-4">
+    {visibleScreenshots.map((screenshot) => (
+      <figure class="w-[min(76vw,19rem)] snap-center lg:w-auto">
+        <div class="overflow-hidden rounded-[2rem] border-[6px] border-white bg-white shadow-[0_18px_50px_rgba(47,73,112,0.16)]">
+          <Image
+            src={screenshot.src}
+            alt={screenshot.alt}
+            width={420}
+            widths={[280, 360, 420]}
+            sizes="(max-width: 640px) 76vw, (max-width: 1024px) 300px, 25vw"
+            format="webp"
+            quality={80}
+            loading="lazy"
+            class="aspect-[1320/2868] w-full object-cover transition duration-500 hover:scale-[1.015]"
+          />
+        </div>
+        <figcaption class="mt-4 text-center text-sm font-black text-ink">{screenshot.title}</figcaption>
+      </figure>
+    ))}
+  </div>
+</div>
