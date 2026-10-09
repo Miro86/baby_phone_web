@@ -1,47 +1,75 @@
-# Baby Phone: Animal Sounds website
+# Mini Dodo / Baby Phone website
 
-SEO-focused Astro + Tailwind landing site for the Baby Phone: Animal Sounds mobile app by Mini Dodo Apps.
+A static Astro website for Mini Dodo Apps and its first app, **Baby Phone: Animal Sounds**. The redesign follows the artwork, section layouts, and brand guide supplied in `design/`.
 
-## Pages
+## Existing URLs
 
-- `/` — main product landing page
-- `/features/` — searchable feature and screenshot landing page
-- `/parents/` — parent guide and safety overview
-- `/privacy/` — privacy policy
-- `/terms/` — terms of service
-- `/contact/` — official contact information
-- `/llms.txt` and `/llms-full.txt` — concise machine-readable product references
+All published routes are preserved:
 
-## Local development
+- `/` — Mini Dodo and Baby Phone introduction
+- `/features/` — Baby Phone app details, screenshots, languages, and FAQ
+- `/parents/` — parent guide, safeguards, privacy summary, and FAQ
+- `/contact/` — official contact and support information
+- `/privacy/` — original privacy policy in the new legal layout
+- `/terms/` — original terms in the new legal layout
+- `/404.html`, `/robots.txt`, `/site.webmanifest`, `/llms.txt`, and `/llms-full.txt`
+
+The existing home `#download`, app `#download`, and parent `#privacy` / `#download` fragments are also preserved. Every internal link, canonical, image, font, sitemap, and reference works both at the custom-domain root and under the GitHub Pages repository base path.
+
+## Local development and verification
 
 ```sh
 npm install
 npm run dev
 ```
 
-Production check:
+Production validation:
 
 ```sh
-npm run build
+npm run verify
 npm run preview
 ```
 
-## GitHub Pages
+`verify` runs Astro's type checks, builds the static website, and checks the published route contract, internal links and fragments, image dimensions, canonical URLs, JSON-LD, sitemap, crawler references, and manifest.
 
-The included workflow deploys every push to `main`. In the GitHub repository, open **Settings → Pages** and select **GitHub Actions** as the source.
+To check repository-path deployment without replacing the main build:
 
-The production URL is configured as `https://minidodoapps.de`, and `public/CNAME` contains the apex domain. The domain must also be saved under **Repository Settings → Pages → Custom domain**, with the corresponding DNS records configured at Namecheap.
+```sh
+SITE_URL=https://miro86.github.io BASE_PATH=/baby_phone_web npm run build -- --outDir /private/tmp/minidodo-base-build
+node scripts/verify-build.mjs /private/tmp/minidodo-base-build
+```
 
-See `DEPLOYMENT.md` for the complete deployment and custom-domain procedure.
+## Design and performance
 
-## Localization workflow
+- **Nunito** is the site-wide font. Its licensed Latin variable WOFF2 file is hosted locally; the license is in `public/fonts/OFL.txt`.
+- Supplied brand artwork is in `assets/brand/`. Source colors and proportions are preserved; transparent padding was trimmed for layout.
+- Astro generates responsive image variants. The main brand illustration uses AVIF with a WebP fallback; app artwork and screenshots use WebP.
+- Hero imagery has high fetch priority. Images below the first screen are lazy-loaded and reserve their dimensions.
+- Small compiled styles are inlined. There is no client framework, third-party font service, analytics, tracking, video embed, or automatic slideshow.
+- Navigation and FAQs work without JavaScript. JavaScript adds gallery arrows and menu dismissal.
+- Layouts stack on small screens and use bounded, readable content widths on large displays. Above 2000px, rem-based spacing and typography scale up, with a 40px root-size cap.
+- Keyboard focus, reduced motion, a skip link, descriptive image text, and accessible contrast are included.
 
-English source UI strings are centralized in `src/i18n/ui.ts`. Add each locale there, create locale-prefixed routes such as `/de/`, translate metadata and structured data as well as visible copy, and update `supportedLocales` and `hreflang` entries.
+See `REDESIGN_VERIFICATION.md` for browser and performance results, and `SEO.md` for search implementation and deployment follow-up.
 
-## Store launch
+## App availability and facts
 
-The primary CTA intentionally says “Coming soon.” When the listings are live, replace it with verified Apple App Store and Google Play links and add those URLs to the SoftwareApplication structured data.
+Android is live at:
 
-## Asset names
+https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone
 
-Original supplied artwork remains in `assets/` with descriptive names. Astro generates responsive WebP variants during the build; do not manually compress the source files.
+The iOS app is in App Store review, so its badge says **Coming soon**. The App Store badge becomes a link when `siteConfig.appStoreUrl` is supplied. At iOS launch, also update the availability copy in the hero, CTA, FAQ data, and machine-readable references.
+
+Product counts and language names are in `src/config.ts`. App and parent FAQs share `src/data/app.ts` with their structured data and product references. Update visible copy and policy disclosures together whenever product facts change.
+
+## Search and structured data
+
+Pages render their complete content in HTML. Page-specific metadata includes canonical URLs, social sharing images, and English / default language references. Connected JSON-LD describes the organization, website, page, breadcrumbs, app, and visible FAQs.
+
+The XML sitemap contains the six indexable pages; the 404 page is marked noindex. `robots.txt` permits crawlers. Existing AI-readable reference URLs remain available, with accurate Android and iOS availability.
+
+## Deployment
+
+The existing GitHub Pages workflow, custom domain, and environment-variable configuration are retained. Pushing to `main` triggers the existing deployment workflow. See `DEPLOYMENT.md` for domain and hosting setup.
+
+This redesign is prepared locally; publishing is a separate repository push.

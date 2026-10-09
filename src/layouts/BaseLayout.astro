@@ -1,43 +1,122 @@
 ---
+import { getImage } from "astro:assets";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 import promoBanner from "../../assets/promo-banner.png";
-import appIcon from "../../assets/app-icon.png";
+import brandLogo from "../../assets/brand/logo.png";
 import { siteConfig } from "../config";
 import { withBase } from "../utils/urls";
 
 interface Props {
   title: string;
   description: string;
-  image?: string;
   noindex?: boolean;
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  pageType?: string;
 }
-
 const {
   title,
   description,
-  image = promoBanner.src,
   noindex = false,
   schema,
+  pageType = "WebPage",
 } = Astro.props;
-
-const pageTitle = title === siteConfig.name ? title : `${title} | ${siteConfig.name}`;
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
-const imageUrl = Astro.site ? new URL(image, Astro.site) : new URL(image, Astro.url);
-const defaultSchema = {
+const siteUrl = new URL(withBase(), Astro.site ?? Astro.url.origin);
+const canonicalPath =
+  noindex && Astro.url.pathname.endsWith("/404/")
+    ? withBase("404.html")
+    : Astro.url.pathname;
+const canonical = new URL(canonicalPath, siteUrl);
+canonical.search = "";
+canonical.hash = "";
+const pageTitle = `${title} | ${siteConfig.brandDisplay}`;
+const social = await getImage({
+  src: promoBanner,
+  width: 1200,
+  height: 630,
+  fit: "contain",
+  format: "jpg",
+  quality: 85,
+});
+const logo = await getImage({
+  src: brandLogo,
+  width: 512,
+  format: "webp",
+  quality: 85,
+});
+const absolute = (path: string) => new URL(path, siteUrl).href;
+const additionalSchema = schema
+  ? Array.isArray(schema)
+    ? schema
+    : [schema]
+  : [];
+const breadcrumbLabel = title.startsWith("Baby Phone") ? "Baby Phone" : title;
+const graph = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: title,
-  description,
-  url: canonical.href,
-  inLanguage: "en",
-  isPartOf: {
-    "@type": "WebSite",
-    name: siteConfig.name,
-    url: Astro.site?.href ?? canonical.origin,
-  },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": absolute("#organization"),
+      name: siteConfig.brandDisplay,
+      alternateName: siteConfig.brand,
+      url: siteUrl.href,
+      logo: { "@type": "ImageObject", url: absolute(logo.src) },
+      email: siteConfig.email,
+      founder: { "@type": "Person", name: siteConfig.owner },
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: siteConfig.email,
+        contactType: "customer support",
+        availableLanguage: "English",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": absolute("#website"),
+      name: siteConfig.brandDisplay,
+      alternateName: siteConfig.brand,
+      url: siteUrl.href,
+      inLanguage: "en",
+      publisher: { "@id": absolute("#organization") },
+    },
+    {
+      "@type": pageType,
+      "@id": `${canonical.href}#webpage`,
+      name: title,
+      description,
+      url: canonical.href,
+      inLanguage: "en",
+      isPartOf: { "@id": absolute("#website") },
+      publisher: { "@id": absolute("#organization") },
+      ...(canonical.href !== siteUrl.href && !noindex
+        ? { breadcrumb: { "@id": `${canonical.href}#breadcrumb` } }
+        : {}),
+    },
+    ...(canonical.href !== siteUrl.href && !noindex
+      ? [
+          {
+            "@type": "BreadcrumbList",
+            "@id": `${canonical.href}#breadcrumb`,
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: siteUrl.href,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: breadcrumbLabel,
+                item: canonical.href,
+              },
+            ],
+          },
+        ]
+      : []),
+    ...additionalSchema,
+  ],
 };
 ---
 
@@ -45,42 +124,85 @@ const defaultSchema = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={siteConfig.owner} />
-    <meta name="application-name" content={siteConfig.name} />
-    <meta name="theme-color" content="#fffaf2" />
+    <meta name="application-name" content={siteConfig.brandDisplay} />
+    <meta name="theme-color" content="#103b78" />
     <meta name="color-scheme" content="light" />
-    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={canonical} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
-    <link rel="icon" type="image/png" href={appIcon.src} />
-    <link rel="apple-touch-icon" href={appIcon.src} />
+    <meta
+      name="robots"
+      content={
+        noindex
+          ? "noindex, follow"
+          : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      }
+    />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="alternate" hreflang="en" href={canonical.href} />
+    <link rel="alternate" hreflang="x-default" href={canonical.href} />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href={withBase("favicon.png")}
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href={withBase("apple-touch-icon.png")}
+    />
     <link rel="manifest" href={withBase("site.webmanifest")} />
-
+    <link
+      rel="sitemap"
+      type="application/xml"
+      href={withBase("sitemap-index.xml")}
+    />
+    <link
+      rel="preload"
+      href={withBase("fonts/nunito-latin.woff2")}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style
+      is:inline
+      set:html={`@font-face { font-family: "Nunito"; src: url("${withBase("fonts/nunito-latin.woff2")}") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; }`}
+    ></style>
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:site_name" content={siteConfig.brandDisplay} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="500" />
-    <meta property="og:image:alt" content="Baby Phone: Animal Sounds with the friendly Mini Dodo chick and animal characters" />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={absolute(social.src)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Baby Phone: Animal Sounds — 67 animal sounds across five playful categories"
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageUrl} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema ?? defaultSchema)}></script>
+    <meta name="twitter:image" content={absolute(social.src)} />
+    <meta
+      name="twitter:image:alt"
+      content="Baby Phone: Animal Sounds by Mini Dodo"
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(graph).replace(/</g, "\\u003c")}
+    ></script>
   </head>
   <body>
-    <a href="#main-content" class="fixed left-4 top-3 z-[100] -translate-y-24 rounded-full bg-ink px-5 py-3 text-sm font-extrabold text-white transition focus:translate-y-0">Skip to content</a>
+    <a href="#main-content" class="skip-link">
+      Skip to content
+    </a>
     <Header />
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />

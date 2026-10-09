@@ -1,30 +1,30 @@
 ---
 import { Image } from "astro:assets";
-import appIcon from "../../assets/app-icon.png";
-import { siteConfig } from "../config";
+import wordmark from "../../assets/brand/wordmark.png";
 import { withBase } from "../utils/urls";
-
 interface Props {
   compact?: boolean;
 }
-
 const { compact = false } = Astro.props;
 ---
 
-<a class="group inline-flex items-center gap-3" href={withBase()} aria-label={`${siteConfig.name} home`}>
+<a
+  href={withBase()}
+  class:list={["brand-mark", { "brand-mark--compact": compact }]}
+  aria-label="Mini Dodo — home"
+>
   <Image
-    src={appIcon}
-    alt=""
-    width={compact ? 42 : 50}
-    height={compact ? 42 : 50}
+    src={wordmark}
+    alt="Mini Dodo"
+    width={160}
+    widths={[120, 160, 210, 240, 320, 480, 680]}
+    sizes={
+      compact
+        ? "(min-width: 2000px) 300px, 120px"
+        : "(min-width: 2000px) 340px, 136px"
+    }
     format="webp"
-    class:list={[
-      "rounded-[28%] shadow-[0_8px_22px_rgba(51,73,107,0.18)] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105",
-      compact ? "size-10" : "size-11 sm:size-12",
-    ]}
+    quality={75}
+    loading={compact ? "eager" : "lazy"}
   />
-  <span class="leading-none">
-    <span class="block font-[var(--font-display)] text-[0.98rem] font-black tracking-[-0.025em] text-ink sm:text-[1.08rem]">Baby Phone</span>
-    <span class="mt-1 block text-[0.66rem] font-extrabold uppercase tracking-[0.16em] text-sky-deep">Animal Sounds</span>
-  </span>
 </a>

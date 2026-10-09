@@ -1,0 +1,36 @@
+---
+import type { FAQ } from "../data/app";
+interface Props {
+  items: FAQ[];
+  title?: string;
+  eyebrow?: string;
+  id?: string;
+}
+const {
+  items,
+  title = "A few helpful answers for grown-ups.",
+  eyebrow = "Frequently asked questions",
+  id = "faq",
+} = Astro.props;
+---
+
+<section id={id} class="section section--teal">
+  <div class="container-shell faq-shell">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 class="section-title">{title}</h2>
+    <span class="accent-line" aria-hidden="true"></span>
+    <div class="faq-list">
+      {items.map((item, index) => (
+        <details class="faq-item" open={index === 0}>
+          <summary>
+            {item.question}
+            <span class="faq-plus" aria-hidden="true">
+              +
+            </span>
+          </summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

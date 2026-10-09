@@ -1,0 +1,44 @@
+# Search implementation and maintenance
+
+The redesign preserves the existing public URLs and their original policy content. It gives search engines and AI search systems a clear, crawlable source for Baby Phone: Animal Sounds, with Mini Dodo Apps identified as the publisher and only one current app.
+
+## Implemented
+
+- Static, readable HTML for all primary content, with one H1 per page and a logical heading structure.
+- Distinct page titles and descriptions covering Baby Phone, animal sounds, pretend phone play, parents, and support.
+- Canonical URLs for the same six public pages, with working internal links and preserved fragments.
+- Organization and WebSite identity with stable JSON-LD identifiers, publisher contact details, and original brand artwork.
+- WebPage / ContactPage metadata and BreadcrumbList data for inner pages.
+- MobileApplication data for Baby Phone on the home and app pages, pointing to the official Google Play listing.
+- FAQPage data generated from the same records as the visible app and parent questions.
+- Correct platform availability: Android is live; iOS is in review and coming soon.
+- Open Graph and Twitter metadata with a 1200 × 630 sharing image and descriptive alternative text.
+- English and x-default language links. The app’s seven supported languages are described as app features, rather than presented as translated website pages.
+- A generated XML sitemap, crawl-permitting robots.txt, and a noindex 404.
+- Existing llms.txt and llms-full.txt references, updated from shared product facts and FAQs.
+- Responsive, compressed artwork; image dimension reservation; prioritized hero imagery; locally hosted Nunito; minimal JavaScript.
+- Clear links to the parent guide, official support email, privacy policy, and terms.
+
+The application data deliberately omits fabricated ratings, reviews, download counts, and prices. Basic application markup is still useful descriptive data. Eligibility for a Google software-app rich result depends on real supported offer and review information, as explained in [Google’s software-app documentation](https://developers.google.com/search/docs/appearance/structured-data/software-app). FAQ markup describes the visible answers and does not guarantee an enhanced search display.
+
+## After the existing deployment
+
+1. Check that the active GitHub Pages variables use the intended public domain and base path. Keep the established URL identity.
+2. Verify the six public pages, /robots.txt, and /sitemap-index.xml over HTTPS.
+3. Submit the sitemap in the owner’s Google Search Console and Bing Webmaster Tools accounts, and inspect the existing home and app URLs.
+4. Use Google’s Rich Results Test and Schema.org Validator on the published pages. Fix genuine errors while keeping all claims accurate.
+5. Run PageSpeed Insights on the public home, app, and parent pages. Local lab scores do not measure the production host’s response time, cache headers, geographic network conditions, or field Core Web Vitals.
+6. Monitor indexing, real search impressions, clicks, and field performance after recrawling. Preserve these URLs in future redesigns.
+7. When Apple approves the app, add the real App Store URL and update platform availability in the visible copy, FAQ records, application data, and text references.
+
+No Search Console verification token, webmaster account access, IndexNow key, public app price, or published reviews were supplied. The site does not invent these values.
+
+## AI search
+
+The priority is accurate primary-source content that is accessible to crawlers, clear app identity, specific answers to parent questions, and structured data matching the visible site. Existing text-reference URLs are retained for tools that choose to consume them; they are supplementary references, rather than a promised ranking mechanism.
+
+Google says its established SEO fundamentals also apply to AI features and that there is no special AI markup requirement. See [Google’s AI search guidance](https://developers.google.com/search/docs/appearance/ai-features). Ranking and inclusion in Google, Gemini, ChatGPT, Claude, or other services cannot be guaranteed by a website implementation.
+
+## Hosting considerations
+
+The current GitHub Pages host controls production compression, cache headers, HTTPS redirects, and error responses. The implementation optimizes assets and HTML without adding host-specific header files that GitHub Pages would ignore. Verify those server-level behaviors on the deployed domain before attributing a production audit difference to the site code.

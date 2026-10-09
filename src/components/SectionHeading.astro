@@ -3,14 +3,19 @@ interface Props {
   eyebrow: string;
   title: string;
   copy?: string;
-  align?: "center" | "left";
+  align?: "left" | "center";
 }
-
-const { eyebrow, title, copy, align = "center" } = Astro.props;
+const { eyebrow, title, copy, align = "left" } = Astro.props;
 ---
 
-<div class:list={[align === "center" ? "text-center" : "text-left"]}>
-  <span class="eyebrow">{eyebrow}</span>
-  <h2 class:list={["section-title", align === "left" && "!mx-0"]}>{title}</h2>
-  {copy && <p class:list={["section-copy", align === "left" && "!mx-0"]}>{copy}</p>}
+<div
+  class:list={[
+    "section-heading",
+    { "section-heading--center": align === "center" },
+  ]}
+>
+  <p class="eyebrow">{eyebrow}</p>
+  <h2 class="section-title">{title}</h2>
+  {copy && <p class="section-copy">{copy}</p>}
+  <span class="accent-line" aria-hidden="true"></span>
 </div>

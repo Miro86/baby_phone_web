@@ -2,41 +2,52 @@
 import AppMark from "./AppMark.astro";
 import { siteConfig } from "../config";
 import { withBase } from "../utils/urls";
-
-const year = new Date().getFullYear();
+const year = new Date().getUTCFullYear();
 ---
 
-<footer class="border-t border-[#dfe8e7] bg-white/70 py-12">
-  <div class="container-shell grid gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
-    <div>
+<footer class="site-footer">
+  <div class="container-shell footer-grid">
+    <div class="footer-brand">
       <AppMark />
-      <p class="mt-5 max-w-sm text-sm leading-7 text-ink-soft">
-        A gentle animal-sound learning app made for little explorers and their grown-ups.
+      <p>
+        Small apps. Big adventures.
+        <br />
+        Playful discovery for little explorers.
       </p>
-      <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-[#7c899c]">Made by {siteConfig.brand}</p>
     </div>
-
     <div>
-      <h2 class="text-sm font-black uppercase tracking-[0.14em] text-ink">Explore</h2>
-      <nav class="mt-4 grid gap-3 text-sm font-bold text-ink-soft" aria-label="Footer product navigation">
-        <a class="hover:text-sky-deep" href={withBase("features/")}>Features</a>
-        <a class="hover:text-sky-deep" href={withBase("parents/")}>For parents</a>
-        <a class="hover:text-sky-deep" href={withBase("contact/")}>Contact</a>
+      <h2>Explore</h2>
+      <nav aria-label="Footer navigation">
+        <a href={withBase()}>Home</a>
+        <a href={withBase("features/")}>Baby Phone</a>
+        <a href={withBase("parents/")}>For parents</a>
+        <a href={withBase("contact/")}>Contact</a>
       </nav>
     </div>
-
     <div>
-      <h2 class="text-sm font-black uppercase tracking-[0.14em] text-ink">Legal</h2>
-      <nav class="mt-4 grid gap-3 text-sm font-bold text-ink-soft" aria-label="Footer legal navigation">
-        <a class="hover:text-sky-deep" href={withBase("privacy/")}>Privacy policy</a>
-        <a class="hover:text-sky-deep" href={withBase("terms/")}>Terms of service</a>
-        <a class="hover:text-sky-deep" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+      <h2>The details</h2>
+      <nav aria-label="Legal navigation">
+        <a href={withBase("privacy/")}>Privacy policy</a>
+        <a href={withBase("terms/")}>Terms of service</a>
+        <a href={siteConfig.googlePlayUrl} rel="external">
+          Baby Phone on Google Play
+        </a>
       </nav>
+    </div>
+    <div class="footer-contact">
+      <h2>Say hello</h2>
+      <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+      <p>
+        A question or a little idea?
+        <br />
+        We’d love to hear from you.
+      </p>
     </div>
   </div>
-
-  <div class="container-shell mt-10 flex flex-col gap-2 border-t border-[#e8efee] pt-6 text-xs leading-6 text-[#7c899c] sm:flex-row sm:items-center sm:justify-between">
-    <p>© {year} {siteConfig.owner}. All rights reserved.</p>
-    <p>{siteConfig.name} · {siteConfig.brand}</p>
+  <div class="container-shell footer-bottom">
+    <p>
+      © {year} {siteConfig.owner} · {siteConfig.brand}
+    </p>
+    <p>Made with heart. Made for play.</p>
   </div>
 </footer>

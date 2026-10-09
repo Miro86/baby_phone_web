@@ -1,88 +1,44 @@
 ---
-import { Image } from "astro:assets";
-import appIcon from "../../assets/app-icon.png";
-import heroScreenshot from "../../assets/screenshot-dog-call.png";
-import { appFacts } from "../config";
+import { Picture } from "astro:assets";
+import logo from "../../assets/brand/logo.png";
+import Icon from "./Icon.astro";
 import { withBase } from "../utils/urls";
 ---
 
-<section class="relative isolate overflow-hidden pb-20 pt-12 sm:pb-28 sm:pt-20">
-  <div aria-hidden="true" class="absolute inset-x-0 top-0 -z-20 h-[82%] bg-[linear-gradient(145deg,#fff8ef_0%,#fbe1e8_37%,#dfd5ff_70%,#b5dcff_100%)]"></div>
-  <div aria-hidden="true" class="absolute inset-x-0 bottom-0 -z-10 h-72 bg-[linear-gradient(to_bottom,transparent,#fffaf2)]"></div>
-  <div aria-hidden="true" class="absolute -left-16 top-24 -z-10 h-44 w-72 rounded-[50%] bg-white/65 blur-2xl"></div>
-  <div aria-hidden="true" class="absolute right-[-8rem] top-8 -z-10 size-[25rem] rounded-full bg-[#8cb6ff]/30 blur-3xl"></div>
-
-  <div class="container-shell grid items-center gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:gap-10">
-    <div class="relative z-10 min-w-0 text-center lg:text-left">
-      <span class="eyebrow">
-        <span aria-hidden="true" class="size-2 rounded-full bg-leaf-deep"></span>
-        Gentle learning through play
-      </span>
-
-      <div class="mt-5 flex items-center justify-center gap-4 lg:justify-start">
-        <Image src={appIcon} alt="Baby Phone app icon featuring a yellow chick with glasses holding a green telephone" width={76} height={76} format="webp" class="size-[4.5rem] rounded-[1.35rem] shadow-[0_12px_30px_rgba(65,80,118,0.2)] sm:size-20" />
-        <p class="text-left text-xs font-black uppercase leading-5 tracking-[0.16em] text-[#60738c]">Mini Dodo Apps<br /><span class="text-sky-deep">Made for little explorers</span></p>
-      </div>
-
-      <h1 class="mx-auto mt-7 max-w-3xl font-[var(--font-display)] text-[clamp(2.55rem,12vw,6.4rem)] font-black leading-[0.88] tracking-[-0.065em] text-ink lg:mx-0">
-        Call animals.<br />Hear them <span class="block text-[#e46f68] sm:inline">answer.</span>
+<section class="section home-hero">
+  <div class="container-shell split-layout">
+    <div class="hero-copy">
+      <p class="eyebrow">Welcome to Mini Dodo</p>
+      <h1>
+        Small apps.
+        <br />
+        <span class="text-teal">Big adventures.</span>
       </h1>
-      <p class="mx-auto mt-7 max-w-2xl text-[clamp(1.05rem,2vw,1.28rem)] leading-8 text-[#506079] lg:mx-0">
-        Baby Phone: Animal Sounds turns a familiar toy phone into a playful way for children to discover animal names and sounds across seven languages.
+      <p class="hero-intro">
+        Playful discovery for curious little minds. Meet Baby Phone: Animal
+        Sounds, our ad-free pretend phone app for young children.
       </p>
-
-      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
-        <span aria-disabled="true" class="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-ink px-7 py-3.5 text-center text-sm font-black text-white shadow-[0_12px_28px_rgba(33,51,79,0.24)]">
-          <svg aria-hidden="true" viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M10 18h4"></path></svg>
-          Launching soon on iOS & Android
-        </span>
-        <a href={withBase("features/")} class="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white bg-white/75 px-7 py-3.5 text-sm font-black text-ink shadow-[0_10px_26px_rgba(47,73,112,0.1)] transition hover:-translate-y-0.5 hover:bg-white">
-          Explore features
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <dl class="mx-auto mt-9 grid max-w-xl grid-cols-3 gap-3 lg:mx-0">
-        <div class="rounded-[1.4rem] border border-white/80 bg-white/58 px-3 py-4 backdrop-blur">
-          <dt class="text-[0.69rem] font-black uppercase tracking-[0.12em] text-[#758299]">Sounds</dt>
-          <dd class="mt-1 font-[var(--font-display)] text-2xl font-black text-ink">{appFacts.sounds}</dd>
-        </div>
-        <div class="rounded-[1.4rem] border border-white/80 bg-white/58 px-3 py-4 backdrop-blur">
-          <dt class="text-[0.69rem] font-black uppercase tracking-[0.12em] text-[#758299]">Categories</dt>
-          <dd class="mt-1 font-[var(--font-display)] text-2xl font-black text-ink">{appFacts.categories}</dd>
-        </div>
-        <div class="rounded-[1.4rem] border border-white/80 bg-white/58 px-3 py-4 backdrop-blur">
-          <dt class="text-[0.69rem] font-black uppercase tracking-[0.12em] text-[#758299]">Languages</dt>
-          <dd class="mt-1 font-[var(--font-display)] text-2xl font-black text-ink">{appFacts.languages.length}</dd>
-        </div>
-      </dl>
+      <a class="button button--orange" href={withBase("features/")}>
+        Explore Baby Phone <Icon name="arrow" />
+      </a>
+      <p class="hero-note">
+        <span aria-hidden="true" class="status-dot"></span>Available on Android
+        · iOS coming soon
+      </p>
     </div>
-
-    <div class="relative mx-auto min-w-0 w-full max-w-[30rem] lg:mr-0">
-      <div aria-hidden="true" class="absolute -inset-8 rounded-full bg-white/45 blur-2xl"></div>
-      <div class="float-gently relative mx-auto w-[min(78vw,25rem)] rotate-[2.5deg] rounded-[3.1rem] border-[9px] border-[#273044] bg-[#273044] p-1.5 shadow-[0_40px_90px_rgba(58,68,113,0.33)] sm:w-[min(84vw,25rem)]">
-        <div class="absolute left-1/2 top-4 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-black"></div>
-        <Image
-          src={heroScreenshot}
-          alt="Baby Phone app calling a friendly dog on a sunny farm"
-          width={660}
-          widths={[360, 520, 660]}
-          sizes="(max-width: 1024px) 84vw, 400px"
-          format="webp"
-          quality={82}
-          loading="eager"
-          fetchpriority="high"
-          class="aspect-[1320/2868] w-full rounded-[2.35rem] object-cover"
-        />
-      </div>
-      <div class="absolute -left-3 top-[20%] rounded-2xl bg-white px-4 py-3 shadow-[var(--shadow-card)] sm:-left-12">
-        <p class="text-xs font-black uppercase tracking-[0.1em] text-[#7a889a]">No ads</p>
-        <p class="mt-1 text-sm font-black text-ink">Just playful learning</p>
-      </div>
-      <div class="absolute -right-1 bottom-[19%] rounded-2xl bg-[#efffdc] px-4 py-3 shadow-[var(--shadow-card)] sm:-right-9">
-        <p class="text-xs font-black uppercase tracking-[0.1em] text-[#668153]">Parent gate</p>
-        <p class="mt-1 text-sm font-black text-ink">Grown-up controls</p>
-      </div>
-    </div>
+    <Picture
+      src={logo}
+      alt="Mini Dodo — a cheerful turquoise Dodo with the colorful Mini Dodo wordmark"
+      width={600}
+      widths={[280, 400, 560, 760, 960, 1178]}
+      sizes="(min-width: 2000px) 1200px, (min-width: 900px) 40vw, (min-width: 600px) 360px, 75vw"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={65}
+      loading="eager"
+      fetchpriority="high"
+      class="hero-logo"
+      pictureAttributes={{ class: "hero-picture" }}
+    />
   </div>
 </section>

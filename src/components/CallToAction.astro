@@ -1,22 +1,35 @@
 ---
-import { Image } from "astro:assets";
-import banner from "../../assets/promo-banner.png";
-import { siteConfig } from "../config";
+import DodoVisual from "./DodoVisual.astro";
+import StoreLinks from "./StoreLinks.astro";
+import { withBase } from "../utils/urls";
+interface Props {
+  parents?: boolean;
+}
+const { parents = false } = Astro.props;
 ---
 
-<section id="download" class="scroll-mt-24 pb-20 pt-6 sm:pb-28">
-  <div class="container-shell overflow-hidden rounded-[2.2rem] bg-ink shadow-[0_30px_80px_rgba(33,51,79,0.22)] lg:grid lg:grid-cols-[0.92fr_1.08fr]">
-    <div class="flex flex-col justify-center px-7 py-10 text-center sm:px-12 lg:text-left">
-      <span class="text-xs font-black uppercase tracking-[0.16em] text-[#9ad8ff]">A tiny phone. A world of animals.</span>
-      <h2 class="mt-4 font-[var(--font-display)] text-[clamp(2rem,4vw,3.35rem)] font-black leading-[1.02] tracking-[-0.045em] text-white">Ready for their next favorite sound?</h2>
-      <p class="mt-5 max-w-xl text-base leading-7 text-[#c9d4e4]">Baby Phone: Animal Sounds is coming soon to the Apple App Store and Google Play. Questions before release? We’re happy to help.</p>
-      <div class="mt-7 flex flex-col gap-3 sm:flex-row lg:justify-start">
-        <span aria-disabled="true" class="inline-flex min-h-13 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-black text-ink">iOS & Android · Coming soon</span>
-        <a href={`mailto:${siteConfig.email}?subject=Baby%20Phone%20question`} class="inline-flex min-h-13 items-center justify-center rounded-full border border-white/25 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10">Email Mini Dodo Apps</a>
-      </div>
+<section id="download" class="section cta-section">
+  <div class="container-shell split-layout">
+    <div>
+      <p class="eyebrow">
+        {parents ? "A little discovery, together" : "Ready to play?"}
+      </p>
+      <h2 class="section-title">
+        {parents
+          ? "Find a new favorite sound."
+          : "Meet your new animal friends."}
+      </h2>
+      <span class="accent-line" aria-hidden="true"></span>
+      <p class="section-copy">
+        Start with 15 farm animals, explore their sounds, and share a little
+        moment of discovery. Baby Phone is available for Android. iOS is coming
+        soon.
+      </p>
+      <StoreLinks />
+      <a class="text-link" href={withBase("contact/")}>
+        Have a question? Say hello <span aria-hidden="true">↗</span>
+      </a>
     </div>
-    <div class="flex items-center justify-center bg-[linear-gradient(135deg,#8fc7f4,#f6cde5_58%,#ffe4bc)]">
-      <Image src={banner} alt="Baby Phone: Animal Sounds characters exploring a sunny countryside" width={1024} widths={[600, 900, 1024]} sizes="(max-width: 1024px) 100vw, 55vw" format="webp" quality={82} loading="lazy" class="h-auto w-full object-contain" />
-    </div>
+    <DodoVisual message={parents ? "Let’s explore together!" : "Let’s play!"} />
   </div>
 </section>

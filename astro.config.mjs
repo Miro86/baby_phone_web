@@ -10,7 +10,15 @@ export default defineConfig({
   base,
   output: "static",
   trailingSlash: "always",
-  integrations: [sitemap()],
+  build: { inlineStylesheets: "always" },
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !/\/(404\/?|llms(?:-full)?\.txt\/?|robots\.txt\/?|site\.webmanifest\/?)$/.test(
+          page,
+        ),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

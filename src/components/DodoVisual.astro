@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import dodo from "../../assets/brand/dodo.png";
+import Icon from "./Icon.astro";
+interface Props {
+  trust?: boolean;
+  message?: string;
+  eager?: boolean;
+}
+const { trust = false, message = "Hi, I’m Dodo!", eager = false } = Astro.props;
+const nodes = [
+  { icon: "people", label: "Parents", position: "top" },
+  { icon: "child", label: "Children", position: "right" },
+  { icon: "ads", label: "No ads", position: "bottom-right" },
+  { icon: "lock", label: "Parental gate", position: "bottom-left" },
+  { icon: "shield", label: "Privacy", position: "left" },
+];
+---
+
+<div class:list={["dodo-visual", { "dodo-visual--trust": trust }]}>
+  {trust && <div class="trust-orbit" aria-hidden="true"></div>}
+  <Image
+    src={dodo}
+    alt="Dodo, the cheerful turquoise Mini Dodo mascot"
+    width={520}
+    widths={[240, 360, 450, 520, 700, 1040]}
+    sizes="(min-width: 2000px) 850px, (min-width: 900px) 360px, 240px"
+    format="webp"
+    quality={80}
+    loading={eager ? "eager" : "lazy"}
+    class="dodo-mascot"
+  />
+  <span class="speech-bubble">{message}</span>
+  {trust &&
+    nodes.map((node) => (
+      <div class={`trust-node trust-node--${node.position}`}>
+        <span>
+          <Icon name={node.icon} />
+        </span>
+        <small>{node.label}</small>
+      </div>
+    ))}
+</div>

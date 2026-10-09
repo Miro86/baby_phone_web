@@ -10,14 +10,14 @@ export const ui = {
   en: {
     nav: {
       home: "Home",
-      features: "Features",
+      features: "Baby Phone",
       parents: "For parents",
       contact: "Contact",
       privacy: "Privacy",
       terms: "Terms",
     },
     cta: {
-      primary: "Launching soon on iOS and Android",
+      primary: "Get Baby Phone on Google Play",
       secondary: "Explore features",
     },
   },

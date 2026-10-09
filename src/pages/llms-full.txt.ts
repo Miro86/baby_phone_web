@@ -1,38 +1,61 @@
 import type { APIRoute } from "astro";
 import { appFacts, siteConfig } from "../config";
+import { appFaqs, parentFaqs, categories } from "../data/app";
+import { withBase } from "../utils/urls";
+export const GET: APIRoute = ({ site }) => {
+  const origin = new URL(withBase(), site ?? "https://minidodoapps.de");
+  const url = (path: string) => new URL(path, origin).href;
+  const body = `# Baby Phone: Animal Sounds — official product reference
 
-export const GET: APIRoute = () => {
-  const body = `# ${siteConfig.name}: product reference
+Product reference updated: ${siteConfig.contentUpdated}
+Publisher: ${siteConfig.brand}
+Operator: ${siteConfig.owner}
+Contact: ${siteConfig.email}
+Official app page: ${url("features/")}
 
-Last updated: ${siteConfig.lastUpdated}
+## Identity and availability
 
-## Identity
+Baby Phone: Animal Sounds is currently the only app published by Mini Dodo Apps. It is an ad-free pretend phone app for young children.
+Android is available on Google Play: ${siteConfig.googlePlayUrl}
+The iOS version is in App Store review and coming soon. A public Apple App Store listing has not been supplied.
 
-Baby Phone: Animal Sounds is a child-friendly mobile application for iOS and Android, published under the Mini Dodo Apps name and operated by ${siteConfig.owner}. Official contact: ${siteConfig.email}.
+## What Baby Phone does
 
-## What the app does
+Children tap a colorful pretend-phone keypad or choose an animal in the library. A simulated call presents a friendly animal character, its name, and its sound. The app does not place real telephone calls or connect users. It is educational entertainment for shared discovery, rather than a formal curriculum or substitute for adult supervision.
 
-The app presents a colorful pretend telephone. A child can use the keypad or animal library to choose an animal and begin a simulated call. The app then presents an animal character, its name, and its sound. The experience is educational entertainment for playful exposure; it is not a real phone, communications service, formal curriculum, or substitute for adult supervision.
+## Animal content and purchases
 
-## Content
+The full collection includes ${appFacts.sounds} animal sounds across ${appFacts.categories} categories:
+${categories.map((category) => `- ${category.name}: ${category.copy}`).join("\n")}
 
-The app contains ${appFacts.sounds} animal sounds in ${appFacts.categories} categories: Farm Animals; Safari & Wild Animals; Forest & Backyard; Water & Polar Animals; and Exotic & Fun Favorites. ${appFacts.includedAnimals} farm animals are included. Additional themed packs may be available through optional one-time purchases in the Apple App Store or Google Play. The app does not use a recurring subscription.
+${appFacts.includedAnimals} farm animals are included. Additional packs are optional one-time in-app purchases. There is no recurring subscription. The app store shows current prices and availability before a grown-up confirms a purchase.
 
-## Languages
+## Languages for animal names
 
-Animal names are available in ${appFacts.languages.join(", ")}.
+${appFacts.languages.join(", ")}.
 
-## Parent-facing safeguards
+## Privacy and parent controls
 
-The app is presented without third-party advertising. A parental gate separates adult-facing settings and purchase choices from the main child experience. The current experience does not require a child account or social profile. Apple or Google separately processes downloads and transactions made through its store under its own terms and privacy notice.
+The child-facing app does not require an account or social profile. Preferences are kept on the device. A parental gate uses a simple arithmetic challenge to separate grown-up settings and purchase choices from play. It complements the device’s family and purchase controls.
+The app does not serve third-party advertising. Adult support emails are handled separately; the publisher receives the email address, message, and voluntarily supplied details. Google and Apple independently handle downloads and purchases through their respective stores. The static website has no account system, contact form, advertising pixels, or developer-controlled analytics cookies. Its host may process standard request data to provide the service.
+Full privacy disclosure: ${url("privacy/")}
+Terms of service: ${url("terms/")}
 
-## Privacy summary
+## App questions
 
-The child-facing app is designed not to collect personal information from children. Mini Dodo Apps does not sell personal information, share it with data brokers, or use it for cross-context behavioral advertising. App preferences are handled on-device. If an adult sends a support email, Mini Dodo Apps receives the email address, message, and information voluntarily provided and uses it for support, security, legal compliance, and limited business records. Refer to the official privacy policy for the complete disclosure.
+${appFaqs.map((faq) => `### ${faq.question}\n\n${faq.answer}`).join("\n\n")}
 
-## Rights and policies
+## Parent questions
 
-The Privacy Policy describes data practices and privacy rights. The Terms of Service govern licensing, purchases, acceptable use, parental responsibility, consumer rights, warranties, and disputes. Mandatory consumer and data-protection rights are preserved where applicable.
+${parentFaqs.map((faq) => `### ${faq.question}\n\n${faq.answer}`).join("\n\n")}
+
+## Support
+
+A parent or legal guardian should contact ${siteConfig.email} with only the details needed for help. Avoid sending unnecessary personal information about a child.
+Contact page: ${url("contact/")}
+Parent guide: ${url("parents/")}
 `;
-  return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
+  return new Response(body, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
 };

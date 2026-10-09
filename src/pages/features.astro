@@ -1,67 +1,215 @@
 ---
+import { Image, getImage } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import FeatureGrid from "../components/FeatureGrid.astro";
 import ScreenshotGallery from "../components/ScreenshotGallery.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ParentPromises from "../components/ParentPromises.astro";
+import StoreLinks from "../components/StoreLinks.astro";
 import CallToAction from "../components/CallToAction.astro";
+import FAQ from "../components/FAQ.astro";
+import Icon from "../components/Icon.astro";
+import banner from "../../assets/promo-banner.png";
+import appIcon from "../../assets/app-icon.png";
+import dialer from "../../assets/screenshot-animal-dialer.png";
 import { appFacts } from "../config";
-
-const categories = [
-  { icon: "🐄", title: "Farm Animals", description: "15 friendly farm animals included with the app." },
-  { icon: "🦁", title: "Safari & Wild", description: "Meet bold animals from grasslands and the wild." },
-  { icon: "🦉", title: "Forest & Backyard", description: "Discover familiar visitors and woodland neighbors." },
-  { icon: "🐧", title: "Water & Polar", description: "Explore animals from oceans and icy habitats." },
-  { icon: "🦜", title: "Exotic & Fun Favorites", description: "A colorful collection of memorable animal friends." },
+import { appFaqs, categories } from "../data/app";
+import { withBase } from "../utils/urls";
+import { appSchema, faqSchema } from "../utils/seo";
+const siteUrl = new URL(withBase(), Astro.site ?? Astro.url.origin);
+const schemaIcon = await getImage({
+  src: appIcon,
+  width: 512,
+  format: "webp",
+  quality: 82,
+});
+const schemaScreenshot = await getImage({
+  src: dialer,
+  width: 480,
+  format: "webp",
+});
+const schema = [
+  {
+    ...appSchema(siteUrl),
+    image: new URL(schemaIcon.src, siteUrl).href,
+    screenshot: new URL(schemaScreenshot.src, siteUrl).href,
+  },
+  faqSchema(appFaqs, new URL("features/", siteUrl).href),
 ];
 ---
 
-<BaseLayout title="Features" description="Explore all Baby Phone: Animal Sounds features: 67 sounds, five animal categories, seven languages, parental controls, and an ad-free child-friendly design.">
-  <section class="relative overflow-hidden bg-[linear-gradient(145deg,#e6f5ff,#f6ddf1_58%,#ffe7d9)] py-16 sm:py-24">
-    <div class="container-shell text-center">
-      <span class="eyebrow">Everything inside</span>
-      <h1 class="mx-auto mt-5 max-w-4xl font-[var(--font-display)] text-[clamp(3rem,7vw,5.8rem)] font-black leading-[0.92] tracking-[-0.06em] text-ink">A world of animals at their fingertips.</h1>
-      <p class="section-copy">Designed for simple, self-directed play with enough variety for children and grown-ups to keep discovering together.</p>
+<BaseLayout
+  title="Baby Phone: Animal Sounds — Ad-Free App for Kids"
+  description="Download Baby Phone for Android. Explore 67 animal sounds, seven languages, 15 included farm animals, pretend calls, and parent controls. iOS coming soon."
+  schema={schema}
+>
+  <section id="baby-phone" class="section product-hero">
+    <div class="container-shell">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href={withBase()}>Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Baby Phone</span>
+      </nav>
+      <div class="split-layout">
+        <div>
+          <div class="product-identity">
+            <Image
+              src={appIcon}
+              alt="Baby Phone: Animal Sounds app icon"
+              width={112}
+              widths={[88, 112, 176, 224]}
+              sizes="(min-width: 2000px) 176px, 88px"
+              format="webp"
+              loading="eager"
+            />
+            <div>
+              <p class="eyebrow">A Mini Dodo app</p>
+              <span>Available on Google Play</span>
+            </div>
+          </div>
+          <h1>
+            Baby Phone:
+            <br />
+            <span class="text-teal">Animal Sounds</span>
+          </h1>
+          <p class="product-description">
+            An ad-free pretend phone app for young children. Call an animal
+            friend, listen to its name and sound, and turn a little tap into a
+            new discovery.
+          </p>
+          <StoreLinks />
+          <p class="small-copy">
+            15 farm animals included · Optional one-time packs · No subscription
+          </p>
+        </div>
+        <Image
+          src={banner}
+          alt="Baby Phone: Animal Sounds — cheerful animal characters, 67 animal sounds, and five categories"
+          width={1024}
+          widths={[360, 560, 680, 800, 1024, 1280, 1536]}
+          sizes="(min-width: 2000px) 1400px, (min-width: 800px) 45vw, calc(100vw - 32px)"
+          format="webp"
+          quality={65}
+          loading="eager"
+          fetchpriority="high"
+          class="product-banner"
+        />
+      </div>
     </div>
   </section>
-
-  <section class="py-16 sm:py-24">
+  <section id="preview" class="section section--navy">
     <div class="container-shell">
-      <SectionHeading eyebrow="The experience" title="Simple to start. Delightful to explore." copy="The app combines familiar phone play, expressive animal characters, and clear spoken names with carefully separated grown-up controls." />
-      <div class="mt-12"><FeatureGrid /></div>
+      <ScreenshotGallery />
     </div>
   </section>
-
-  <section class="bg-[#edf7ff] py-16 sm:py-24">
+  <section id="overview" class="section section--teal">
     <div class="container-shell">
-      <SectionHeading eyebrow="Five playful categories" title={`${appFacts.sounds} animal sounds, from the farm to the wild`} copy="Start with the included farm collection, then grown-ups can optionally unlock more themed packs with a one-time purchase." />
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {categories.map((category, index) => (
-          <article class:list={["rounded-[1.8rem] border border-white p-6 text-center shadow-[var(--shadow-card)]", ["bg-[#fff0c4]", "bg-[#e8f7d7]", "bg-[#dceeff]", "bg-[#e0f6f3]", "bg-[#f2e7ff]"][index]]}>
-            <span class="text-4xl" aria-hidden="true">{category.icon}</span>
-            <h2 class="mt-4 font-[var(--font-display)] text-lg font-black leading-5 text-ink">{category.title}</h2>
-            <p class="mt-3 text-sm leading-6 text-ink-soft">{category.description}</p>
+      <SectionHeading
+        eyebrow="App overview"
+        title="A playful little phone filled with animal friends."
+      />
+      <div class="overview-layout">
+        <div class="overview-copy">
+          <h3>About Baby Phone</h3>
+          <p>
+            Baby Phone: Animal Sounds turns a familiar phone interface into a
+            cheerful world of animal discovery. Children can tap the colorful
+            keypad or choose an animal from the library, then hear its name and
+            sound through a pretend call.
+          </p>
+          <p>
+            Simple navigation, friendly characters, and animal names in seven
+            languages make it easy to explore together. All calls stay inside
+            the app.
+          </p>
+        </div>
+        <div class="navy-panel">
+          <p class="eyebrow">At a glance</p>
+          <dl class="fact-grid">
+            <div>
+              <dt>{appFacts.sounds}</dt>
+              <dd>Animal sounds</dd>
+            </div>
+            <div>
+              <dt>{appFacts.categories}</dt>
+              <dd>Playful categories</dd>
+            </div>
+            <div>
+              <dt>{appFacts.languages.length}</dt>
+              <dd>Languages</dd>
+            </div>
+            <div>
+              <dt class="platform-fact">Android</dt>
+              <dd>iOS coming soon</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <div class="navy-panel overview-features">
+        <FeatureGrid />
+      </div>
+    </div>
+  </section>
+  <section id="animals" class="section">
+    <div class="container-shell">
+      <SectionHeading
+        eyebrow="Five worlds to discover"
+        title="From the farm to the wild."
+        copy="Begin with 15 included farm animals. Grown-ups can choose additional themed packs to explore the full collection of 67 animal sounds."
+      />
+      <div class="categories-grid">
+        {categories.map((category) => (
+          <article class="category-card">
+            <Icon name={category.icon} />
+            <h3>{category.name}</h3>
+            <p>{category.copy}</p>
+            <span class="category-status">
+              {category.included
+                ? "Included in the app"
+                : "Optional animal pack"}
+            </span>
           </article>
         ))}
       </div>
-      <p class="mx-auto mt-6 max-w-2xl text-center text-sm leading-7 text-ink-soft">Availability and prices for optional packs are shown in your device’s app store and may vary by country. There is no recurring subscription.</p>
+      <p class="small-copy">
+        Optional packs are one-time in-app purchases. Prices and availability
+        are shown in Google Play before confirmation.
+      </p>
+      <div id="languages" class="language-section">
+        <h3>Animal names in seven languages.</h3>
+        <p class="section-copy">
+          Hear a familiar animal’s name in another language. A grown-up chooses
+          the languages; little explorers do the listening.
+        </p>
+        <ul class="language-list" aria-label="Languages for animal names">
+          {appFacts.languages.map((language) => (
+            <li>{language}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
-
-  <section class="py-16 sm:py-24">
-    <div class="container-shell">
-      <SectionHeading eyebrow="Real app previews" title="See the full play flow" copy="From choosing a language to calling an animal and entering the parent area, these are real screens from Baby Phone: Animal Sounds." />
-      <div class="mt-12"><ScreenshotGallery extended /></div>
+  <section class="section section--soft parent-feature">
+    <div class="container-shell split-layout">
+      <div>
+        <p class="eyebrow">For parents</p>
+        <h2 class="section-title">
+          Playful for children.
+          <br />
+          Thoughtful for parents.
+        </h2>
+        <span class="accent-line" aria-hidden="true"></span>
+        <p class="section-copy">
+          No third-party ads, no child account, and no recurring subscription.
+          Grown-up settings and purchase choices sit behind a parental gate.
+        </p>
+        <a class="button button--orange" href={withBase("parents/")}>
+          Read the parent guide <Icon name="arrow" />
+        </a>
+      </div>
+      <ParentPromises full />
     </div>
   </section>
-
-  <section class="pb-20 sm:pb-28">
-    <div class="container-shell rounded-[2.2rem] bg-[#fff0d7] p-7 sm:p-12">
-      <SectionHeading eyebrow="Available languages" title="Seven ways to say every name" copy="A grown-up can choose any combination of supported languages for playful listening and repetition." />
-      <ul class="mx-auto mt-9 flex max-w-4xl flex-wrap justify-center gap-3" aria-label="Supported languages">
-        {appFacts.languages.map((language) => <li class="rounded-full bg-white px-5 py-3 text-sm font-black text-ink shadow-[0_6px_18px_rgba(47,73,112,0.08)]">{language}</li>)}
-      </ul>
-    </div>
-  </section>
-
+  <FAQ items={appFaqs} />
   <CallToAction />
 </BaseLayout>

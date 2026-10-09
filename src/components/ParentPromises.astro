@@ -1,0 +1,43 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  full?: boolean;
+}
+const { full = false } = Astro.props;
+const promises = [
+  {
+    icon: "ads",
+    title: "No third-party ads",
+    copy: "Animal discovery without ad breaks or ad-network prompts.",
+  },
+  {
+    icon: "lock",
+    title: "Grown-up choices",
+    copy: "A parental gate separates settings and purchases from play.",
+  },
+  {
+    icon: "shield",
+    title: "Privacy in mind",
+    copy: "No child account. App preferences stay on the device.",
+  },
+  ...(full
+    ? [
+        {
+          icon: "heart",
+          title: "No subscription",
+          copy: "15 farm animals included, with optional one-time animal packs.",
+        },
+      ]
+    : []),
+];
+---
+
+<div class:list={["promise-grid", { "promise-grid--four": full }]}>
+  {promises.map((promise) => (
+    <article class="promise-card">
+      <Icon name={promise.icon} />
+      <h3>{promise.title}</h3>
+      <p>{promise.copy}</p>
+    </article>
+  ))}
+</div>

@@ -8,44 +8,146 @@ import goatCall from "../../assets/screenshot-goat-call.png";
 import parentGate from "../../assets/screenshot-parental-gate.png";
 import packs from "../../assets/screenshot-animal-packs.png";
 import catCall from "../../assets/screenshot-cat-call.png";
-
-interface Props {
-  extended?: boolean;
-}
-
-const { extended = false } = Astro.props;
 const screenshots = [
-  { src: dialer, title: "Dial and call", alt: "Colorful toy phone keypad used to call animals" },
-  { src: library, title: "Meet 67 animals", alt: "Farm animal library with dog, cat, cow, pig, sheep, horse, duck, chicken, rooster, goose, goat, and donkey" },
-  { src: languages, title: "Choose a language", alt: "Language selector with English, German, French, Italian, Spanish, Croatian, and Serbian" },
-  { src: parentGate, title: "Parent-only access", alt: "Parental gate with a simple arithmetic challenge for grown-up access" },
-  { src: dogCall, title: "Call a dog", alt: "Friendly dog answering an animal call on a farm" },
-  { src: catCall, title: "Call a cat", alt: "Friendly orange cat answering an animal call on a farm" },
-  { src: goatCall, title: "Call a goat", alt: "Friendly goat answering an animal call on a farm" },
-  { src: packs, title: "More worlds to explore", alt: "Optional one-time animal packs for safari, forest, water, polar, and exotic categories" },
+  {
+    src: dialer,
+    title: "Dial an animal",
+    copy: "Big, colorful buttons make pretend phone play easy to explore.",
+    alt: "Baby Phone’s colorful pretend phone keypad with numbers and animal buttons",
+  },
+  {
+    src: library,
+    title: "Choose an animal friend",
+    copy: "Browse the animal library and find a familiar face.",
+    alt: "Baby Phone farm animal library showing dog, cat, cow, pig, sheep, horse, and other animals",
+  },
+  {
+    src: dogCall,
+    title: "Listen, learn, and smile",
+    copy: "Hear your animal friend’s name and sound during a pretend call.",
+    alt: "Friendly dog character answering a pretend call in Baby Phone",
+  },
+  {
+    src: languages,
+    title: "Seven ways to say hello",
+    copy: "A grown-up can choose the languages for animal names.",
+    alt: "Animal name language settings: English, German, French, Italian, Spanish, Croatian, and Serbian",
+  },
+  {
+    src: catCall,
+    title: "A cheerful cat call",
+    copy: "Meet more animal characters and discover their voices.",
+    alt: "An orange cat character on Baby Phone’s pretend animal call screen",
+  },
+  {
+    src: goatCall,
+    title: "Another farm friend",
+    copy: "Repeat favorite sounds and make discoveries together.",
+    alt: "A goat character answering a simulated phone call on the farm",
+  },
+  {
+    src: parentGate,
+    title: "Choices for grown-ups",
+    copy: "An arithmetic challenge guards settings and purchases.",
+    alt: "Baby Phone parental gate asking a simple arithmetic question",
+  },
+  {
+    src: packs,
+    title: "More worlds to explore",
+    copy: "Optional one-time animal packs, chosen by a grown-up.",
+    alt: "Baby Phone’s optional animal packs for safari, forest, water, polar, and exotic animals",
+  },
 ];
-const visibleScreenshots = extended ? screenshots : screenshots.slice(0, 6);
 ---
 
-<div class="-mx-4 overflow-x-auto px-4 pb-8 [scrollbar-width:thin] [scrollbar-color:#b9c5d4_transparent] sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
-  <div class="flex min-w-max snap-x snap-mandatory gap-5 lg:min-w-0 lg:grid lg:grid-cols-3 xl:grid-cols-4">
-    {visibleScreenshots.map((screenshot) => (
-      <figure class="w-[min(76vw,19rem)] snap-center lg:w-auto">
-        <div class="overflow-hidden rounded-[2rem] border-[6px] border-white bg-white shadow-[0_18px_50px_rgba(47,73,112,0.16)]">
+<div class="screenshot-gallery">
+  <div class="gallery-header">
+    <div class="section-heading">
+      <p class="eyebrow">Preview the experience</p>
+      <h2 class="section-title">
+        Discover a world
+        <br />
+        of animal sounds.
+      </h2>
+      <span class="accent-line" aria-hidden="true"></span>
+    </div>
+    <div class="gallery-controls" hidden>
+      <button
+        type="button"
+        data-gallery-prev
+        aria-label="Previous app screenshots"
+        aria-controls="app-screenshots"
+        disabled
+      >
+        <span aria-hidden="true">←</span>
+      </button>
+      <button
+        type="button"
+        data-gallery-next
+        aria-label="Next app screenshots"
+        aria-controls="app-screenshots"
+      >
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </div>
+  <div
+    id="app-screenshots"
+    class="screenshot-track"
+    tabindex="0"
+    role="region"
+    aria-label="Baby Phone app screenshots; scroll horizontally to explore"
+  >
+    {screenshots.map((screenshot) => (
+      <figure class="screenshot-card">
+        <div class="screenshot-image">
           <Image
             src={screenshot.src}
             alt={screenshot.alt}
-            width={420}
-            widths={[280, 360, 420]}
-            sizes="(max-width: 640px) 76vw, (max-width: 1024px) 300px, 25vw"
+            width={360}
+            widths={[240, 360, 480, 720]}
+            sizes="(min-width: 2000px) 600px, (min-width: 600px) 240px, 65vw"
             format="webp"
-            quality={80}
+            quality={78}
             loading="lazy"
-            class="aspect-[1320/2868] w-full object-cover transition duration-500 hover:scale-[1.015]"
           />
         </div>
-        <figcaption class="mt-4 text-center text-sm font-black text-ink">{screenshot.title}</figcaption>
+        <figcaption>
+          <h3>{screenshot.title}</h3>
+          <p>{screenshot.copy}</p>
+        </figcaption>
       </figure>
     ))}
   </div>
+  <p class="gallery-hint">
+    Swipe, scroll, or use the arrow buttons to explore real app screens.
+  </p>
 </div>
+<script>
+  const gallery = document.querySelector<HTMLElement>(".screenshot-gallery");
+  const track = gallery?.querySelector<HTMLElement>(".screenshot-track");
+  const prev = gallery?.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+  const next = gallery?.querySelector<HTMLButtonElement>("[data-gallery-next]");
+  if (track && prev && next) {
+    gallery
+      ?.querySelector<HTMLElement>(".gallery-controls")
+      ?.removeAttribute("hidden");
+    const update = () => {
+      prev.disabled = track.scrollLeft < 2;
+      next.disabled =
+        track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+    };
+    const move = (direction: number) =>
+      track.scrollBy({
+        left: direction * track.clientWidth,
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "instant"
+          : "smooth",
+      });
+    prev.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+    track.addEventListener("scroll", update, { passive: true });
+    new ResizeObserver(update).observe(track);
+    update();
+  }
+</script>
