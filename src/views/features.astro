@@ -1,0 +1,221 @@
+---
+import { createTranslator, getLocale } from "../i18n/ui";
+import { Image, getImage } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ScreenshotGallery from "../components/ScreenshotGallery.astro";
+import FeatureGrid from "../components/FeatureGrid.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ParentPromises from "../components/ParentPromises.astro";
+import StoreLinks from "../components/StoreLinks.astro";
+import CallToAction from "../components/CallToAction.astro";
+import FAQ from "../components/FAQ.astro";
+import Icon from "../components/Icon.astro";
+import banner from "../../assets/promo-banner.png";
+import appIcon from "../../assets/app-icon.png";
+import dialer from "../../assets/screenshot-animal-dialer.png";
+import { appFacts } from "../config";
+import { getAppData } from "../data/app";
+import { localizedPath } from "../utils/urls";
+import { appSchema, faqSchema } from "../utils/seo";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
+const { appFaqs, categories } = getAppData(locale);
+const siteUrl = new URL(withBase(), Astro.site ?? Astro.url.origin);
+const schemaIcon = await getImage({
+  src: appIcon,
+  width: 512,
+  format: "webp",
+  quality: 82,
+});
+const schemaScreenshot = await getImage({
+  src: dialer,
+  width: 480,
+  format: "webp",
+});
+const heroBanner = await getImage({
+  src: banner,
+  width: 1024,
+  widths: [360, 560, 680, 800, 1024, 1280, 1536],
+  format: "webp",
+  quality: 65,
+  alt: t("m205"),
+  loading: "eager",
+  fetchpriority: "high",
+  class: "product-banner",
+});
+const schema = [
+  {
+    ...appSchema(siteUrl, locale),
+    image: new URL(schemaIcon.src, siteUrl).href,
+    screenshot: new URL(schemaScreenshot.src, siteUrl).href,
+  },
+  faqSchema(appFaqs, new URL("features/", siteUrl).href),
+];
+---
+
+<BaseLayout
+  title={t("m197")}
+  description={t("m198")}
+  schema={schema}
+>
+  <section id="baby-phone" class="section product-hero">
+    <div class="container-shell">
+      <nav class="breadcrumbs" aria-label={t("m134")}>
+        <a href={withBase()}>{t("m135")}</a>
+        <span aria-hidden="true">/</span>
+        <span>{t("m415")}</span>
+      </nav>
+      <div class="split-layout">
+        <div>
+          <div class="product-identity">
+            <Image
+              src={appIcon}
+              alt={t("m199")}
+              width={112}
+              widths={[88, 112, 176, 224]}
+              sizes="(min-width: 2000px) 176px, 88px"
+              format="webp"
+              loading="eager"
+            />
+            <div>
+              <p class="eyebrow">{t("m200")}</p>
+              <span>{t("m201")}</span>
+            </div>
+          </div>
+          <h1>
+            Baby Phone:
+            <br />
+            <span class="text-teal">{t("m202")}</span>
+          </h1>
+          <p class="product-description">
+            {t("m203")}
+          </p>
+          <StoreLinks />
+          <p class="small-copy">
+            {t("m204")}
+          </p>
+        </div>
+        <picture class="product-banner-media">
+          <source
+            media="(width > 600px)"
+            type="image/webp"
+            srcset={heroBanner.srcSet.attribute}
+            sizes="(min-width: 2000px) 1400px, (min-width: 800px) 45vw, calc(100vw - 32px)"
+          />
+          <img
+            {...heroBanner.attributes}
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          />
+        </picture>
+      </div>
+    </div>
+  </section>
+  <section id="preview" class="section section--navy">
+    <div class="container-shell">
+      <ScreenshotGallery />
+    </div>
+  </section>
+  <section id="overview" class="section section--teal">
+    <div class="container-shell">
+      <SectionHeading
+        eyebrow={t("m206")}
+        title={t("m207")}
+      />
+      <div class="overview-layout">
+        <div class="overview-copy">
+          <h3>{t("m208")}</h3>
+          <p>
+            {t("m209")}
+          </p>
+          <p>
+            {t("m210")}
+          </p>
+        </div>
+        <div class="navy-panel">
+          <p class="eyebrow">{t("m211")}</p>
+          <dl class="fact-grid">
+            <div>
+              <dt>{appFacts.sounds}</dt>
+              <dd>{t("m212")}</dd>
+            </div>
+            <div>
+              <dt>{appFacts.categories}</dt>
+              <dd>{t("m213")}</dd>
+            </div>
+            <div>
+              <dt>{appFacts.languages.length}</dt>
+              <dd>{t("m214")}</dd>
+            </div>
+            <div>
+              <dt class="platform-fact">Android</dt>
+              <dd>{t("m215")}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <div class="navy-panel overview-features">
+        <FeatureGrid />
+      </div>
+    </div>
+  </section>
+  <section id="animals" class="section">
+    <div class="container-shell">
+      <SectionHeading
+        eyebrow={t("m216")}
+        title={t("m217")}
+        copy={t("m218")}
+      />
+      <div class="categories-grid">
+        {categories.map((category) => (
+          <article class:list={["category-card", category.included ? "category-card--included" : "category-card--navy"]}>
+            <Icon name={category.icon} />
+            <h3>{category.name}</h3>
+            <p>{category.copy}</p>
+            <span class="category-status">
+              {category.included
+                ? t("m219")
+                : t("m220")}
+            </span>
+          </article>
+        ))}
+      </div>
+      <p class="small-copy">
+        {t("m221")}
+      </p>
+      <div id="languages" class="language-section">
+        <h3>{t("m222")}</h3>
+        <p class="section-copy">
+          {t("m223")}
+        </p>
+        <ul class="language-list" aria-label={t("m224")}>
+          {appFacts.languages.map((language) => (
+            <li>{t(({"English":"m396","German":"m397","French":"m398","Italian":"m399","Spanish":"m400","Croatian":"m401","Serbian":"m402"} as const)[language])}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section section--navy parent-feature">
+    <div class="container-shell split-layout">
+      <div>
+        <p class="eyebrow">{t("m136")}</p>
+        <h2 class="section-title">
+          {t("m225")}
+          <br />
+          {t("m226")}
+        </h2>
+        <span class="accent-line" aria-hidden="true"></span>
+        <p class="section-copy">
+          {t("m227")}
+        </p>
+        <a class="button button--orange" href={withBase("parents/")}>
+          {t("m228")} <Icon name="arrow" />
+        </a>
+      </div>
+      <ParentPromises full highlightPrivacy contentVariant="baby-phone" />
+    </div>
+  </section>
+  <FAQ items={appFaqs} />
+  <CallToAction />
+</BaseLayout>

@@ -1,7 +1,11 @@
 ---
+import { createTranslator, getLocale, legalDate } from "../i18n/ui";
 import BaseLayout from "./BaseLayout.astro";
 import { siteConfig } from "../config";
-import { withBase } from "../utils/urls";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
 interface Props {
   title: string;
   description: string;
@@ -13,8 +17,8 @@ const { title, description, eyebrow } = Astro.props;
 <BaseLayout title={title} description={description}>
   <section class="section legal-hero">
     <div class="container-shell">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href={withBase()}>Home</a>
+      <nav class="breadcrumbs" aria-label={t("m134")}>
+        <a href={withBase()}>{t("m135")}</a>
         <span aria-hidden="true">/</span>
         <span>{title}</span>
       </nav>
@@ -23,34 +27,34 @@ const { title, description, eyebrow } = Astro.props;
       <span class="accent-line" aria-hidden="true"></span>
       <p class="hero-intro">{description}</p>
       <p class="legal-date">
-        Effective and last updated: {siteConfig.lastUpdated}
+        {t("m259")} {legalDate(locale)}
       </p>
     </div>
   </section>
   <section class="section legal-section">
     <div class="container-shell legal-layout">
       <aside class="legal-sidebar">
-        <h2>Helpful links</h2>
-        <nav aria-label="Policy navigation">
+        <h2>{t("m260")}</h2>
+        <nav aria-label={t("m261")}>
           <a
             href={withBase("privacy/")}
-            aria-current={title === "Privacy Policy" ? "page" : undefined}
+            aria-current={title === t("m039") ? "page" : undefined}
           >
-            Privacy policy
+            {t("m250")}
           </a>
           <a
             href={withBase("terms/")}
-            aria-current={title === "Terms of Service" ? "page" : undefined}
+            aria-current={title === t("m001") ? "page" : undefined}
           >
-            Terms of service
+            {t("m251")}
           </a>
-          <a href={withBase("parents/")}>For parents</a>
-          <a href={withBase("contact/")}>Contact & support</a>
+          <a href={withBase("parents/")}>{t("m136")}</a>
+          <a href={withBase("contact/")}>{t("m262")}</a>
         </nav>
         <p>
-          Questions about a policy?
+          {t("m263")}
           <br />
-          <a href={`mailto:${siteConfig.email}`}>Email Mini Dodo</a>
+          <a href={`mailto:${siteConfig.email}`}>{t("m264")}</a>
         </p>
       </aside>
       <article class="legal-copy">

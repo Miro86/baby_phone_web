@@ -1,5 +1,7 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
 import dialer from "../../assets/screenshot-animal-dialer.png";
 import dogCall from "../../assets/screenshot-dog-call.png";
 import library from "../../assets/screenshot-animal-library.png";
@@ -8,54 +10,56 @@ import goatCall from "../../assets/screenshot-goat-call.png";
 import parentGate from "../../assets/screenshot-parental-gate.png";
 import packs from "../../assets/screenshot-animal-packs.png";
 import catCall from "../../assets/screenshot-cat-call.png";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
 const screenshots = [
   {
     src: dialer,
-    title: "Dial an animal",
-    copy: "Big, colorful buttons make pretend phone play easy to explore.",
-    alt: "Baby Phone’s colorful pretend phone keypad with numbers and animal buttons",
+    title: t("m301"),
+    copy: t("m302"),
+    alt: t("m303"),
   },
   {
     src: library,
-    title: "Choose an animal friend",
-    copy: "Browse the animal library and find a familiar face.",
-    alt: "Baby Phone farm animal library showing dog, cat, cow, pig, sheep, horse, and other animals",
+    title: t("m304"),
+    copy: t("m305"),
+    alt: t("m306"),
   },
   {
     src: dogCall,
-    title: "Listen, learn, and smile",
-    copy: "Hear your animal friend’s name and sound during a pretend call.",
-    alt: "Friendly dog character answering a pretend call in Baby Phone",
+    title: t("m307"),
+    copy: t("m308"),
+    alt: t("m309"),
   },
   {
     src: languages,
-    title: "Seven ways to say hello",
-    copy: "A grown-up can choose the languages for animal names.",
-    alt: "Animal name language settings: English, German, French, Italian, Spanish, Croatian, and Serbian",
+    title: t("m310"),
+    copy: t("m311"),
+    alt: t("m312"),
   },
   {
     src: catCall,
-    title: "A cheerful cat call",
-    copy: "Meet more animal characters and discover their voices.",
-    alt: "An orange cat character on Baby Phone’s pretend animal call screen",
+    title: t("m313"),
+    copy: t("m314"),
+    alt: t("m315"),
   },
   {
     src: goatCall,
-    title: "Another farm friend",
-    copy: "Repeat favorite sounds and make discoveries together.",
-    alt: "A goat character answering a simulated phone call on the farm",
+    title: t("m316"),
+    copy: t("m317"),
+    alt: t("m318"),
   },
   {
     src: parentGate,
-    title: "Choices for grown-ups",
-    copy: "An arithmetic challenge guards settings and purchases.",
-    alt: "Baby Phone parental gate asking a simple arithmetic question",
+    title: t("m319"),
+    copy: t("m320"),
+    alt: t("m321"),
   },
   {
     src: packs,
-    title: "More worlds to explore",
-    copy: "Optional one-time animal packs, chosen by a grown-up.",
-    alt: "Baby Phone’s optional animal packs for safari, forest, water, polar, and exotic animals",
+    title: t("m322"),
+    copy: t("m323"),
+    alt: t("m324"),
   },
 ];
 ---
@@ -63,79 +67,113 @@ const screenshots = [
 <div class="screenshot-gallery">
   <div class="gallery-header">
     <div class="section-heading">
-      <p class="eyebrow">Preview the experience</p>
+      <p class="eyebrow">{t("m325")}</p>
       <h2 class="section-title">
-        Discover a world
+        {t("m326")}
         <br />
-        of animal sounds.
+        {t("m327")}
       </h2>
       <span class="accent-line" aria-hidden="true"></span>
     </div>
+  </div>
+  <div class="gallery-frame">
+    <div
+      id="app-screenshots"
+      class="screenshot-track"
+      tabindex="0"
+      role="region"
+      aria-label={t("m330")}
+    >
+      {screenshots.map((screenshot) => (
+        <figure class="screenshot-card">
+          <div class="screenshot-image">
+            <Image
+              src={screenshot.src}
+              alt={screenshot.alt}
+              width={360}
+              widths={[240, 360, 480, 720]}
+              sizes="(min-width: 2000px) 600px, (min-width: 600px) 240px, 65vw"
+              format="webp"
+              quality={78}
+              loading="lazy"
+            />
+          </div>
+          <figcaption>
+            <h3>{screenshot.title}</h3>
+            <p>{screenshot.copy}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="gallery-hint">
+      {t("m331")}
+    </p>
     <div class="gallery-controls" hidden>
       <button
         type="button"
         data-gallery-prev
-        aria-label="Previous app screenshots"
+        aria-label={t("m328")}
         aria-controls="app-screenshots"
         disabled
       >
-        <span aria-hidden="true">←</span>
+        <Icon name="arrow" class="gallery-arrow--prev" />
       </button>
+      <div class="gallery-pagination" aria-hidden="true"></div>
+      <span class="gallery-status" data-gallery-status aria-live="polite" aria-atomic="true"></span>
       <button
         type="button"
         data-gallery-next
-        aria-label="Next app screenshots"
+        aria-label={t("m329")}
         aria-controls="app-screenshots"
       >
-        <span aria-hidden="true">→</span>
+        <Icon name="arrow" />
       </button>
     </div>
   </div>
-  <div
-    id="app-screenshots"
-    class="screenshot-track"
-    tabindex="0"
-    role="region"
-    aria-label="Baby Phone app screenshots; scroll horizontally to explore"
-  >
-    {screenshots.map((screenshot) => (
-      <figure class="screenshot-card">
-        <div class="screenshot-image">
-          <Image
-            src={screenshot.src}
-            alt={screenshot.alt}
-            width={360}
-            widths={[240, 360, 480, 720]}
-            sizes="(min-width: 2000px) 600px, (min-width: 600px) 240px, 65vw"
-            format="webp"
-            quality={78}
-            loading="lazy"
-          />
-        </div>
-        <figcaption>
-          <h3>{screenshot.title}</h3>
-          <p>{screenshot.copy}</p>
-        </figcaption>
-      </figure>
-    ))}
-  </div>
-  <p class="gallery-hint">
-    Swipe, scroll, or use the arrow buttons to explore real app screens.
-  </p>
 </div>
 <script>
   const gallery = document.querySelector<HTMLElement>(".screenshot-gallery");
   const track = gallery?.querySelector<HTMLElement>(".screenshot-track");
   const prev = gallery?.querySelector<HTMLButtonElement>("[data-gallery-prev]");
   const next = gallery?.querySelector<HTMLButtonElement>("[data-gallery-next]");
-  if (track && prev && next) {
+  const pagination = gallery?.querySelector<HTMLElement>(".gallery-pagination");
+  const status = gallery?.querySelector<HTMLElement>("[data-gallery-status]");
+  if (track && prev && next && pagination && status) {
+    const cards = Array.from(track.querySelectorAll<HTMLElement>(".screenshot-card"));
+    let perPage = 1;
+    let targets: number[] = [];
+    let dots: HTMLElement[] = [];
+    gallery?.classList.add("screenshot-gallery--enhanced");
     gallery
       ?.querySelector<HTMLElement>(".gallery-controls")
       ?.removeAttribute("hidden");
     const update = () => {
-      prev.disabled = track.scrollLeft < 2;
+      prev.disabled = track.scrollLeft <= 2;
       next.disabled =
         track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      const active = targets.reduce((nearest, target, index) =>
+        Math.abs(target - track.scrollLeft) < Math.abs(targets[nearest] - track.scrollLeft) ? index : nearest, 0);
+      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === active));
+      const title = cards[active * perPage]?.querySelector("h3")?.textContent?.trim() ?? "";
+      if (status.textContent !== title) status.textContent = title;
+    };
+    const refresh = () => {
+      if (!cards.length) return;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const step = cards[0].getBoundingClientRect().width + gap;
+      perPage = Math.max(1, Math.floor((track.clientWidth + gap) / step + 0.01));
+      const maximum = track.scrollWidth - track.clientWidth;
+      targets = Array.from({ length: Math.ceil(cards.length / perPage) }, (_, page) =>
+        Math.min(cards[page * perPage].offsetLeft - cards[0].offsetLeft, maximum));
+      if (dots.length !== targets.length) {
+        dots = targets.map(() => {
+          const dot = document.createElement("span");
+          dot.className = "gallery-dot";
+          return dot;
+        });
+        pagination.replaceChildren(...dots);
+      }
+      update();
     };
     const move = (direction: number) =>
       track.scrollBy({
@@ -147,7 +185,7 @@ const screenshots = [
     prev.addEventListener("click", () => move(-1));
     next.addEventListener("click", () => move(1));
     track.addEventListener("scroll", update, { passive: true });
-    new ResizeObserver(update).observe(track);
-    update();
+    new ResizeObserver(refresh).observe(track);
+    refresh();
   }
 </script>

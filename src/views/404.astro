@@ -1,0 +1,29 @@
+---
+import { createTranslator, getLocale } from "../i18n/ui";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DodoVisual from "../components/DodoVisual.astro";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
+---
+
+<BaseLayout
+  title={t("m252")}
+  description={t("m253")}
+  noindex
+>
+  <section class="section error-section">
+    <div class="container-shell">
+      <p class="error-code">{t("m254")}</p>
+      <h1>{t("m255")}</h1>
+      <p class="hero-intro">
+        {t("m256")}
+      </p>
+      <a href={withBase()} class="button button--orange">
+        {t("m257")}
+      </a>
+      <DodoVisual message={t("m258")} />
+    </div>
+  </section>
+</BaseLayout>

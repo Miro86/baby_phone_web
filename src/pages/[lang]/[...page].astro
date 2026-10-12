@@ -1,0 +1,20 @@
+---
+import { supportedLocales } from "../../i18n/ui";
+import { pageKeys, type PageKey } from "../../utils/urls";
+import Home from "../../views/index.astro";
+import Features from "../../views/features.astro";
+import Parents from "../../views/parents.astro";
+import Contact from "../../views/contact.astro";
+import Privacy from "../../views/privacy.astro";
+import Terms from "../../views/terms.astro";
+import NotFound from "../../views/404.astro";
+export function getStaticPaths() {
+  return supportedLocales.flatMap((lang) => pageKeys.map((page) => ({
+    params: { lang, page: page === "home" ? undefined : page }, props: { page },
+  })));
+}
+interface Props { page: PageKey }
+const views = { home: Home, features: Features, parents: Parents, contact: Contact, privacy: Privacy, terms: Terms, "404": NotFound };
+const Page = views[Astro.props.page];
+---
+<Page />

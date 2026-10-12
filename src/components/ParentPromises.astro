@@ -1,40 +1,64 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import Icon from "./Icon.astro";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
 interface Props {
   full?: boolean;
+  highlightPrivacy?: boolean;
+  contentVariant?: "app" | "studio" | "baby-phone";
 }
-const { full = false } = Astro.props;
+const { full = false, highlightPrivacy = false, contentVariant = "app" } = Astro.props;
+const studio = contentVariant === "studio";
+const babyPhone = contentVariant === "baby-phone";
 const promises = [
   {
     icon: "ads",
-    title: "No third-party ads",
-    copy: "Animal discovery without ad breaks or ad-network prompts.",
+    title: t("m421"),
+    highlighted: false,
+    copy: t(studio ? "m422" : babyPhone ? "m427" : "m332"),
   },
   {
     icon: "lock",
-    title: "Grown-up choices",
-    copy: "A parental gate separates settings and purchases from play.",
+    title: t(studio ? "m423" : babyPhone ? "m428" : "m333"),
+    highlighted: true,
+    copy: t(studio ? "m424" : babyPhone ? "m429" : "m334"),
   },
   {
     icon: "shield",
-    title: "Privacy in mind",
-    copy: "No child account. App preferences stay on the device.",
+    title: t(studio || babyPhone ? "m425" : "m335"),
+    highlighted: highlightPrivacy,
+    copy: t(studio ? "m426" : babyPhone ? "m430" : "m336"),
   },
   ...(full
     ? [
         {
           icon: "heart",
-          title: "No subscription",
-          copy: "15 farm animals included, with optional one-time animal packs.",
+          title: t(contentVariant === "app" ? "m437" : "m337"),
+          highlighted: false,
+          copy: t(babyPhone ? "m431" : "m338"),
         },
       ]
     : []),
 ];
 ---
 
-<div class:list={["promise-grid", { "promise-grid--four": full }]}>
+<div
+  class:list={[
+    "promise-grid",
+    {
+      "promise-grid--four": full,
+      "promise-grid--alternate-mobile": full && highlightPrivacy,
+    },
+  ]}
+>
   {promises.map((promise) => (
-    <article class="promise-card">
+    <article
+      class:list={[
+        "promise-card",
+        { "promise-card--highlighted": promise.highlighted },
+      ]}
+    >
       <Icon name={promise.icon} />
       <h3>{promise.title}</h3>
       <p>{promise.copy}</p>

@@ -3,19 +3,22 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(process.argv[2] ?? "dist");
-const routes = ["", "features/", "parents/", "contact/", "privacy/", "terms/"];
+const locales = ["de", "en", "fr", "it", "es", "hr", "sr"];
+const slugs = ["", "features/", "parents/", "contact/", "privacy/", "terms/"];
+const routes = locales.flatMap((locale) => slugs.map((slug) => `${locale}/${slug}`));
 const read = (file) => fs.readFile(path.join(root, file), "utf8");
 const sitemap = await read("sitemap-0.xml");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
   (match) => match[1],
 );
 const site = new URL(sitemapUrls[0]);
+site.pathname = site.pathname.replace(/(?:de|en|fr|it|es|hr|sr)\/.*$/, "");
 const store =
   "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone";
 assert.deepEqual(
   new Set(sitemapUrls),
   new Set(routes.map((route) => new URL(route, site).href)),
-  "Sitemap must contain all six existing public URLs",
+  "Sitemap must contain all 42 localized public URLs",
 );
 
 const routeFile = (route) =>
@@ -47,7 +50,7 @@ async function checkLink(value, pageUrl) {
   }
 }
 
-for (const route of [...routes, "404.html"]) {
+for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
   const html = await read(routeFile(route));
   const pageUrl = new URL(route, site);
   assert.equal(
@@ -60,7 +63,8 @@ for (const route of [...routes, "404.html"]) {
     1,
     `One title required: ${route}`,
   );
-  assert.match(html, /<html lang="en"/);
+  const locale = route.split("/")[0];
+  assert.ok(html.includes(`<html lang="${locale === "sr" ? "sr-Cyrl" : locale}"`));
   assert.match(html, /name="description" content="[^"]+"/);
   assert.match(
     html,
@@ -74,6 +78,11 @@ for (const route of [...routes, "404.html"]) {
     pageUrl.href,
     `Canonical must preserve the URL: ${route}`,
   );
+  if (!route.endsWith("/404/")) {
+    const alternates = [...html.matchAll(/rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)];
+    assert.equal(alternates.length, 8);
+    assert.ok(alternates.some((match) => match[1] === "x-default" && match[2] === new URL(route.replace(/^[^/]+/, "de"), site).href));
+  }
   const json = html.match(
     /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/,
   )?.[1];
@@ -108,7 +117,7 @@ for (const route of [...routes, "404.html"]) {
     assert.match(match[0], /width="\d+"/, "Image must reserve width");
     assert.match(match[0], /height="\d+"/, "Image must reserve height");
   }
-  if (route === "404.html") assert.match(html, /noindex, follow/);
+  if (route.endsWith("/404/")) assert.match(html, /noindex, follow/);
   else
     assert.ok(
       !html.includes('content="noindex'),
@@ -116,9 +125,9 @@ for (const route of [...routes, "404.html"]) {
     );
 }
 
-const home = await read("index.html");
-const parents = await read("parents/index.html");
-const features = await read("features/index.html");
+const home = await read("en/index.html");
+const parents = await read("en/parents/index.html");
+const features = await read("en/features/index.html");
 assert.match(
   home,
   /id="download"/,
@@ -142,9 +151,10 @@ const robots = await read("robots.txt");
 assert.match(robots, /User-agent: \*\nAllow: \//);
 assert.ok(robots.includes(new URL("sitemap-index.xml", site).href));
 const manifest = JSON.parse(await read("site.webmanifest"));
-assert.equal(manifest.start_url, site.pathname);
+assert.equal(manifest.start_url, `${site.pathname}de/`);
+assert.equal(manifest.lang, "de");
 assert.equal(manifest.icons.length, 2);
 for (const icon of manifest.icons) await checkLink(icon.src, site);
 console.log(
-  "Verified all existing routes, fragments, local links, assets, canonicals, sitemap, structured data, crawler references, and manifest.",
+  "Verified all localized routes, fragments, local links, assets, canonicals, sitemap, structured data, crawler references, and manifest.",
 );

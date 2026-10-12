@@ -1,0 +1,152 @@
+---
+import { createTranslator, getLocale } from "../i18n/ui";
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { siteConfig } from "../config";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+---
+
+<LegalLayout
+  title={t("m001")}
+  eyebrow={t("m002")}
+  description={t("m003")}
+>
+  <div class="rounded-[1.5rem] bg-[#edf7ff] p-6">
+    <h2 class="!mt-0 text-ink">{t("m004")}</h2>
+    <p class="!text-ink">
+      {t("m005")}
+    </p>
+  </div>
+
+  <h2>{t("m006")}</h2>
+  <p>
+    {t("m007")} {siteConfig.owner}{t("m008")}
+  </p>
+  <p>
+    {t("m009")}
+  </p>
+
+  <h2>{t("m010")}</h2>
+  <p>
+    {t("m011")}
+  </p>
+  <p>
+    {t("m012")}
+  </p>
+
+  <h2>{t("m013")}</h2>
+  <p>
+    {t("m014")}
+  </p>
+
+  <h2>{t("m015")}</h2>
+  <p>
+    {t("m016")}
+  </p>
+  <p>
+    {t("m017")}
+  </p>
+
+  <h2>{t("m018")}</h2>
+  <p>{t("m019")}</p>
+  <ul>
+    <li>{t("m020")}</li>
+    <li>{t("m021")}</li>
+    <li>{t("m022")}</li>
+    <li>{t("m023")}</li>
+    <li>{t("m024")}</li>
+  </ul>
+
+  <h2>{t("m025")}</h2>
+  <p>
+    {t("m026")}
+  </p>
+  <p>
+    {t("m027")}
+  </p>
+  <p>
+    {t("m028")}
+  </p>
+
+  <h2>{t("m029")}</h2>
+  <p>
+    {t("m030")}
+  </p>
+  <p>
+    {t("m031")}
+  </p>
+  <p>
+    {t("m032")}
+  </p>
+
+  <h2>{t("m033")}</h2>
+  <p>
+    {t("m034")}
+  </p>
+
+  <h2>{t("m035")}</h2>
+  <p>
+    {t("m036")}
+  </p>
+
+  <h2>{t("m037")}</h2>
+  <p>
+    {t("m038")} <a href="../privacy/">{t("m039")}</a> {t("m040")}
+  </p>
+
+  <h2>{t("m041")}</h2>
+  <p>
+    {t("m042")}
+  </p>
+  <p>
+    {t("m043")}
+  </p>
+
+  <h2>{t("m044")}</h2>
+  <p>
+    {t("m045")} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> {t("m046")}
+  </p>
+
+  <h2>{t("m047")}</h2>
+  <p>
+    {t("m048")}
+  </p>
+
+  <h2>{t("m049")}</h2>
+  <p>
+    {t("m050")}
+  </p>
+  <p>
+    {t("m051")}
+  </p>
+
+  <h2>{t("m052")}</h2>
+  <p>
+    {t("m053")}
+  </p>
+
+  <h2>{t("m054")}</h2>
+  <p>
+    {t("m055")}
+  </p>
+  <p>
+    {t("m056")}
+  </p>
+
+  <h2>{t("m057")}</h2>
+  <p>
+    {t("m058")}
+  </p>
+
+  <h2>{t("m059")}</h2>
+  <p>
+    {t("m060")}
+  </p>
+
+  <h2>{t("m061")}</h2>
+  <p>
+    <strong>{siteConfig.owner}</strong><br />
+    Mini Dodo Apps<br />
+    {t("m062")} <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+  </p>
+</LegalLayout>

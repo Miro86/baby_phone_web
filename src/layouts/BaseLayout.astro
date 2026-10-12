@@ -6,7 +6,12 @@ import "../styles/global.css";
 import promoBanner from "../../assets/promo-banner.png";
 import brandLogo from "../../assets/brand/logo.png";
 import { siteConfig } from "../config";
-import { withBase } from "../utils/urls";
+import { withBase, pageKeyFromUrl, pagePath } from "../utils/urls";
+import { createTranslator, getLocale, languages, supportedLocales, defaultLocale } from "../i18n/ui";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const language = languages[locale];
+const page = pageKeyFromUrl(Astro.url);
 
 interface Props {
   title: string;
@@ -22,15 +27,11 @@ const {
   schema,
   pageType = "WebPage",
 } = Astro.props;
-const siteUrl = new URL(withBase(), Astro.site ?? Astro.url.origin);
-const canonicalPath =
-  noindex && Astro.url.pathname.endsWith("/404/")
-    ? withBase("404.html")
-    : Astro.url.pathname;
-const canonical = new URL(canonicalPath, siteUrl);
+const siteUrl = new URL(pagePath("home", locale), Astro.site ?? Astro.url.origin);
+const canonical = new URL(pagePath(page, locale), siteUrl);
 canonical.search = "";
 canonical.hash = "";
-const pageTitle = `${title} | ${siteConfig.brandDisplay}`;
+const pageTitle = page === "home" ? title : `${title} | ${siteConfig.brandDisplay}`;
 const social = await getImage({
   src: promoBanner,
   width: 1200,
@@ -59,7 +60,7 @@ const graph = {
       "@type": "Organization",
       "@id": absolute("#organization"),
       name: siteConfig.brandDisplay,
-      alternateName: siteConfig.brand,
+      alternateName: siteConfig.brandDisplay,
       url: siteUrl.href,
       logo: { "@type": "ImageObject", url: absolute(logo.src) },
       email: siteConfig.email,
@@ -75,9 +76,9 @@ const graph = {
       "@type": "WebSite",
       "@id": absolute("#website"),
       name: siteConfig.brandDisplay,
-      alternateName: siteConfig.brand,
+      alternateName: siteConfig.brandDisplay,
       url: siteUrl.href,
-      inLanguage: "en",
+      inLanguage: language.htmlLang,
       publisher: { "@id": absolute("#organization") },
     },
     {
@@ -86,7 +87,7 @@ const graph = {
       name: title,
       description,
       url: canonical.href,
-      inLanguage: "en",
+      inLanguage: language.htmlLang,
       isPartOf: { "@id": absolute("#website") },
       publisher: { "@id": absolute("#organization") },
       ...(canonical.href !== siteUrl.href && !noindex
@@ -102,7 +103,7 @@ const graph = {
               {
                 "@type": "ListItem",
                 position: 1,
-                name: "Home",
+                name: t("m135"),
                 item: siteUrl.href,
               },
               {
@@ -121,7 +122,7 @@ const graph = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={language.htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -140,8 +141,10 @@ const graph = {
       }
     />
     <link rel="canonical" href={canonical.href} />
-    <link rel="alternate" hreflang="en" href={canonical.href} />
-    <link rel="alternate" hreflang="x-default" href={canonical.href} />
+    {!noindex && <>
+      {supportedLocales.map((candidate) => <link rel="alternate" hreflang={languages[candidate].htmlLang} href={absolute(pagePath(page, candidate))} />)}
+      <link rel="alternate" hreflang="x-default" href={absolute(pagePath(page, defaultLocale))} />
+    </>}
     <link
       rel="icon"
       type="image/png"
@@ -153,7 +156,7 @@ const graph = {
       sizes="180x180"
       href={withBase("apple-touch-icon.png")}
     />
-    <link rel="manifest" href={withBase("site.webmanifest")} />
+    <link rel="manifest" href={pagePath("home", locale) + "site.webmanifest"} />
     <link
       rel="sitemap"
       type="application/xml"
@@ -168,11 +171,14 @@ const graph = {
     />
     <style
       is:inline
-      set:html={`@font-face { font-family: "Nunito"; src: url("${withBase("fonts/nunito-latin.woff2")}") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; }`}
+      set:html={`@font-face { font-family: "Nunito"; src: url("${withBase("fonts/nunito-latin.woff2")}") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Nunito"; src: url("${withBase("fonts/nunito-latin-ext.woff2")}") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Nunito"; src: url("${withBase("fonts/nunito-cyrillic.woff2")}") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }`}
     ></style>
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.brandDisplay} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={language.ogLocale} />
+    {supportedLocales.filter((candidate) => candidate !== locale).map((candidate) => <meta property="og:locale:alternate" content={languages[candidate].ogLocale} />)}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical.href} />
@@ -181,7 +187,7 @@ const graph = {
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Baby Phone: Animal Sounds — 67 animal sounds across five playful categories"
+      content={t("m394")}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
@@ -189,7 +195,7 @@ const graph = {
     <meta name="twitter:image" content={absolute(social.src)} />
     <meta
       name="twitter:image:alt"
-      content="Baby Phone: Animal Sounds by Mini Dodo"
+      content={t("m395")}
     />
     <script
       is:inline
@@ -199,7 +205,7 @@ const graph = {
   </head>
   <body>
     <a href="#main-content" class="skip-link">
-      Skip to content
+      {t("m393")}
     </a>
     <Header />
     <main id="main-content" tabindex="-1">

@@ -1,23 +1,24 @@
 import type { APIRoute } from "astro";
 import { appFacts, siteConfig } from "../config";
-import { appFaqs, parentFaqs, categories } from "../data/app";
-import { withBase } from "../utils/urls";
+import { getAppData } from "../data/app";
+import { withBase, pagePath } from "../utils/urls";
 export const GET: APIRoute = ({ site }) => {
+  const { appFaqs, parentFaqs, categories } = getAppData("en");
   const origin = new URL(withBase(), site ?? "https://minidodoapps.de");
-  const url = (path: string) => new URL(path, origin).href;
+  const url = (path: string) => new URL(["", "features/", "parents/", "contact/", "privacy/", "terms/"].includes(path) ? pagePath(path ? path.slice(0, -1) as "features" | "parents" | "contact" | "privacy" | "terms" : "home", "en") : path, origin).href;
   const body = `# Baby Phone: Animal Sounds — official product reference
 
 Product reference updated: ${siteConfig.contentUpdated}
-Publisher: ${siteConfig.brand}
+Publisher: ${siteConfig.brandDisplay}
 Operator: ${siteConfig.owner}
 Contact: ${siteConfig.email}
 Official app page: ${url("features/")}
 
 ## Identity and availability
 
-Baby Phone: Animal Sounds is currently the only app published by Mini Dodo Apps. It is an ad-free pretend phone app for young children.
+Baby Phone: Animal Sounds is currently the only app published by Mini Dodo. It is an ad-free pretend phone app for young children.
 Android is available on Google Play: ${siteConfig.googlePlayUrl}
-The iOS version is in App Store review and coming soon. A public Apple App Store listing has not been supplied.
+The iOS version is coming soon. A public Apple App Store listing has not been supplied.
 
 ## What Baby Phone does
 
@@ -37,7 +38,7 @@ ${appFacts.languages.join(", ")}.
 ## Privacy and parent controls
 
 The child-facing app does not require an account or social profile. Preferences are kept on the device. A parental gate uses a simple arithmetic challenge to separate grown-up settings and purchase choices from play. It complements the device’s family and purchase controls.
-The app does not serve third-party advertising. Adult support emails are handled separately; the publisher receives the email address, message, and voluntarily supplied details. Google and Apple independently handle downloads and purchases through their respective stores. The static website has no account system, contact form, advertising pixels, or developer-controlled analytics cookies. Its host may process standard request data to provide the service.
+The app does not serve third-party advertising. Adult support emails are handled separately; the publisher receives the email address, message, and voluntarily supplied details. Google and Apple independently handle downloads and purchases through their respective stores. The static website has no account system, contact form, advertising pixels, or developer-controlled analytics cookies. Its host may process standard request data to provide the service. A manually selected website language is stored locally in the visitor’s browser; explicit language URLs take precedence.
 Full privacy disclosure: ${url("privacy/")}
 Terms of service: ${url("terms/")}
 

@@ -1,20 +1,23 @@
 # Mini Dodo / Baby Phone website
 
-A static Astro website for Mini Dodo Apps and its first app, **Baby Phone: Animal Sounds**. The redesign follows the artwork, section layouts, and brand guide supplied in `design/`.
+A static Astro website for Mini Dodo and its first app, **Baby Phone: Animal Sounds**. The redesign follows the artwork, section layouts, and brand guide supplied in `design/`.
 
-## Existing URLs
+## Localized URLs
 
-All published routes are preserved:
+The six content pages are available under each locale prefix: /de/, /en/, /fr/, /it/, /es/, /hr/, and /sr/. German is the first-visit default; Serbian copy uses Cyrillic.
 
-- `/` — Mini Dodo and Baby Phone introduction
-- `/features/` — Baby Phone app details, screenshots, languages, and FAQ
-- `/parents/` — parent guide, safeguards, privacy summary, and FAQ
-- `/contact/` — official contact and support information
-- `/privacy/` — original privacy policy in the new legal layout
-- `/terms/` — original terms in the new legal layout
-- `/404.html`, `/robots.txt`, `/site.webmanifest`, `/llms.txt`, and `/llms-full.txt`
+- /{lang}/ — Home
+- /{lang}/features/ — Baby Phone details, screenshots, languages, and FAQ
+- /{lang}/parents/ — parent guide, safeguards, privacy summary, and FAQ
+- /{lang}/contact/ — contact and support
+- /{lang}/privacy/ and /{lang}/terms/ — localized legal pages
+- /{lang}/404/ — localized, non-indexable error page
 
-The existing home `#download`, app `#download`, and parent `#privacy` / `#download` fragments are also preserved. Every internal link, canonical, image, font, sitemap, and reference works both at the custom-domain root and under the GitHub Pages repository base path.
+The original unprefixed entry URLs remain as static language redirects, with German canonicals and a German no-JavaScript fallback. A manually selected language is remembered on those entry URLs; explicit localized URLs always take precedence. The shared header switches to the equivalent page and retains the fragment.
+
+The existing home and app #download, and parent #privacy / #download fragments remain. Global robots, sitemap and machine-readable references retain their original URLs. Each locale has its own site.webmanifest.
+
+See [MULTILINGUAL.md](MULTILINGUAL.md) for architecture, translation maintenance, validation limits, and the exact file inventory.
 
 ## Local development and verification
 
@@ -23,7 +26,13 @@ npm install
 npm run dev
 ```
 
-Production validation:
+Lightweight localization validation (no server or build):
+
+```sh
+node scripts/verify-i18n.mjs
+```
+
+Production validation, when a build is authorized:
 
 ```sh
 npm run verify
@@ -41,12 +50,12 @@ node scripts/verify-build.mjs /private/tmp/minidodo-base-build
 
 ## Design and performance
 
-- **Nunito** is the site-wide font. Its licensed Latin variable WOFF2 file is hosted locally; the license is in `public/fonts/OFL.txt`.
+- **Nunito** is the site-wide font. Its licensed Latin, Latin extended, and Cyrillic variable WOFF2 files are hosted locally; the license is in `public/fonts/OFL.txt`.
 - Supplied brand artwork is in `assets/brand/`. Source colors and proportions are preserved; transparent padding was trimmed for layout.
 - Astro generates responsive image variants. The main brand illustration uses AVIF with a WebP fallback; app artwork and screenshots use WebP.
 - Hero imagery has high fetch priority. Images below the first screen are lazy-loaded and reserve their dimensions.
 - Small compiled styles are inlined. There is no client framework, third-party font service, analytics, tracking, video embed, or automatic slideshow.
-- Navigation and FAQs work without JavaScript. JavaScript adds gallery arrows and menu dismissal.
+- Navigation and FAQs work without JavaScript. JavaScript adds gallery arrows, menu dismissal, language preference storage, and entry redirects. Localized pages do not depend on client-side translation.
 - Layouts stack on small screens and use bounded, readable content widths on large displays. Above 2000px, rem-based spacing and typography scale up, with a 40px root-size cap.
 - Keyboard focus, reduced motion, a skip link, descriptive image text, and accessible contrast are included.
 
@@ -64,9 +73,9 @@ Product counts and language names are in `src/config.ts`. App and parent FAQs sh
 
 ## Search and structured data
 
-Pages render their complete content in HTML. Page-specific metadata includes canonical URLs, social sharing images, and English / default language references. Connected JSON-LD describes the organization, website, page, breadcrumbs, app, and visible FAQs.
+Pages render their complete content in HTML. Page-specific metadata includes canonical URLs, social sharing images, and seven reciprocal language alternates and a German x-default. Connected JSON-LD describes the organization, website, page, breadcrumbs, app, and visible FAQs.
 
-The XML sitemap contains the six indexable pages; the 404 page is marked noindex. `robots.txt` permits crawlers. Existing AI-readable reference URLs remain available, with accurate Android and iOS availability.
+The XML sitemap contains the 42 indexable localized pages; the 404 page is marked noindex. `robots.txt` permits crawlers. Existing AI-readable reference URLs remain available, with accurate Android and iOS availability.
 
 ## Deployment
 

@@ -19,3 +19,11 @@ Before publishing the app, verify every item below against the shipping app and 
 - Re-check the policies whenever code, SDKs, purchases, support tools, hosting, analytics, advertising, or launch countries change.
 
 The landing-page statements and `llms*.txt` files repeat these product facts, so update all public surfaces together if a fact changes.
+
+## Multilingual website review
+
+Before publishing the multilingual website, have qualified human reviewers check all six translations of the full Privacy Policy and Terms of Service against the English source, including Serbian Cyrillic terminology. Review governing law, consumer remedies, liability limits, COPPA/GDPR/UK GDPR wording, store roles, support retention, and controller identity. Translation does not establish legal approval.
+
+The Privacy Policy now discloses the language preference stored under mini-dodo-language in browser localStorage. Review this preference-storage disclosure and any applicable storage consent/exemption requirements for the launch markets. The setting is only used at unprefixed entry URLs; explicit locale URLs take precedence. No browser-language detection, analytics, advertising, or cookies were added.
+
+The existing effective/updated date (29 August 2026) is retained and displayed in each language. Confirm the appropriate publication/effective date before release. Product names, the operator’s name, emails, legal references, and the original artwork remain unchanged. No promise of support in seven languages has been added.

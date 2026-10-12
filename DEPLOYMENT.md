@@ -1,4 +1,4 @@
-# Deploying Mini Dodo Apps to GitHub Pages
+# Deploying Mini Dodo to GitHub Pages
 
 This project publishes from the `main` branch using GitHub Actions. Until the custom domain is activated, the workflow uses `https://miro86.github.io/baby_phone_web/`. Repository variables switch the production build to `https://minidodoapps.de` when its DNS is ready.
 

@@ -1,0 +1,127 @@
+---
+import { createTranslator, getLocale } from "../i18n/ui";
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import AppCard from "../components/AppCard.astro";
+import StoreLinks from "../components/StoreLinks.astro";
+import ParentPromises from "../components/ParentPromises.astro";
+import DodoVisual from "../components/DodoVisual.astro";
+import Icon from "../components/Icon.astro";
+import smile from "../../assets/brand/smile.png";
+import { siteConfig } from "../config";
+import { localizedPath } from "../utils/urls";
+import { appSchema } from "../utils/seo";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
+const schema = appSchema(new URL(withBase(), Astro.site ?? Astro.url.origin), locale);
+---
+
+<BaseLayout
+  title={`${siteConfig.brandDisplay} | ${t("m346")}`}
+  description={t("m419")}
+  schema={schema}
+>
+  <Hero />
+  <section id="about" class="section section--navy">
+    <div class="container-shell split-layout">
+      <div>
+        <p class="eyebrow">{t("m174")}</p>
+        <h2 class="section-title">
+          {t("m175")}
+          <br />
+          {t("m176")}
+        </h2>
+        <p class="section-copy">
+          {t("m177")}
+        </p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </div>
+      <div class="about-statement">
+        <p class="brand-statement">
+          {t("m178")} <span>{t("m179")}</span>
+          <br />
+          {t("m178")} <span>{t("m180")}</span>
+        </p>
+        <Image
+          src={smile}
+          alt=""
+          width={240}
+          widths={[180, 240, 480]}
+          sizes="(min-width: 2000px) 400px, 200px"
+          format="webp"
+          loading="lazy"
+          class="brand-smile"
+        />
+      </div>
+    </div>
+  </section>
+  <section id="dodo" class="section section--teal meet-dodo">
+    <div class="container-shell split-layout">
+      <div>
+        <p class="eyebrow">{t("m181")}</p>
+        <h2 class="section-title">
+          {t("m182")}
+          <br />
+          {t("m183")}
+        </h2>
+        <p class="section-copy">
+          {t("m184")}
+        </p>
+        <span class="accent-line" aria-hidden="true"></span>
+      </div>
+      <DodoVisual bubblePosition="mobile-side" />
+    </div>
+  </section>
+  <section id="apps" class="section">
+    <div class="container-shell">
+      <SectionHeading
+        eyebrow={t("m185")}
+        title={t("m186")}
+        copy={t("m187")}
+      />
+      <div id="download">
+        <AppCard />
+      </div>
+    </div>
+  </section>
+  <section id="parents" class="section section--navy parent-band">
+    <div class="container-shell">
+      <SectionHeading
+        eyebrow={t("m136")}
+        title={t("m188")}
+        secondLine={t("m420")}
+        copy={t("m189")}
+      />
+      <ParentPromises contentVariant="studio" />
+      <a class="button button--orange" href={withBase("parents/")}>
+        {t("m190")} <Icon name="arrow" />
+      </a>
+    </div>
+  </section>
+  <section class="section next-section">
+    <div class="container-shell split-layout">
+      <div>
+        <p class="eyebrow">{t("m191")}</p>
+        <h2 class="section-title">
+          {t("m192")}
+        </h2>
+        <span class="accent-line" aria-hidden="true"></span>
+        <p class="section-copy">
+          {t("m193")}
+        </p>
+        <a
+          class="button button--orange"
+          href={withBase("contact/")}
+          style="margin-top: 1.5rem"
+        >
+          {t("m194")} <Icon name="arrow" />
+        </a>
+        <StoreLinks />
+      </div>
+      <DodoVisual bubblePosition="mobile-side" message={t("m196")} />
+    </div>
+  </section>
+</BaseLayout>

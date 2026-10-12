@@ -1,7 +1,11 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import { Image } from "astro:assets";
 import wordmark from "../../assets/brand/wordmark.png";
-import { withBase } from "../utils/urls";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
 interface Props {
   compact?: boolean;
 }
@@ -11,7 +15,7 @@ const { compact = false } = Astro.props;
 <a
   href={withBase()}
   class:list={["brand-mark", { "brand-mark--compact": compact }]}
-  aria-label="Mini Dodo — home"
+  aria-label={t("m377")}
 >
   <Image
     src={wordmark}

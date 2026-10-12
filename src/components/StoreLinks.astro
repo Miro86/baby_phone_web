@@ -1,5 +1,8 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import { siteConfig } from "../config";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
 interface Props {
   compact?: boolean;
 }
@@ -10,7 +13,8 @@ const { compact = false } = Astro.props;
   <a
     class="store-button store-button--google"
     href={siteConfig.googlePlayUrl}
-    rel="external"
+    target="_blank"
+    rel="noopener noreferrer"
   >
     <svg
       aria-hidden="true"
@@ -22,14 +26,14 @@ const { compact = false } = Astro.props;
       <path d="M2 2v22l12-11L2 2Zm2-2 12 11 4-4L4 0Zm12 15L4 26l16-7-4-4Zm2-2 4 4c3-2 3-6 0-8l-4 4Z" />
     </svg>
     <span>
-      <small>Get it on</small>
+      <small>{t("m298")}</small>
       <strong>Google Play</strong>
     </span>
   </a>
   {siteConfig.appStoreUrl ? (
-    <a class="store-button" href={siteConfig.appStoreUrl} rel="external">
+    <a class="store-button" href={siteConfig.appStoreUrl} target="_blank" rel="noopener noreferrer">
       <span>
-        <small>Download on the</small>
+        <small>{t("m299")}</small>
         <strong>App Store</strong>
       </span>
     </a>
@@ -45,7 +49,7 @@ const { compact = false } = Astro.props;
         <path d="M17 0c0 3-2 5-5 5 0-3 2-5 5-5Zm3 19c-1 3-3 6-5 6-1 0-2-1-3-1s-3 1-4 1c-3-1-6-6-6-11 0-5 3-8 6-8 2 0 3 1 4 1s3-1 5-1c2 0 4 1 5 3-5 3-4 8 0 10Z" />
       </svg>
       <span>
-        <small>Coming soon to the</small>
+        <small>{t("m300")}</small>
         <strong>App Store</strong>
       </span>
     </span>

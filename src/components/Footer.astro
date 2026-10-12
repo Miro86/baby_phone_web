@@ -1,7 +1,11 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import AppMark from "./AppMark.astro";
 import { siteConfig } from "../config";
-import { withBase } from "../utils/urls";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
 const year = new Date().getUTCFullYear();
 ---
 
@@ -10,44 +14,44 @@ const year = new Date().getUTCFullYear();
     <div class="footer-brand">
       <AppMark />
       <p>
-        Small apps. Big adventures.
+        {t("m346")}
         <br />
-        Playful discovery for little explorers.
+        {t("m347")}
       </p>
     </div>
     <div>
-      <h2>Explore</h2>
-      <nav aria-label="Footer navigation">
-        <a href={withBase()}>Home</a>
-        <a href={withBase("features/")}>Baby Phone</a>
-        <a href={withBase("parents/")}>For parents</a>
-        <a href={withBase("contact/")}>Contact</a>
+      <h2>{t("m348")}</h2>
+      <nav aria-label={t("m349")}>
+        <a href={withBase()}>{t("m135")}</a>
+        <a href={withBase("features/")}>{t("m415")}</a>
+        <a href={withBase("parents/")}>{t("m136")}</a>
+        <a href={withBase("contact/")}>{t("m231")}</a>
       </nav>
     </div>
     <div>
-      <h2>The details</h2>
-      <nav aria-label="Legal navigation">
-        <a href={withBase("privacy/")}>Privacy policy</a>
-        <a href={withBase("terms/")}>Terms of service</a>
-        <a href={siteConfig.googlePlayUrl} rel="external">
-          Baby Phone on Google Play
+      <h2>{t("m350")}</h2>
+      <nav aria-label={t("m351")}>
+        <a href={withBase("privacy/")}>{t("m250")}</a>
+        <a href={withBase("terms/")}>{t("m251")}</a>
+        <a href={siteConfig.googlePlayUrl} target="_blank" rel="noopener noreferrer">
+          {t("m352")}
         </a>
       </nav>
     </div>
     <div class="footer-contact">
-      <h2>Say hello</h2>
+      <h2>{t("m353")}</h2>
       <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
       <p>
-        A question or a little idea?
+        {t("m354")}
         <br />
-        We’d love to hear from you.
+        {t("m355")}
       </p>
     </div>
   </div>
   <div class="container-shell footer-bottom">
     <p>
-      © {year} {siteConfig.owner} · {siteConfig.brand}
+      © {year} {siteConfig.brandDisplay}
     </p>
-    <p>Made with heart. Made for play.</p>
+    <p>{t("m356")}</p>
   </div>
 </footer>

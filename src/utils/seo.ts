@@ -1,4 +1,5 @@
 import { appFacts, siteConfig } from "../config";
+import { createTranslator, defaultLocale, productName, type Locale } from "../i18n/ui";
 import type { FAQ } from "../data/app";
 
 export function faqSchema(items: FAQ[], pageUrl: string) {
@@ -13,14 +14,15 @@ export function faqSchema(items: FAQ[], pageUrl: string) {
   };
 }
 
-export function appSchema(siteUrl: URL) {
+export function appSchema(siteUrl: URL, locale: Locale = defaultLocale) {
+  const t = createTranslator(locale);
   const url = (path = "") => new URL(path, siteUrl).href;
   return {
     "@type": "MobileApplication",
     "@id": url("features/#baby-phone"),
-    name: siteConfig.name,
+    name: productName(locale),
     url: url("features/"),
-    description: siteConfig.description,
+    description: t("m297"),
     applicationCategory: "EducationalApplication",
     operatingSystem: "Android",
     inLanguage: ["en", "de", "fr", "it", "es", "hr", "sr"],
@@ -30,16 +32,16 @@ export function appSchema(siteUrl: URL) {
     author: { "@type": "Person", name: siteConfig.owner },
     audience: {
       "@type": "PeopleAudience",
-      audienceType: "Young children, parents, and caregivers",
+      audienceType: t("m407"),
     },
     featureList: [
-      `${appFacts.sounds} animal sounds across ${appFacts.categories} categories`,
-      `${appFacts.includedAnimals} included farm animals`,
-      "Animal names in seven languages",
-      "Pretend phone calls",
-      "No third-party advertising",
-      "Parental gate",
-      "No recurring subscription",
+      t("m408", { sounds: appFacts.sounds, categories: appFacts.categories }),
+      t("m409", { animals: appFacts.includedAnimals }),
+      t("m403"),
+      t("m404"),
+      t("m405"),
+      t("m144"),
+      t("m406"),
     ],
   };
 }

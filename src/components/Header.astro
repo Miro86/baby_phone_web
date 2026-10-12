@@ -1,8 +1,12 @@
 ---
 import AppMark from "./AppMark.astro";
-import { ui } from "../i18n/ui";
-import { withBase } from "../utils/urls";
-const labels = ui.en.nav;
+import { createTranslator, getLocale, navigationLabels } from "../i18n/ui";
+import LanguageSelector from "./LanguageSelector.astro";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
+const labels = navigationLabels(locale);
 const navigation = [
   { label: labels.home, href: withBase() },
   { label: labels.features, href: withBase("features/") },
@@ -15,7 +19,8 @@ const currentPath = `${Astro.url.pathname.replace(/\/+$/, "")}/`;
 <header class="site-header">
   <div class="container-shell header-inner">
     <AppMark compact />
-    <nav class="desktop-nav" aria-label="Primary navigation">
+    <div class="header-actions">
+    <nav class="desktop-nav" aria-label={t("m386")}>
       {navigation.map((item) => (
         <a
           href={item.href}
@@ -26,15 +31,15 @@ const currentPath = `${Astro.url.pathname.replace(/\/+$/, "")}/`;
       ))}
     </nav>
     <details class="mobile-menu">
-      <summary aria-label="Navigation menu">
+      <summary aria-label={t("m387")}>
         <span class="menu-lines" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
         </span>
-        <span class="menu-label">Menu</span>
+        <span class="menu-label">{t("m388")}</span>
       </summary>
-      <nav aria-label="Mobile navigation">
+      <nav aria-label={t("m389")}>
         {navigation.map((item) => (
           <a
             href={item.href}
@@ -45,10 +50,18 @@ const currentPath = `${Astro.url.pathname.replace(/\/+$/, "")}/`;
         ))}
       </nav>
     </details>
+    <LanguageSelector />
+    </div>
   </div>
 </header>
 <script>
   const menu = document.querySelector<HTMLDetailsElement>(".mobile-menu");
+  menu?.addEventListener("toggle", () => {
+    if (menu.open) {
+      const language = document.querySelector<HTMLDetailsElement>(".language-selector");
+      if (language) language.open = false;
+    }
+  });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && menu?.open) {
       menu.open = false;

@@ -1,7 +1,11 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import DodoVisual from "./DodoVisual.astro";
 import StoreLinks from "./StoreLinks.astro";
-import { withBase } from "../utils/urls";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
 interface Props {
   parents?: boolean;
 }
@@ -12,24 +16,22 @@ const { parents = false } = Astro.props;
   <div class="container-shell split-layout">
     <div>
       <p class="eyebrow">
-        {parents ? "A little discovery, together" : "Ready to play?"}
+        {parents ? t("m371") : t("m372")}
       </p>
       <h2 class="section-title">
         {parents
-          ? "Find a new favorite sound."
-          : "Meet your new animal friends."}
+          ? t("m373")
+          : t("m374")}
       </h2>
       <span class="accent-line" aria-hidden="true"></span>
       <p class="section-copy">
-        Start with 15 farm animals, explore their sounds, and share a little
-        moment of discovery. Baby Phone is available for Android. iOS is coming
-        soon.
+        {parents ? t("m375") : t("m436")}
       </p>
       <StoreLinks />
       <a class="text-link" href={withBase("contact/")}>
-        Have a question? Say hello <span aria-hidden="true">↗</span>
+        {t("m376")} <span aria-hidden="true">↗</span>
       </a>
     </div>
-    <DodoVisual message={parents ? "Let’s explore together!" : "Let’s play!"} />
+    <DodoVisual bubblePosition="side" message={parents ? t("m196") : t("m418")} />
   </div>
 </section>

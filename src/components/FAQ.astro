@@ -1,5 +1,8 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import type { FAQ } from "../data/app";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
 interface Props {
   items: FAQ[];
   title?: string;
@@ -8,8 +11,8 @@ interface Props {
 }
 const {
   items,
-  title = "A few helpful answers for grown-ups.",
-  eyebrow = "Frequently asked questions",
+  title = t("m363"),
+  eyebrow = t("m364"),
   id = "faq",
 } = Astro.props;
 ---

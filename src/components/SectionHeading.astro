@@ -2,10 +2,11 @@
 interface Props {
   eyebrow: string;
   title: string;
+  secondLine?: string;
   copy?: string;
   align?: "left" | "center";
 }
-const { eyebrow, title, copy, align = "left" } = Astro.props;
+const { eyebrow, title, secondLine, copy, align = "left" } = Astro.props;
 ---
 
 <div
@@ -15,7 +16,7 @@ const { eyebrow, title, copy, align = "left" } = Astro.props;
   ]}
 >
   <p class="eyebrow">{eyebrow}</p>
-  <h2 class="section-title">{title}</h2>
+  <h2 class="section-title">{title}{secondLine && <><br />{secondLine}</>}</h2>
   {copy && <p class="section-copy">{copy}</p>}
   <span class="accent-line" aria-hidden="true"></span>
 </div>

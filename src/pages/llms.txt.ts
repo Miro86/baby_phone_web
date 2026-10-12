@@ -1,17 +1,17 @@
 import type { APIRoute } from "astro";
 import { appFacts, siteConfig } from "../config";
-import { withBase } from "../utils/urls";
+import { withBase, pagePath } from "../utils/urls";
 export const GET: APIRoute = ({ site }) => {
   const origin = new URL(withBase(), site ?? "https://minidodoapps.de");
-  const url = (path = "") => new URL(path, origin).href;
-  const body = `# Mini Dodo Apps
+  const url = (path = "") => new URL(["", "features/", "parents/", "contact/", "privacy/", "terms/"].includes(path) ? pagePath(path ? path.slice(0, -1) as "features" | "parents" | "contact" | "privacy" | "terms" : "home", "en") : path, origin).href;
+  const body = `# Mini Dodo
 
-> Mini Dodo Apps publishes Baby Phone: Animal Sounds, an ad-free pretend phone app for young children. Baby Phone is currently the only Mini Dodo app.
+> Mini Dodo publishes Baby Phone: Animal Sounds, an ad-free pretend phone app for young children. Baby Phone is currently the only Mini Dodo app.
 
 ## Availability
 
 - Android: available on [Google Play](${siteConfig.googlePlayUrl})
-- iOS: in App Store review; coming soon. No public App Store link is available yet.
+- The iOS version is coming soon. No public App Store link is available yet.
 
 ## Product facts
 
@@ -22,6 +22,10 @@ export const GET: APIRoute = ({ site }) => {
 - A parental gate separates settings and purchases from child-facing play
 - All calls are pretend; the app does not place real telephone calls
 - No child account; app preferences are stored on the device
+
+## Website languages
+
+German is the first-visit default. The website also offers English, French, Italian, Spanish, Croatian, and Serbian Cyrillic at distinct locale URLs. The links below point to the English pages.
 
 ## Official sources
 
@@ -35,7 +39,7 @@ export const GET: APIRoute = ({ site }) => {
 
 ## Publisher and contact
 
-- Brand: ${siteConfig.brand} (Mini Dodo)
+- Brand: ${siteConfig.brandDisplay}
 - Operator: ${siteConfig.owner}
 - Official email: ${siteConfig.email}
 - Product reference updated: ${siteConfig.contentUpdated}

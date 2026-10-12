@@ -1,26 +1,4 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import DodoVisual from "../components/DodoVisual.astro";
-import { withBase } from "../utils/urls";
+import NotFound from "../views/404.astro";
 ---
-
-<BaseLayout
-  title="Page Not Found"
-  description="This Mini Dodo page could not be found. Return home to explore Baby Phone: Animal Sounds."
-  noindex
->
-  <section class="section error-section">
-    <div class="container-shell">
-      <p class="error-code">404 · A little detour</p>
-      <h1>This friend wandered off.</h1>
-      <p class="hero-intro">
-        The page isn’t here, but a whole world of animal sounds is waiting back
-        at home.
-      </p>
-      <a href={withBase()} class="button button--orange">
-        Back to Mini Dodo
-      </a>
-      <DodoVisual message="This way!" />
-    </div>
-  </section>
-</BaseLayout>
+<NotFound />

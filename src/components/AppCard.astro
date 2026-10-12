@@ -1,10 +1,23 @@
 ---
-import { Image } from "astro:assets";
+import { createTranslator, getLocale } from "../i18n/ui";
+import { Image, getImage } from "astro:assets";
 import appIcon from "../../assets/app-icon.png";
 import banner from "../../assets/promo-banner.png";
 import StoreLinks from "./StoreLinks.astro";
 import Icon from "./Icon.astro";
-import { withBase } from "../utils/urls";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
+const appBanner = await getImage({
+  src: banner,
+  alt: t("m385"),
+  width: 1024,
+  widths: [360, 560, 680, 800, 1024, 1280, 1536],
+  format: "webp",
+  quality: 75,
+  loading: "lazy",
+});
 ---
 
 <article class="app-card">
@@ -12,7 +25,7 @@ import { withBase } from "../utils/urls";
     <div class="app-card-heading">
       <Image
         src={appIcon}
-        alt="Baby Phone app icon: a yellow chick holding a toy phone"
+        alt={t("m378")}
         width={112}
         widths={[84, 112, 168, 224]}
         sizes="(min-width: 2000px) 200px, 112px"
@@ -20,42 +33,43 @@ import { withBase } from "../utils/urls";
         loading="lazy"
       />
       <div>
-        <p class="eyebrow">Meet our first app</p>
+        <p class="eyebrow">{t("m379")}</p>
         <h3>
           Baby Phone:
           <br />
-          Animal Sounds
+          {t("m202")}
         </h3>
       </div>
     </div>
     <p>
-      Call cute animals, hear their names and sounds, and discover a cheerful
-      world of pretend play.
+      {t("m380")}
     </p>
-    <ul class="pill-list" aria-label="Baby Phone highlights">
-      <li>67 animal sounds</li>
-      <li>7 languages</li>
-      <li>No third-party ads</li>
+    <ul class="pill-list" aria-label={t("m381")}>
+      <li>{t("m359")}</li>
+      <li>{t("m382")}</li>
+      <li>{t("m162")}</li>
     </ul>
     <a class="button button--orange" href={withBase("features/")}>
-      Discover Baby Phone <Icon name="arrow" />
+      {t("m383")} <Icon name="arrow" />
     </a>
     <StoreLinks compact />
   </div>
   <a
     href={withBase("features/")}
     class="app-card-banner"
-    aria-label="Explore Baby Phone: Animal Sounds"
+    aria-label={t("m384")}
   >
-    <Image
-      src={banner}
-      alt="Baby Phone: Animal Sounds characters in a colorful countryside — 67 sounds and five categories"
-      width={1024}
-      widths={[360, 560, 680, 800, 1024, 1280, 1536]}
-      sizes="(min-width: 2000px) 1400px, (min-width: 800px) 42vw, calc(100vw - 80px)"
-      format="webp"
-      quality={75}
-      loading="lazy"
-    />
+    <picture>
+      <source
+        media="(width > 600px)"
+        type="image/webp"
+        srcset={appBanner.srcSet.attribute}
+        sizes="(min-width: 2000px) 1400px, (min-width: 800px) 42vw, calc(100vw - 80px)"
+      />
+      <img
+        {...appBanner.attributes}
+        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      />
+    </picture>
   </a>
 </article>

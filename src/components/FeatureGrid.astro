@@ -1,20 +1,23 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import Icon from "./Icon.astro";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
 const features = [
   {
     icon: "phone",
-    title: "A little phone, just for play",
-    copy: "Tap the colorful keypad or choose a friend from the animal library. Every call is pretend.",
+    title: t("m357"),
+    copy: t("m358"),
   },
   {
     icon: "sound",
-    title: "67 animal sounds",
-    copy: "Hear familiar farm friends and discover animal voices across five themed categories.",
+    title: t("m359"),
+    copy: t("m360"),
   },
   {
     icon: "globe",
-    title: "Names in seven languages",
-    copy: "Listen to animal names in English, German, French, Italian, Spanish, Croatian, and Serbian.",
+    title: t("m361"),
+    copy: t("m362"),
   },
 ];
 ---

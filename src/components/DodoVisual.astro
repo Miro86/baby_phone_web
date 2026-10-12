@@ -1,43 +1,49 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import { Image } from "astro:assets";
 import dodo from "../../assets/brand/dodo.png";
 import Icon from "./Icon.astro";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
 interface Props {
   trust?: boolean;
   message?: string;
   eager?: boolean;
+  bubblePosition?: "responsive" | "side" | "mobile-side";
 }
-const { trust = false, message = "Hi, I’m Dodo!", eager = false } = Astro.props;
+const { trust = false, message = t("m365"), eager = false, bubblePosition = "responsive" } = Astro.props;
 const nodes = [
-  { icon: "people", label: "Parents", position: "top" },
-  { icon: "child", label: "Children", position: "right" },
-  { icon: "ads", label: "No ads", position: "bottom-right" },
-  { icon: "lock", label: "Parental gate", position: "bottom-left" },
-  { icon: "shield", label: "Privacy", position: "left" },
+  { icon: "people", label: t("m366"), position: "top" },
+  { icon: "child", label: t("m367"), position: "right" },
+  { icon: "ads", label: t("m368"), position: "bottom-right" },
+  { icon: "lock", label: t("m144"), position: "bottom-left" },
+  { icon: "shield", label: t("m369"), position: "left" },
 ];
 ---
 
-<div class:list={["dodo-visual", { "dodo-visual--trust": trust }]}>
-  {trust && <div class="trust-orbit" aria-hidden="true"></div>}
-  <Image
-    src={dodo}
-    alt="Dodo, the cheerful turquoise Mini Dodo mascot"
-    width={520}
-    widths={[240, 360, 450, 520, 700, 1040]}
-    sizes="(min-width: 2000px) 850px, (min-width: 900px) 360px, 240px"
-    format="webp"
-    quality={80}
-    loading={eager ? "eager" : "lazy"}
-    class="dodo-mascot"
-  />
+<div class:list={["dodo-visual", { "dodo-visual--trust": trust, "dodo-visual--side-bubble": bubblePosition === "side", "dodo-visual--mobile-side-bubble": bubblePosition === "mobile-side" }]}>
+  <div class="dodo-stage">
+    {trust && <div class="trust-orbit" aria-hidden="true"></div>}
+    <Image
+      src={dodo}
+      alt={t("m370")}
+      width={520}
+      widths={[240, 360, 450, 520, 700, 1040]}
+      sizes="(min-width: 2000px) 850px, (min-width: 900px) 360px, 240px"
+      format="webp"
+      quality={80}
+      loading={eager ? "eager" : "lazy"}
+      class="dodo-mascot"
+    />
+    {trust &&
+      nodes.map((node) => (
+        <div class={`trust-node trust-node--${node.position}`}>
+          <span>
+            <Icon name={node.icon} />
+          </span>
+          <small>{node.label}</small>
+        </div>
+      ))}
+  </div>
   <span class="speech-bubble">{message}</span>
-  {trust &&
-    nodes.map((node) => (
-      <div class={`trust-node trust-node--${node.position}`}>
-        <span>
-          <Icon name={node.icon} />
-        </span>
-        <small>{node.label}</small>
-      </div>
-    ))}
 </div>

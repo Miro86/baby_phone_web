@@ -5,8 +5,8 @@ export const siteConfig = {
   brandDisplay: "Mini Dodo",
   owner: "Danijela Devedlaka",
   email: "minidodoapps@gmail.com",
-  locale: "en",
-  lastUpdated: "August 29, 2026",
+  locale: "de",
+  lastUpdated: "2026-08-29",
   contentUpdated: "October 9, 2026",
   googlePlayUrl:
     "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone",

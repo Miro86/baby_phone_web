@@ -1,34 +1,36 @@
 ---
+import { createTranslator, getLocale } from "../i18n/ui";
 import { Picture } from "astro:assets";
 import logo from "../../assets/brand/logo.png";
 import Icon from "./Icon.astro";
-import { withBase } from "../utils/urls";
+import { localizedPath } from "../utils/urls";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+const withBase = (path = "") => localizedPath(path, locale);
 ---
 
 <section class="section home-hero">
   <div class="container-shell split-layout">
     <div class="hero-copy">
-      <p class="eyebrow">Welcome to Mini Dodo</p>
+      <p class="eyebrow">{t("m339")}</p>
       <h1>
-        Small apps.
+        {t("m340")}
         <br />
-        <span class="text-teal">Big adventures.</span>
+        <span class="text-teal">{t("m341")}</span>
       </h1>
       <p class="hero-intro">
-        Playful discovery for curious little minds. Meet Baby Phone: Animal
-        Sounds, our ad-free pretend phone app for young children.
+        {t("m342")}
       </p>
       <a class="button button--orange" href={withBase("features/")}>
-        Explore Baby Phone <Icon name="arrow" />
+        {t("m343")} <Icon name="arrow" />
       </a>
       <p class="hero-note">
-        <span aria-hidden="true" class="status-dot"></span>Available on Android
-        · iOS coming soon
+        <span aria-hidden="true" class="status-dot"></span>{t("m344")}
       </p>
     </div>
     <Picture
       src={logo}
-      alt="Mini Dodo — a cheerful turquoise Dodo with the colorful Mini Dodo wordmark"
+      alt={t("m345")}
       width={600}
       widths={[280, 400, 560, 760, 960, 1178]}
       sizes="(min-width: 2000px) 1200px, (min-width: 900px) 40vw, (min-width: 600px) 360px, 75vw"
