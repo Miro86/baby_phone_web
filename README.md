@@ -32,12 +32,20 @@ Lightweight localization validation (no server or build):
 node scripts/verify-i18n.mjs
 ```
 
-Production validation, when a build is authorized:
+Production build and local validation:
 
 ```sh
 npm run verify
 npm run preview
 ```
+
+After the owner releases `dev` into `main`, check the actual public website with:
+
+```sh
+npm run verify:production
+```
+
+The canonical production origin is `https://minidodoapps.de/` with `BASE_PATH=/`; `www` permanently redirects to the apex host. See [PRODUCTION_READINESS.md](PRODUCTION_READINESS.md) and [DEPLOYMENT.md](DEPLOYMENT.md) for completed checks, repository variables and pending public validation. Supported layouts start at 320px.
 
 `verify` runs Astro's type checks, builds the static website, and checks the published route contract, internal links and fragments, image dimensions, canonical URLs, JSON-LD, sitemap, crawler references, and manifest.
 
@@ -67,7 +75,7 @@ Android is live at:
 
 https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone
 
-The iOS app is in App Store review, so its badge says **Coming soon**. The App Store badge becomes a link when `siteConfig.appStoreUrl` is supplied. At iOS launch, also update the availability copy in the hero, CTA, FAQ data, and machine-readable references.
+The iOS app is **Coming soon** and is not yet published. The App Store badge becomes a link when `siteConfig.appStoreUrl` is supplied. At iOS launch, also update the availability copy in the hero, CTA, FAQ data, and machine-readable references.
 
 Product counts and language names are in `src/config.ts`. App and parent FAQs share `src/data/app.ts` with their structured data and product references. Update visible copy and policy disclosures together whenever product facts change.
 
@@ -79,6 +87,6 @@ The XML sitemap contains the 42 indexable localized pages; the 404 page is marke
 
 ## Deployment
 
-The existing GitHub Pages workflow, custom domain, and environment-variable configuration are retained. Pushing to `main` triggers the existing deployment workflow. See `DEPLOYMENT.md` for domain and hosting setup.
+GitHub Pages publishes from `main` on the existing custom domain. The workflow validates the production origin/root base, language catalogs and static build before upload; only `main` can deploy. See [DEPLOYMENT.md](DEPLOYMENT.md) for the required repository variables and hosting checks.
 
-This redesign is prepared locally; publishing is a separate repository push.
+Changes are prepared locally. Commits, pushes, merges and publication remain under the owner's control.

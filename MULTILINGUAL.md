@@ -18,7 +18,7 @@ The architecture follows [Astro’s static localization recipe](https://v6.docs.
 
 ## Content and language selector
 
-src/i18n/locales/en.json is the source catalog; the other six JSON catalogs contain complete translations of the same 418 stable message IDs. Use the English source text to locate an ID, update every locale when changing its meaning, and retain parameter names in braces. createTranslator rejects missing messages and interpolation values. App facts stay centralized in src/config.ts; FAQ data is created per locale and shared by visible FAQ and schema output.
+src/i18n/locales/en.json is the source catalog; the other six JSON catalogs contain complete translations of the same 446 stable message IDs. Use the English source text to locate an ID, update every locale when changing its meaning, and retain parameter names in braces. createTranslator rejects missing messages and interpolation values. App facts stay centralized in src/config.ts; FAQ data is created per locale and shared by visible FAQ and schema output.
 
 Localized coverage includes page titles, descriptions, navigation, footer, headings, buttons, cards, categories, FAQ answers, image descriptions, speech bubbles, accessibility labels, structured-data text, policy text, dates, and web-manifest descriptions. Serbian prose and navigation use Cyrillic. Proper brand/product/platform names, operator identity, addresses, standard technical/legal abbreviations, and the explicitly requested two-letter language codes keep their established form.
 
@@ -30,6 +30,8 @@ Nunito Latin extended and Cyrillic WOFF2 subsets are hosted locally alongside th
 
 Original logos, illustrations and screenshots are unchanged. English words embedded in those image assets remain. llms.txt and llms-full.txt remain English machine-readable references, with corrected English-page URLs and website-language information. Existing English support-language metadata is preserved; translations do not promise support in seven languages.
 
+In the Baby Phone app, animal names are displayed as text in the selected language (English, German, French, Italian, Spanish, Croatian or Serbian). Audio plays the animal sounds; it does not speak translated animal names. Website localization and the app's language setting are separate.
+
 ## Review before publication
 
 All translated Privacy Policy and Terms of Service pages need qualified human legal and native-language review before publication. Review the localStorage preference disclosure, consumer rights, liability limits, Serbia governing law, privacy/children rules, store responsibilities and support retention. The existing effective/updated date of 29 August 2026 was retained in localized form; confirm the publication date as part of review. See [LEGAL_REVIEW.md](LEGAL_REVIEW.md). No deployment has been performed.
@@ -38,9 +40,9 @@ All translated Privacy Policy and Terms of Service pages need qualified human le
 
 Run the repeatable lightweight check without a server or build:
 
-~~~sh
+```sh
 node scripts/verify-i18n.mjs
-~~~
+```
 
 Completed checks:
 
@@ -135,3 +137,7 @@ Completed against the already-running Astro 7 server:
 - Repository-independent whitespace validation and git diff --no-index --check passed. Temporary browser harness and check files were removed.
 
 Files changed in this continuation: src/middleware.ts (new), astro.config.mjs (comment only), scripts/verify-i18n.mjs (middleware regression coverage), and MULTILINGUAL.md (runtime validation and inventory). All previous multilingual/styling work remains intact. Human legal/native-language review and future authorized production-build/deployment checks remain outside this task’s completed checks.
+
+## Production-preparation follow-up — 13 October 2026
+
+The owner confirmed 320px as the minimum supported viewport and approved the operator address on all seven existing Contact pages. Three localized labels (m444–m446) bring each catalog to 446 entries. Existing translations and parent/contact SEO metadata remain unchanged. The actual static build now passes all 42 indexable pages and seven localized error documents; gallery DPR checks, supported-width browser checks, keyboard/no-JavaScript checks and local Lighthouse measurements are recorded in [PRODUCTION_READINESS.md](PRODUCTION_READINESS.md). Organization/WebSite identities now stay at the domain root across languages. Publication, commits, pushes and the dev-to-main merge remain under the owner’s control. Run the public verification only after the owner’s release.

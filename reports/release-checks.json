@@ -1,0 +1,3847 @@
+{
+  "date": "2026-10-13",
+  "scope": "Local production preview; publication remains owner-controlled",
+  "minimumSupportedWidth": 320,
+  "gallery": [
+    {
+      "width": 240,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 280,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 320,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 360,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 375,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 390,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 430,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 600,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 601,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 768,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 800,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 801,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 220.578125,
+      "selected": 232,
+      "required": 220.58
+    },
+    {
+      "width": 1024,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 1440,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 1999,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 2000,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 2560,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 299.1875,
+      "selected": 320,
+      "required": 299.19
+    },
+    {
+      "width": 3840,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 452.796875,
+      "selected": 464,
+      "required": 452.8
+    },
+    {
+      "width": 5000,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 592,
+      "selected": 648,
+      "required": 592
+    },
+    {
+      "width": 7680,
+      "dpr": 1,
+      "fallback": false,
+      "rendered": 592,
+      "selected": 648,
+      "required": 592
+    },
+    {
+      "width": 240,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 280,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 320,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 360,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 375,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 390,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 430,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 600,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 601,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 768,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 800,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 801,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 220.578125,
+      "selected": 464,
+      "required": 441.16
+    },
+    {
+      "width": 1024,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 1440,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 1999,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 2000,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 2560,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 299.1875,
+      "selected": 648,
+      "required": 598.38
+    },
+    {
+      "width": 3840,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 452.796875,
+      "selected": 1080,
+      "required": 905.59
+    },
+    {
+      "width": 5000,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1184
+    },
+    {
+      "width": 7680,
+      "dpr": 2,
+      "fallback": false,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1184
+    },
+    {
+      "width": 240,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 280,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 320,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 360,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 375,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 390,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 430,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 600,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 601,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 768,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 800,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 801,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 220.578125,
+      "selected": 696,
+      "required": 661.73
+    },
+    {
+      "width": 1024,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 1440,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 1999,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 2000,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 2560,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 299.1875,
+      "selected": 1080,
+      "required": 897.56
+    },
+    {
+      "width": 3840,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 452.796875,
+      "selected": 1320,
+      "required": 1358.39
+    },
+    {
+      "width": 5000,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1776
+    },
+    {
+      "width": 7680,
+      "dpr": 3,
+      "fallback": false,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1776
+    },
+    {
+      "width": 240,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 280,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 320,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 360,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 375,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 390,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 430,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 600,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 216,
+      "required": 216
+    },
+    {
+      "width": 601,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 768,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 800,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 801,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 220.578125,
+      "selected": 232,
+      "required": 220.58
+    },
+    {
+      "width": 1024,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 1440,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 1999,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 2000,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 232,
+      "required": 232
+    },
+    {
+      "width": 2560,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 299.1875,
+      "selected": 320,
+      "required": 299.19
+    },
+    {
+      "width": 3840,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 452.796875,
+      "selected": 464,
+      "required": 452.8
+    },
+    {
+      "width": 5000,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 592,
+      "selected": 648,
+      "required": 592
+    },
+    {
+      "width": 7680,
+      "dpr": 1,
+      "fallback": true,
+      "rendered": 592,
+      "selected": 648,
+      "required": 592
+    },
+    {
+      "width": 240,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 280,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 320,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 360,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 375,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 390,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 430,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 600,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 432,
+      "required": 432
+    },
+    {
+      "width": 601,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 768,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 800,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 801,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 220.578125,
+      "selected": 464,
+      "required": 441.16
+    },
+    {
+      "width": 1024,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 1440,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 1999,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 2000,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 464,
+      "required": 464
+    },
+    {
+      "width": 2560,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 299.1875,
+      "selected": 648,
+      "required": 598.38
+    },
+    {
+      "width": 3840,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 452.796875,
+      "selected": 1080,
+      "required": 905.59
+    },
+    {
+      "width": 5000,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1184
+    },
+    {
+      "width": 7680,
+      "dpr": 2,
+      "fallback": true,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1184
+    },
+    {
+      "width": 240,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 280,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 320,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 360,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 375,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 390,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 430,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 600,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 216,
+      "selected": 648,
+      "required": 648
+    },
+    {
+      "width": 601,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 768,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 800,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 801,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 220.578125,
+      "selected": 696,
+      "required": 661.73
+    },
+    {
+      "width": 1024,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 1440,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 1999,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 2000,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 232,
+      "selected": 696,
+      "required": 696
+    },
+    {
+      "width": 2560,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 299.1875,
+      "selected": 1080,
+      "required": 897.56
+    },
+    {
+      "width": 3840,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 452.796875,
+      "selected": 1320,
+      "required": 1358.39
+    },
+    {
+      "width": 5000,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1776
+    },
+    {
+      "width": 7680,
+      "dpr": 3,
+      "fallback": true,
+      "rendered": 592,
+      "selected": 1320,
+      "required": 1776
+    }
+  ],
+  "supportedPageCases": [
+    {
+      "width": 320,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "overflow": false,
+      "broken": []
+    }
+  ],
+  "unsupportedWidthFindings": [
+    {
+      "type": "overflow",
+      "width": 240,
+      "dpr": 1,
+      "fallback": false
+    },
+    {
+      "type": "overflow",
+      "width": 280,
+      "dpr": 1,
+      "fallback": false
+    },
+    {
+      "type": "overflow",
+      "width": 240,
+      "dpr": 2,
+      "fallback": false
+    },
+    {
+      "type": "overflow",
+      "width": 280,
+      "dpr": 2,
+      "fallback": false
+    },
+    {
+      "type": "overflow",
+      "width": 240,
+      "dpr": 3,
+      "fallback": false
+    },
+    {
+      "type": "overflow",
+      "width": 280,
+      "dpr": 3,
+      "fallback": false
+    },
+    {
+      "type": "overflow",
+      "width": 240,
+      "dpr": 1,
+      "fallback": true
+    },
+    {
+      "type": "overflow",
+      "width": 280,
+      "dpr": 1,
+      "fallback": true
+    },
+    {
+      "type": "overflow",
+      "width": 240,
+      "dpr": 2,
+      "fallback": true
+    },
+    {
+      "type": "overflow",
+      "width": 280,
+      "dpr": 2,
+      "fallback": true
+    },
+    {
+      "type": "overflow",
+      "width": 240,
+      "dpr": 3,
+      "fallback": true
+    },
+    {
+      "type": "overflow",
+      "width": 280,
+      "dpr": 3,
+      "fallback": true
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "de",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "de",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "de",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "de",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "de",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "de",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "en",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "en",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "en",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "en",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "en",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "en",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "fr",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "fr",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "fr",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "fr",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "fr",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "fr",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "it",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "it",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "it",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "it",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "it",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "it",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "es",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "es",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "es",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "es",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "es",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "es",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "hr",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "hr",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "hr",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "hr",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "hr",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "hr",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "sr",
+      "slug": "",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "sr",
+      "slug": "features/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "sr",
+      "slug": "parents/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "sr",
+      "slug": "contact/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "sr",
+      "slug": "privacy/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    {
+      "type": "page",
+      "width": 240,
+      "locale": "sr",
+      "slug": "terms/",
+      "status": 200,
+      "errors": [],
+      "failed": [],
+      "overflow": true,
+      "broken": [],
+      "font": "Nunito, \"Avenir Next\", ui-rounded, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    }
+  ],
+  "interaction": {
+    "locales": [
+      "de",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "hr",
+      "sr"
+    ],
+    "noJavaScript": true
+  },
+  "lighthouse": [
+    {
+      "route": "/de/",
+      "mode": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 1801.8908,
+      "cls": 0,
+      "tbt": 0
+    },
+    {
+      "route": "/de/features/",
+      "mode": "mobile",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 1877.7771000000002,
+      "cls": 0,
+      "tbt": 0
+    },
+    {
+      "route": "/de/",
+      "mode": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 382.081,
+      "cls": 0,
+      "tbt": 0
+    },
+    {
+      "route": "/de/features/",
+      "mode": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 422.3239,
+      "cls": 0,
+      "tbt": 0
+    }
+  ],
+  "contactAddressRegression": [
+    {
+      "width": 320,
+      "locale": "de",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "locale": "fr",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "locale": "it",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "locale": "es",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "locale": "hr",
+      "pass": true
+    },
+    {
+      "width": 320,
+      "locale": "sr",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "de",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "fr",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "it",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "es",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "hr",
+      "pass": true
+    },
+    {
+      "width": 390,
+      "locale": "sr",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "de",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "en",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "fr",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "it",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "es",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "hr",
+      "pass": true
+    },
+    {
+      "width": 600,
+      "locale": "sr",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "de",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "fr",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "it",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "es",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "hr",
+      "pass": true
+    },
+    {
+      "width": 768,
+      "locale": "sr",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "de",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "fr",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "it",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "es",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "hr",
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "locale": "sr",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "de",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "en",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "fr",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "it",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "es",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "hr",
+      "pass": true
+    },
+    {
+      "width": 7680,
+      "locale": "sr",
+      "pass": true
+    }
+  ],
+  "environment": {
+    "lighthouseVersion": "13.5.0",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "host": "local Astro production preview",
+    "javascriptDisabledPages": 7
+  }
+}

@@ -5,7 +5,9 @@ import path from "node:path";
 const root = path.resolve(process.argv[2] ?? "dist");
 const locales = ["de", "en", "fr", "it", "es", "hr", "sr"];
 const slugs = ["", "features/", "parents/", "contact/", "privacy/", "terms/"];
-const routes = locales.flatMap((locale) => slugs.map((slug) => `${locale}/${slug}`));
+const routes = locales.flatMap((locale) =>
+  slugs.map((slug) => `${locale}/${slug}`),
+);
 const read = (file) => fs.readFile(path.join(root, file), "utf8");
 const sitemap = await read("sitemap-0.xml");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
@@ -64,7 +66,9 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
     `One title required: ${route}`,
   );
   const locale = route.split("/")[0];
-  assert.ok(html.includes(`<html lang="${locale === "sr" ? "sr-Cyrl" : locale}"`));
+  assert.ok(
+    html.includes(`<html lang="${locale === "sr" ? "sr-Cyrl" : locale}"`),
+  );
   assert.match(html, /name="description" content="[^"]+"/);
   assert.match(
     html,
@@ -79,9 +83,17 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
     `Canonical must preserve the URL: ${route}`,
   );
   if (!route.endsWith("/404/")) {
-    const alternates = [...html.matchAll(/rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)];
+    const alternates = [
+      ...html.matchAll(/rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g),
+    ];
     assert.equal(alternates.length, 8);
-    assert.ok(alternates.some((match) => match[1] === "x-default" && match[2] === new URL(route.replace(/^[^/]+/, "de"), site).href));
+    assert.ok(
+      alternates.some(
+        (match) =>
+          match[1] === "x-default" &&
+          match[2] === new URL(route.replace(/^[^/]+/, "de"), site).href,
+      ),
+    );
   }
   const json = html.match(
     /<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/,
@@ -93,10 +105,34 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
     schema["@graph"].some((entity) => entity["@type"] === "Organization"),
   );
   assert.ok(schema["@graph"].some((entity) => entity["@type"] === "WebSite"));
+  const organization = schema["@graph"].find(
+    (entity) => entity["@type"] === "Organization",
+  );
+  const website = schema["@graph"].find(
+    (entity) => entity["@type"] === "WebSite",
+  );
+  assert.equal(organization.name, "Mini Dodo");
+  assert.equal(organization.address.streetAddress, "Oberer Hoppenlauweg 10");
+  assert.equal(organization.address.postalCode, "70174");
+  assert.equal(organization.address.addressLocality, "Stuttgart");
+  assert.equal(organization.address.addressCountry, "DE");
+  assert.equal(organization["@id"], new URL("#organization", site).href);
+  assert.equal(website.name, "Mini Dodo");
+  assert.equal(website["@id"], new URL("#website", site).href);
+  assert.equal(website.url, site.href);
+  assert.equal(website.publisher["@id"], organization["@id"]);
+  const webpage = schema["@graph"].find((entity) =>
+    ["WebPage", "ContactPage"].includes(entity["@type"]),
+  );
+  assert.equal(webpage.isPartOf["@id"], website["@id"]);
+  assert.equal(webpage.publisher["@id"], organization["@id"]);
   const app = schema["@graph"].find(
     (entity) => entity["@type"] === "MobileApplication",
   );
   if (app) {
+    assert.equal(app["@id"], new URL("features/#baby-phone", site).href);
+    assert.equal(app.publisher["@id"], organization["@id"]);
+    assert.equal(app.url, new URL(`${locale}/features/`, site).href);
     assert.equal(app.installUrl, store);
     assert.equal(app.operatingSystem, "Android");
     assert.equal(app.aggregateRating, undefined, "Do not invent reviews");
@@ -123,9 +159,33 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
       !html.includes('content="noindex'),
       `Public page must be indexable: ${route}`,
     );
+  if (route.endsWith("/contact/")) {
+    assert.match(html, /Danijela Devedlaka/);
+    assert.match(html, /Oberer Hoppenlauweg 10/);
+    assert.match(html, /70174/);
+    assert.match(html, /Stuttgart/);
+  }
 }
 
 const home = await read("en/index.html");
+const entry = await read("index.html");
+assert.match(entry, /noindex, follow/);
+const entrySchema = JSON.parse(
+  entry.match(/type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1],
+);
+assert.equal(
+  entrySchema["@graph"].find((node) => node["@type"] === "WebSite").url,
+  site.href,
+  "Domain-root entry page must declare the same WebSite identity",
+);
+for (const slug of slugs) {
+  const redirect = await read(`${slug}index.html`);
+  assert.match(redirect, /noindex, follow/);
+  assert.ok(
+    redirect.includes(new URL(`de/${slug}`, site).href),
+    "Preserve original URL destinations",
+  );
+}
 const parents = await read("en/parents/index.html");
 const features = await read("en/features/index.html");
 assert.match(

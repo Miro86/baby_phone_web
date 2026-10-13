@@ -11,11 +11,7 @@ const appName = productName(locale);
 const withBase = (path = "") => localizedPath(path, locale);
 ---
 
-<BaseLayout
-  title={t("m229")}
-  description={t("m230")}
-  pageType="ContactPage"
->
+<BaseLayout title={t("m229")} description={t("m230")} pageType="ContactPage">
   <section class="section contact-hero">
     <div class="container-shell">
       <nav class="breadcrumbs" aria-label={t("m134")}>
@@ -32,9 +28,7 @@ const withBase = (path = "") => localizedPath(path, locale);
             <span class="text-teal">{t("m234")}</span>
           </h1>
           <span class="accent-line" aria-hidden="true"></span>
-          <p class="hero-intro">
-            {t("m235")}
-          </p>
+          <p class="hero-intro">{t("m235")}</p>
         </div>
         <DodoVisual bubblePosition="side" message={t("m236")} eager />
       </div>
@@ -45,9 +39,7 @@ const withBase = (path = "") => localizedPath(path, locale);
       <article class="contact-card">
         <Icon name="email" />
         <h2>{t("m237")}</h2>
-        <p>
-          {t("m238")}
-        </p>
+        <p>{t("m238")}</p>
         <a
           class="contact-email"
           href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(appName)}`}
@@ -58,6 +50,21 @@ const withBase = (path = "") => localizedPath(path, locale);
           <div>
             <dt>{t("m239")}</dt>
             <dd>{siteConfig.brandDisplay}</dd>
+          </div>
+          <div>
+            <dt>{t("m444")}</dt>
+            <dd>{siteConfig.owner}</dd>
+          </div>
+          <div>
+            <dt>{t("m445")}</dt>
+            <dd>
+              {siteConfig.operatorAddress.street}
+              <br />
+              {siteConfig.operatorAddress.postalCode}{" "}
+              {siteConfig.operatorAddress.city}
+              <br />
+              {t("m446")}
+            </dd>
           </div>
           <div>
             <dt>{t("m240")}</dt>
@@ -79,9 +86,7 @@ const withBase = (path = "") => localizedPath(path, locale);
         <ol>
           <li>{t("m245")}</li>
           <li>{t("m246")}</li>
-          <li>
-            {t("m247")}
-          </li>
+          <li>{t("m247")}</li>
         </ol>
         <p class="privacy-note">
           <strong>{t("m248")}</strong> {t("m249")}

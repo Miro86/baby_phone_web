@@ -4,6 +4,12 @@ export const siteConfig = {
   brand: "Mini Dodo Apps",
   brandDisplay: "Mini Dodo",
   owner: "Danijela Devedlaka",
+  operatorAddress: {
+    street: "Oberer Hoppenlauweg 10",
+    postalCode: "70174",
+    city: "Stuttgart",
+    countryCode: "DE",
+  },
   email: "minidodoapps@gmail.com",
   locale: "de",
   lastUpdated: "2026-08-29",

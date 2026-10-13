@@ -1,12 +1,38 @@
 ---
 import { defaultLocale, supportedLocales } from "../i18n/ui";
 import { pagePath, type PageKey } from "../utils/urls";
-interface Props { page: PageKey }
+import { getImage } from "astro:assets";
+import brandLogo from "../../assets/brand/logo.png";
+import { siteIdentitySchema } from "../utils/seo";
+interface Props {
+  page: PageKey;
+}
 const { page } = Astro.props;
 const target = pagePath(page, defaultLocale);
 const canonical = new URL(target, Astro.site ?? Astro.url.origin).href;
-const destinations = Object.fromEntries(supportedLocales.map((locale) => [locale, pagePath(page, locale)]));
+const destinations = Object.fromEntries(
+  supportedLocales.map((locale) => [locale, pagePath(page, locale)]),
+);
+const logo =
+  page === "home"
+    ? await getImage({
+        src: brandLogo,
+        width: 512,
+        format: "webp",
+        quality: 85,
+      })
+    : undefined;
+const identity = logo
+  ? {
+      "@context": "https://schema.org",
+      "@graph": siteIdentitySchema(
+        new URL(canonical),
+        new URL(logo.src, canonical).href,
+      ),
+    }
+  : undefined;
 ---
+
 <!doctype html>
 <html lang="de">
   <head>
@@ -15,15 +41,34 @@ const destinations = Object.fromEntries(supportedLocales.map((locale) => [locale
     <title>Mini Dodo</title>
     <meta name="robots" content="noindex, follow" />
     <link rel="canonical" href={canonical} />
+    {identity && (
+      <script
+        is:inline
+        type="application/ld+json"
+        set:html={JSON.stringify(identity).replace(/</g, "\\u003c")}
+      />
+    )}
     <script is:inline define:vars={{ destinations, target }}>
       let destination = target;
       try {
         const stored = localStorage.getItem("mini-dodo-language");
-        if (stored && Object.prototype.hasOwnProperty.call(destinations, stored)) destination = destinations[stored];
-      } catch { /* German remains the default when storage is unavailable. */ }
+        if (
+          stored &&
+          Object.prototype.hasOwnProperty.call(destinations, stored)
+        )
+          destination = destinations[stored];
+      } catch {
+        /* German remains the default when storage is unavailable. */
+      }
       location.replace(destination + location.search + location.hash);
     </script>
-    <noscript><meta http-equiv="refresh" content={`0;url=${target}`} /></noscript>
+    <noscript>
+      <meta http-equiv="refresh" content={`0;url=${target}`} />
+    </noscript>
   </head>
-  <body><a href={target} lang="de">Weiter zu Mini Dodo</a></body>
+  <body>
+    <a href={target} lang="de">
+      Weiter zu Mini Dodo
+    </a>
+  </body>
 </html>

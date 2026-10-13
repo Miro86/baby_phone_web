@@ -7,7 +7,14 @@ import promoBanner from "../../assets/promo-banner.png";
 import brandLogo from "../../assets/brand/logo.png";
 import { siteConfig } from "../config";
 import { withBase, pageKeyFromUrl, pagePath } from "../utils/urls";
-import { createTranslator, getLocale, languages, supportedLocales, defaultLocale } from "../i18n/ui";
+import { siteIdentitySchema } from "../utils/seo";
+import {
+  createTranslator,
+  getLocale,
+  languages,
+  supportedLocales,
+  defaultLocale,
+} from "../i18n/ui";
 const locale = getLocale(Astro.url);
 const t = createTranslator(locale);
 const language = languages[locale];
@@ -27,11 +34,16 @@ const {
   schema,
   pageType = "WebPage",
 } = Astro.props;
-const siteUrl = new URL(pagePath("home", locale), Astro.site ?? Astro.url.origin);
+const siteUrl = new URL(
+  pagePath("home", locale),
+  Astro.site ?? Astro.url.origin,
+);
+const siteRoot = new URL(withBase(), siteUrl);
 const canonical = new URL(pagePath(page, locale), siteUrl);
 canonical.search = "";
 canonical.hash = "";
-const pageTitle = page === "home" ? title : `${title} | ${siteConfig.brandDisplay}`;
+const pageTitle =
+  page === "home" ? title : `${title} | ${siteConfig.brandDisplay}`;
 const social = await getImage({
   src: promoBanner,
   width: 1200,
@@ -56,31 +68,7 @@ const breadcrumbLabel = title.startsWith("Baby Phone") ? "Baby Phone" : title;
 const graph = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": absolute("#organization"),
-      name: siteConfig.brandDisplay,
-      alternateName: siteConfig.brandDisplay,
-      url: siteUrl.href,
-      logo: { "@type": "ImageObject", url: absolute(logo.src) },
-      email: siteConfig.email,
-      founder: { "@type": "Person", name: siteConfig.owner },
-      contactPoint: {
-        "@type": "ContactPoint",
-        email: siteConfig.email,
-        contactType: "customer support",
-        availableLanguage: "English",
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": absolute("#website"),
-      name: siteConfig.brandDisplay,
-      alternateName: siteConfig.brandDisplay,
-      url: siteUrl.href,
-      inLanguage: language.htmlLang,
-      publisher: { "@id": absolute("#organization") },
-    },
+    ...siteIdentitySchema(siteRoot, absolute(logo.src)),
     {
       "@type": pageType,
       "@id": `${canonical.href}#webpage`,
@@ -88,8 +76,8 @@ const graph = {
       description,
       url: canonical.href,
       inLanguage: language.htmlLang,
-      isPartOf: { "@id": absolute("#website") },
-      publisher: { "@id": absolute("#organization") },
+      isPartOf: { "@id": new URL("#website", siteRoot).href },
+      publisher: { "@id": new URL("#organization", siteRoot).href },
       ...(canonical.href !== siteUrl.href && !noindex
         ? { breadcrumb: { "@id": `${canonical.href}#breadcrumb` } }
         : {}),
@@ -141,10 +129,22 @@ const graph = {
       }
     />
     <link rel="canonical" href={canonical.href} />
-    {!noindex && <>
-      {supportedLocales.map((candidate) => <link rel="alternate" hreflang={languages[candidate].htmlLang} href={absolute(pagePath(page, candidate))} />)}
-      <link rel="alternate" hreflang="x-default" href={absolute(pagePath(page, defaultLocale))} />
-    </>}
+    {!noindex && (
+      <>
+        {supportedLocales.map((candidate) => (
+          <link
+            rel="alternate"
+            hreflang={languages[candidate].htmlLang}
+            href={absolute(pagePath(page, candidate))}
+          />
+        ))}
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={absolute(pagePath(page, defaultLocale))}
+        />
+      </>
+    )}
     <link
       rel="icon"
       type="image/png"
@@ -178,25 +178,26 @@ const graph = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteConfig.brandDisplay} />
     <meta property="og:locale" content={language.ogLocale} />
-    {supportedLocales.filter((candidate) => candidate !== locale).map((candidate) => <meta property="og:locale:alternate" content={languages[candidate].ogLocale} />)}
+    {supportedLocales
+      .filter((candidate) => candidate !== locale)
+      .map((candidate) => (
+        <meta
+          property="og:locale:alternate"
+          content={languages[candidate].ogLocale}
+        />
+      ))}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical.href} />
     <meta property="og:image" content={absolute(social.src)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content={t("m394")}
-    />
+    <meta property="og:image:alt" content={t("m394")} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absolute(social.src)} />
-    <meta
-      name="twitter:image:alt"
-      content={t("m395")}
-    />
+    <meta name="twitter:image:alt" content={t("m395")} />
     <script
       is:inline
       type="application/ld+json"

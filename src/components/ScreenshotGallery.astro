@@ -12,6 +12,9 @@ import packs from "../../assets/screenshot-animal-packs.png";
 import catCall from "../../assets/screenshot-cat-call.png";
 const locale = getLocale(Astro.url);
 const t = createTranslator(locale);
+// The sizes fallback mirrors global.css: 14/15rem caps, 8px of borders,
+// container gutters and the one/two/three-column track. Lazy-image auto sizing
+// uses the rendered width when supported; source candidates stop at native 1320px.
 const screenshots = [
   {
     src: dialer,
@@ -91,8 +94,10 @@ const screenshots = [
               src={screenshot.src}
               alt={screenshot.alt}
               width={360}
-              widths={[240, 360, 480, 720]}
-              sizes="(min-width: 2000px) 600px, (min-width: 600px) 240px, 65vw"
+              widths={[
+                160, 216, 232, 320, 432, 464, 540, 648, 696, 864, 1080, 1320,
+              ]}
+              sizes="auto, (min-width: 5000px) 592px, (min-width: 2000px) calc(12vw - 8px), (max-width: 600px) calc(min(14rem, 100vw - clamp(2rem, 6vw, 4rem)) - 8px), (max-width: 800px) calc(min(15rem, (100vw - clamp(2rem, 6vw, 4rem) - 2.2rem) / 2) - 8px), calc(min(15rem, (min(74rem, 100vw - clamp(2rem, 6vw, 4rem)) - 4.2rem) / 3) - 8px)"
               format="webp"
               quality={78}
               loading="lazy"
@@ -105,9 +110,7 @@ const screenshots = [
         </figure>
       ))}
     </div>
-    <p class="gallery-hint">
-      {t("m331")}
-    </p>
+    <p class="gallery-hint">{t("m331")}</p>
     <div class="gallery-controls" hidden>
       <button
         type="button"
@@ -119,7 +122,12 @@ const screenshots = [
         <Icon name="arrow" class="gallery-arrow--prev" />
       </button>
       <div class="gallery-pagination" aria-hidden="true"></div>
-      <span class="gallery-status" data-gallery-status aria-live="polite" aria-atomic="true"></span>
+      <span
+        class="gallery-status"
+        data-gallery-status
+        aria-live="polite"
+        aria-atomic="true"
+      ></span>
       <button
         type="button"
         data-gallery-next
@@ -139,7 +147,9 @@ const screenshots = [
   const pagination = gallery?.querySelector<HTMLElement>(".gallery-pagination");
   const status = gallery?.querySelector<HTMLElement>("[data-gallery-status]");
   if (track && prev && next && pagination && status) {
-    const cards = Array.from(track.querySelectorAll<HTMLElement>(".screenshot-card"));
+    const cards = Array.from(
+      track.querySelectorAll<HTMLElement>(".screenshot-card"),
+    );
     let perPage = 1;
     let targets: number[] = [];
     let dots: HTMLElement[] = [];
@@ -151,20 +161,38 @@ const screenshots = [
       prev.disabled = track.scrollLeft <= 2;
       next.disabled =
         track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-      const active = targets.reduce((nearest, target, index) =>
-        Math.abs(target - track.scrollLeft) < Math.abs(targets[nearest] - track.scrollLeft) ? index : nearest, 0);
-      dots.forEach((dot, index) => dot.classList.toggle("is-active", index === active));
-      const title = cards[active * perPage]?.querySelector("h3")?.textContent?.trim() ?? "";
+      const active = targets.reduce(
+        (nearest, target, index) =>
+          Math.abs(target - track.scrollLeft) <
+          Math.abs(targets[nearest] - track.scrollLeft)
+            ? index
+            : nearest,
+        0,
+      );
+      dots.forEach((dot, index) =>
+        dot.classList.toggle("is-active", index === active),
+      );
+      const title =
+        cards[active * perPage]?.querySelector("h3")?.textContent?.trim() ?? "";
       if (status.textContent !== title) status.textContent = title;
     };
     const refresh = () => {
       if (!cards.length) return;
       const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
       const step = cards[0].getBoundingClientRect().width + gap;
-      perPage = Math.max(1, Math.floor((track.clientWidth + gap) / step + 0.01));
+      perPage = Math.max(
+        1,
+        Math.floor((track.clientWidth + gap) / step + 0.01),
+      );
       const maximum = track.scrollWidth - track.clientWidth;
-      targets = Array.from({ length: Math.ceil(cards.length / perPage) }, (_, page) =>
-        Math.min(cards[page * perPage].offsetLeft - cards[0].offsetLeft, maximum));
+      targets = Array.from(
+        { length: Math.ceil(cards.length / perPage) },
+        (_, page) =>
+          Math.min(
+            cards[page * perPage].offsetLeft - cards[0].offsetLeft,
+            maximum,
+          ),
+      );
       if (dots.length !== targets.length) {
         dots = targets.map(() => {
           const dot = document.createElement("span");
