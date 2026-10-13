@@ -25,6 +25,12 @@ export default defineConfig({
     }),
   ],
   vite: {
+    // Safari 15.8 (including iPhone 7) cannot parse media-query range syntax.
+    // Keep both JS and final CSS output compatible with the Safari 15.4 baseline.
+    build: {
+      target: "safari15.4",
+      cssTarget: "safari15.4",
+    },
     plugins: [tailwindcss()],
   },
 });

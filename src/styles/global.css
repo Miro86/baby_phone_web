@@ -1909,6 +1909,35 @@ summary::-webkit-details-marker {
     max-width: min(31%, 7rem);
   }
 }
+/* Safari 15 has no container units. Vertical margin/padding percentages use
+   the containing width, preserving the same mascot/bubble overlap as cqw. */
+@supports not (width: 1cqw) {
+  .dodo-visual { --bubble-overlap: 16%; }
+  .dodo-visual--side-bubble { --bubble-overlap: 22%; }
+  .dodo-visual--trust { --bubble-overlap: 33%; }
+  .dodo-visual::before {
+    height: 0;
+    padding-block-start: var(--bubble-overlap);
+  }
+  /* The error-page illustration always fits the narrow-container layout. */
+  .error-section .dodo-visual > .dodo-stage { margin-block-start: 0; }
+  .error-section .dodo-visual > .speech-bubble {
+    max-width: min(100%, 9rem);
+    justify-self: center;
+    margin-block-end: 0.5rem;
+  }
+  @media (min-width: 601px) and (max-width: 800px) {
+    .dodo-visual--mobile-side-bubble > .dodo-stage { margin-block-start: 0; }
+    .dodo-visual--mobile-side-bubble > .speech-bubble {
+      max-width: min(100%, 9rem);
+      justify-self: center;
+      margin-block-end: 0.5rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .dodo-visual--mobile-side-bubble { --bubble-overlap: 22%; }
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;

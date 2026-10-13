@@ -65,6 +65,7 @@ node scripts/verify-build.mjs /private/tmp/minidodo-base-build
 - Small compiled styles are inlined. There is no client framework, third-party font service, analytics, tracking, video embed, or automatic slideshow.
 - Navigation and FAQs work without JavaScript. JavaScript adds gallery arrows, menu dismissal, language preference storage, and entry redirects. Localized pages do not depend on client-side translation.
 - Layouts stack on small screens and use bounded, readable content widths on large displays. Above 2000px, rem-based spacing and typography scale up, with a 40px root-size cap.
+- Production JavaScript/CSS compilation targets Safari 15.4 to retain mobile breakpoints on iOS 15.8. Mascot positioning has a percentage-based fallback for browsers without container units. See [BROWSER_COMPATIBILITY.md](BROWSER_COMPATIBILITY.md) for the diagnosis, checks and device-testing limits.
 - Keyboard focus, reduced motion, a skip link, descriptive image text, and accessible contrast are included.
 
 See `REDESIGN_VERIFICATION.md` for browser and performance results, and `SEO.md` for search implementation and deployment follow-up.

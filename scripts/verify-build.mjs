@@ -76,6 +76,21 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
   );
   assert.match(html, /Nunito/);
   assert.match(html, /font-display: swap/);
+  // Safari 15.8 ignores entire range-syntax queries, including mobile navigation.
+  for (const [, css] of html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)) {
+    assert.doesNotMatch(
+      css,
+      /@media\s*[^{}]*[<>]/,
+      `CSS breakpoints must work in Safari 15.8: ${route}`,
+    );
+  }
+  for (const [, media] of html.matchAll(/\bmedia="([^"]+)"/g)) {
+    assert.doesNotMatch(
+      media,
+      /[<>]|&(?:lt|gt);/,
+      `Image and stylesheet media conditions must work in Safari 15.8: ${route}`,
+    );
+  }
   const canonical = html.match(/rel="canonical" href="([^"]+)"/)?.[1];
   assert.equal(
     canonical,
