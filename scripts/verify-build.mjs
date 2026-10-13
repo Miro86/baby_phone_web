@@ -4,7 +4,7 @@ import path from "node:path";
 
 const root = path.resolve(process.argv[2] ?? "dist");
 const locales = ["de", "en", "fr", "it", "es", "hr", "sr"];
-const slugs = ["", "features/", "parents/", "contact/", "privacy/", "terms/"];
+const slugs = ["", "features/", "parents/", "contact/", "privacy/", "terms/", "impressum/"];
 const routes = locales.flatMap((locale) =>
   slugs.map((slug) => `${locale}/${slug}`),
 );
@@ -20,7 +20,7 @@ const store =
 assert.deepEqual(
   new Set(sitemapUrls),
   new Set(routes.map((route) => new URL(route, site).href)),
-  "Sitemap must contain all 42 localized public URLs",
+  "Sitemap must contain all 49 localized public URLs",
 );
 
 const routeFile = (route) =>
@@ -175,10 +175,18 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
       `Public page must be indexable: ${route}`,
     );
   if (route.endsWith("/contact/")) {
+    const card = html.match(/<article\b[^>]*\bclass="[^" ]*contact-card[^" ]*"[^>]*>([\s\S]*?)<\/article>/)?.[1];
+    assert.ok(card, "Contact card must exist");
+    assert.doesNotMatch(card, /Danijela Devedlaka|Oberer Hoppenlauweg|70174|Stuttgart/);
+    assert.match(card, /minidodoapps@gmail\.com/);
+  }
+  if (route.endsWith("/impressum/")) {
+    assert.match(html, /<h1[^>]*>Impressum<\/h1>/);
     assert.match(html, /Danijela Devedlaka/);
     assert.match(html, /Oberer Hoppenlauweg 10/);
     assert.match(html, /70174/);
     assert.match(html, /Stuttgart/);
+    assert.match(html, /mailto:minidodoapps@gmail\.com/);
   }
 }
 
@@ -193,7 +201,7 @@ assert.equal(
   site.href,
   "Domain-root entry page must declare the same WebSite identity",
 );
-for (const slug of slugs) {
+for (const slug of slugs.filter((slug) => slug !== "impressum/")) {
   const redirect = await read(`${slug}index.html`);
   assert.match(redirect, /noindex, follow/);
   assert.ok(

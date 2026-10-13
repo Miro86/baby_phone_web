@@ -19,7 +19,7 @@ export default defineConfig({
   build: { inlineStylesheets: "always" },
   integrations: [
     sitemap({
-      filter: (page) => /\/(?:de|en|fr|it|es|hr|sr)\/(?:features\/|parents\/|contact\/|privacy\/|terms\/)?$/.test(new URL(page).pathname),
+      filter: (page) => /\/(?:de|en|fr|it|es|hr|sr)\/(?:features\/|parents\/|contact\/|privacy\/|terms\/|impressum\/)?$/.test(new URL(page).pathname),
       i18n: { defaultLocale: "de", locales: { de: "de", en: "en", fr: "fr", it: "it", es: "es", hr: "hr", sr: "sr-Cyrl" } },
       serialize: (entry) => ({ ...entry, links: [...(entry.links ?? []), { lang: "x-default", url: entry.links?.find((link) => link.lang === "de")?.url ?? entry.url }] }),
     }),

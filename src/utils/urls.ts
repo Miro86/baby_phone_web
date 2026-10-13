@@ -9,7 +9,7 @@ export function withBase(path = "") {
   return `${normalizedBase}${cleanPath}`;
 }
 
-export const pageKeys = ["home", "features", "parents", "contact", "privacy", "terms", "404"] as const;
+export const pageKeys = ["home", "features", "parents", "contact", "privacy", "terms", "impressum", "404"] as const;
 export type PageKey = (typeof pageKeys)[number];
 export function localizedPath(path = "", locale: Locale = defaultLocale) {
   const clean = path.replace(/^\/+/, "");

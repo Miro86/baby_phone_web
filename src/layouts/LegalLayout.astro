@@ -10,8 +10,9 @@ interface Props {
   title: string;
   description: string;
   eyebrow: string;
+  showDate?: boolean;
 }
-const { title, description, eyebrow } = Astro.props;
+const { title, description, eyebrow, showDate = true } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -26,9 +27,9 @@ const { title, description, eyebrow } = Astro.props;
       <h1>{title}</h1>
       <span class="accent-line" aria-hidden="true"></span>
       <p class="hero-intro">{description}</p>
-      <p class="legal-date">
+      {showDate && <p class="legal-date">
         {t("m259")} {legalDate(locale)}
-      </p>
+      </p>}
     </div>
   </section>
   <section class="section legal-section">

@@ -10,7 +10,7 @@ assert.equal(
   "This release must be served at the domain root",
 );
 const locales = ["de", "en", "fr", "it", "es", "hr", "sr"];
-const slugs = ["", "features/", "parents/", "contact/", "privacy/", "terms/"];
+const slugs = ["", "features/", "parents/", "contact/", "privacy/", "terms/", "impressum/"];
 const routes = locales.flatMap((locale) =>
   slugs.map((slug) => `${locale}/${slug}`),
 );
@@ -177,10 +177,18 @@ await parallel(routes, (route) =>
     );
     const nodes = identity(body);
     if (route.endsWith("/contact/")) {
+      const card = body.match(/<article\b[^>]*\bclass="[^" ]*contact-card[^" ]*"[^>]*>([\s\S]*?)<\/article>/)?.[1];
+      assert.ok(card, "Contact card must exist");
+      assert.doesNotMatch(card, /Danijela Devedlaka|Oberer Hoppenlauweg|70174|Stuttgart/);
+      assert.match(card, /minidodoapps@gmail\.com/);
+    }
+    if (route.endsWith("/impressum/")) {
+      assert.match(body, /<h1[^>]*>Impressum<\/h1>/);
       assert.match(body, /Danijela Devedlaka/);
       assert.match(body, /Oberer Hoppenlauweg 10/);
       assert.match(body, /70174/);
       assert.match(body, /Stuttgart/);
+      assert.match(body, /mailto:minidodoapps@gmail\.com/);
     }
     const webpage = nodes.find((node) =>
       ["WebPage", "ContactPage"].includes(node["@type"]),
@@ -235,7 +243,7 @@ for (const path of ["llms.txt", "llms-full.txt"])
     assert.match(body, /iOS.*coming soon/);
     assert.ok(body.includes(url("en/")));
   });
-for (const slug of slugs)
+for (const slug of slugs.filter((slug) => slug !== "impressum/"))
   await check(`Original URL /${slug}`, async () => {
     const { response, body } = await request(slug);
     assert.equal(response.status, 200);

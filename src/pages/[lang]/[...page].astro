@@ -7,6 +7,7 @@ import Parents from "../../views/parents.astro";
 import Contact from "../../views/contact.astro";
 import Privacy from "../../views/privacy.astro";
 import Terms from "../../views/terms.astro";
+import Impressum from "../../views/impressum.astro";
 import NotFound from "../../views/404.astro";
 export function getStaticPaths() {
   return supportedLocales.flatMap((lang) => pageKeys.map((page) => ({
@@ -14,7 +15,7 @@ export function getStaticPaths() {
   })));
 }
 interface Props { page: PageKey }
-const views = { home: Home, features: Features, parents: Parents, contact: Contact, privacy: Privacy, terms: Terms, "404": NotFound };
+const views = { home: Home, features: Features, parents: Parents, contact: Contact, privacy: Privacy, terms: Terms, impressum: Impressum, "404": NotFound };
 const Page = views[Astro.props.page];
 ---
 <Page />

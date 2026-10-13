@@ -1,0 +1,30 @@
+---
+import { createTranslator, getLocale } from "../i18n/ui";
+import LegalLayout from "../layouts/LegalLayout.astro";
+import { siteConfig } from "../config";
+const locale = getLocale(Astro.url);
+const t = createTranslator(locale);
+---
+
+<LegalLayout
+  title={t("m447")}
+  eyebrow={t("m449")}
+  description={t("m448")}
+  showDate={false}
+>
+  <h2>{t("m239")}</h2>
+  <p>{siteConfig.brandDisplay}</p>
+
+  <h2>{t("m444")}</h2>
+  <p>{siteConfig.owner}</p>
+
+  <h2>{t("m445")}</h2>
+  <p>
+    {siteConfig.operatorAddress.street}<br />
+    {siteConfig.operatorAddress.postalCode}{" "}{siteConfig.operatorAddress.city}<br />
+    {t("m446")}
+  </p>
+
+  <h2>{t("m062")}</h2>
+  <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+</LegalLayout>
