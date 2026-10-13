@@ -3,7 +3,7 @@ import { getImage } from "astro:assets";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-import promoBanner from "../../assets/promo-banner.png";
+import socialImage from "../../assets/mini-dodo-social.png";
 import brandLogo from "../../assets/brand/logo.png";
 import { siteConfig } from "../config";
 import { withBase, pageKeyFromUrl, pagePath } from "../utils/urls";
@@ -45,7 +45,7 @@ canonical.hash = "";
 const pageTitle =
   page === "home" ? title : `${title} | ${siteConfig.brandDisplay}`;
 const social = await getImage({
-  src: promoBanner,
+  src: socialImage,
   width: 1200,
   height: 630,
   fit: "contain",
