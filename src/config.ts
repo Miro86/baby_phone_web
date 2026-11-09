@@ -16,7 +16,8 @@ export const siteConfig = {
   contentUpdated: "October 9, 2026",
   googlePlayUrl:
     "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone",
-  appStoreUrl: "",
+  appStoreUrl:
+    "https://apps.apple.com/us/app/baby-phone-animal-calls/id6798003662",
   description:
     "Discover Baby Phone: Animal Sounds by Mini Dodo. An ad-free pretend phone app for young children, with 67 animal sounds and names in seven languages.",
 } as const;

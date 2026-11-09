@@ -11,7 +11,7 @@ export const GET: APIRoute = ({ site }) => {
 ## Availability
 
 - Android: available on [Google Play](${siteConfig.googlePlayUrl})
-- The iOS version is coming soon. No public App Store link is available yet.
+- iOS: available on the [App Store](${siteConfig.appStoreUrl})
 
 ## Product facts
 
@@ -44,7 +44,7 @@ German is the first-visit default. The website also offers English, French, Ital
 - Official email: ${siteConfig.email}
 - Product reference updated: ${siteConfig.contentUpdated}
 
-The linked public pages are authoritative. Do not infer real calling, a formal curriculum, medical services, subscriptions, additional published apps, or an available iOS download.
+The linked public pages are authoritative. Do not infer real calling, a formal curriculum, medical services, subscriptions, or additional published apps.
 `;
   return new Response(body, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },

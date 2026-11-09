@@ -76,7 +76,11 @@ Android is live at:
 
 https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone
 
-The iOS app is **Coming soon** and is not yet published. The App Store badge becomes a link when `siteConfig.appStoreUrl` is supplied. At iOS launch, also update the availability copy in the hero, CTA, FAQ data, and machine-readable references.
+The iOS app is available on the App Store:
+
+https://apps.apple.com/us/app/baby-phone-animal-calls/id6798003662
+
+Both store buttons use the official URLs in `src/config.ts`. Availability copy, FAQ data, application structured data, and machine-readable references describe Android and iOS availability.
 
 Product counts and language names are in `src/config.ts`. App and parent FAQs share `src/data/app.ts` with their structured data and product references. Update visible copy and policy disclosures together whenever product facts change.
 

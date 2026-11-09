@@ -10,9 +10,9 @@ The website serves six content pages in seven languages under distinct locale pr
 - Organization and WebSite identity with stable JSON-LD identifiers, publisher contact details, and original brand artwork.
 - The domain-root entry page includes the same Mini Dodo Organization and WebSite data. IDs stay at `https://minidodoapps.de/#organization` and `https://minidodoapps.de/#website` across all locales. Baby Phone has one stable application ID, while its descriptive URL remains localized. See [Google’s site-name requirements](https://developers.google.com/search/docs/appearance/site-names).
 - WebPage / ContactPage metadata and BreadcrumbList data for inner pages.
-- MobileApplication data for Baby Phone on the home and app pages, pointing to the official Google Play listing.
+- MobileApplication data for Baby Phone on the home and app pages, pointing to the official Google Play and App Store listings.
 - FAQPage data generated from the same records as the visible app and parent questions.
-- Correct platform availability: Android is live; iOS is coming soon and is not yet published.
+- Correct platform availability: Baby Phone is available for Android on Google Play and for iOS on the App Store.
 - Open Graph and Twitter metadata with a 1200 × 630 sharing image and descriptive alternative text.
 - Reciprocal de, en, fr, it, es, hr, and sr-Cyrl alternate links, plus a German x-default for each page. German is the first-visit default; browser language never selects a locale.
 - A generated XML sitemap, crawl-permitting robots.txt, and localized noindex error pages. Entry redirects are noindex with German canonicals.
@@ -31,7 +31,7 @@ The application data deliberately omits fabricated ratings, reviews, download co
 4. Use Google’s Rich Results Test and Schema.org Validator on the published pages. Fix genuine errors while keeping all claims accurate.
 5. Run PageSpeed Insights on the public home, app, and parent pages. Local lab scores do not measure the production host’s response time, cache headers, geographic network conditions, or field Core Web Vitals.
 6. Monitor indexing, real search impressions, clicks, and field performance after recrawling. Preserve the localized URLs in future redesigns.
-7. When iOS is released, add the real App Store URL and update platform availability in the visible copy, FAQ records, application data, and text references.
+7. Verify both official store links and Android/iOS availability in the visible copy, FAQ records, application data, and text references.
 
 No Search Console verification token, webmaster account access, IndexNow key, public app price, or published reviews were supplied. The site does not invent these values.
 

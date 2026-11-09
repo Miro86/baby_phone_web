@@ -16,6 +16,8 @@ const routes = locales.flatMap((locale) =>
 );
 const store =
   "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone";
+const appStore =
+  "https://apps.apple.com/us/app/baby-phone-animal-calls/id6798003662";
 const issues = [];
 const documents = new Map();
 const assets = new Set();
@@ -199,15 +201,16 @@ await parallel(routes, (route) =>
     if (app) {
       assert.equal(app["@id"], url("features/#baby-phone"));
       assert.equal(app.publisher["@id"], url("#organization"));
-      assert.equal(app.installUrl, store);
-      assert.equal(app.operatingSystem, "Android");
+      assert.deepEqual(app.installUrl, [store, appStore]);
+      assert.deepEqual(app.sameAs, [store, appStore]);
+      assert.deepEqual(app.operatingSystem, ["Android", "iOS"]);
       assert.equal(app.url, url(`${locale}/features/`));
       assert.equal(app.offers, undefined);
       assert.equal(app.aggregateRating, undefined);
       assert.ok(tags(body, "a").some((tag) => tag.href === store));
       assert.ok(
-        !tags(body, "a").some((tag) => tag.href?.includes("apps.apple.com")),
-        "iOS is not published",
+        tags(body, "a").some((tag) => tag.href === appStore && tag.target === "_blank" && tag.rel === "noopener noreferrer"),
+        "iOS must link to the official App Store listing in a new tab",
       );
     }
     discover(body, route);
@@ -240,7 +243,9 @@ for (const path of ["llms.txt", "llms-full.txt"])
     const { response, body } = await request(path);
     assert.equal(response.status, 200);
     assert.ok(body.includes(store));
-    assert.match(body, /iOS.*coming soon/);
+    assert.match(body, /iOS/);
+    assert.ok(body.includes(appStore));
+    assert.doesNotMatch(body, /coming soon|no public App Store link|not been supplied/i);
     assert.ok(body.includes(url("en/")));
   });
 for (const slug of slugs.filter((slug) => slug !== "impressum/"))

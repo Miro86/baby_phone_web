@@ -2,7 +2,7 @@
 import { createTranslator, getLocale } from "../i18n/ui";
 import { Image, getImage } from "astro:assets";
 import appIcon from "../../assets/app-icon.png";
-import banner from "../../assets/promo-banner.png";
+import { babyPhoneCovers } from "../data/baby-phone-covers";
 import StoreLinks from "./StoreLinks.astro";
 import Icon from "./Icon.astro";
 import { localizedPath } from "../utils/urls";
@@ -10,7 +10,7 @@ const locale = getLocale(Astro.url);
 const t = createTranslator(locale);
 const withBase = (path = "") => localizedPath(path, locale);
 const appBanner = await getImage({
-  src: banner,
+  src: babyPhoneCovers[locale],
   alt: t("m385"),
   width: 1024,
   widths: [360, 560, 680, 800, 1024, 1280, 1536],

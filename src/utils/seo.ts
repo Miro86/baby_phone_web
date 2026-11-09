@@ -72,10 +72,10 @@ export function appSchema(siteUrl: URL, locale: Locale = defaultLocale) {
     url: url("features/"),
     description: t("m297"),
     applicationCategory: "EducationalApplication",
-    operatingSystem: "Android",
+    operatingSystem: ["Android", "iOS"],
     inLanguage: ["en", "de", "fr", "it", "es", "hr", "sr"],
-    installUrl: siteConfig.googlePlayUrl,
-    sameAs: [siteConfig.googlePlayUrl],
+    installUrl: [siteConfig.googlePlayUrl, siteConfig.appStoreUrl],
+    sameAs: [siteConfig.googlePlayUrl, siteConfig.appStoreUrl],
     publisher: { "@id": new URL("#organization", root).href },
     author: { "@type": "Person", name: siteConfig.owner },
     audience: {

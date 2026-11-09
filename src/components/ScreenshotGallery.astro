@@ -2,16 +2,10 @@
 import { createTranslator, getLocale } from "../i18n/ui";
 import { Image } from "astro:assets";
 import Icon from "./Icon.astro";
-import dialer from "../../assets/screenshot-animal-dialer.png";
-import dogCall from "../../assets/screenshot-dog-call.png";
-import library from "../../assets/screenshot-animal-library.png";
-import languages from "../../assets/screenshot-seven-languages.png";
-import goatCall from "../../assets/screenshot-goat-call.png";
-import parentGate from "../../assets/screenshot-parental-gate.png";
-import packs from "../../assets/screenshot-animal-packs.png";
-import catCall from "../../assets/screenshot-cat-call.png";
+import { babyPhoneScreenshots } from "../data/baby-phone-screenshots";
 const locale = getLocale(Astro.url);
 const t = createTranslator(locale);
+const { dialer, library, dogCall, languages, tigerCall, seagullCall, parentGate, packs } = babyPhoneScreenshots[locale];
 // The sizes fallback mirrors global.css: 14/15rem caps, 8px of borders,
 // container gutters and the one/two/three-column track. Lazy-image auto sizing
 // uses the rendered width when supported; source candidates stop at native 1320px.
@@ -41,13 +35,13 @@ const screenshots = [
     alt: t("m312"),
   },
   {
-    src: catCall,
+    src: tigerCall,
     title: t("m313"),
     copy: t("m314"),
     alt: t("m315"),
   },
   {
-    src: goatCall,
+    src: seagullCall,
     title: t("m316"),
     copy: t("m317"),
     alt: t("m318"),

@@ -17,6 +17,8 @@ const site = new URL(sitemapUrls[0]);
 site.pathname = site.pathname.replace(/(?:de|en|fr|it|es|hr|sr)\/.*$/, "");
 const store =
   "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone";
+const appStore =
+  "https://apps.apple.com/us/app/baby-phone-animal-calls/id6798003662";
 assert.deepEqual(
   new Set(sitemapUrls),
   new Set(routes.map((route) => new URL(route, site).href)),
@@ -148,8 +150,9 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
     assert.equal(app["@id"], new URL("features/#baby-phone", site).href);
     assert.equal(app.publisher["@id"], organization["@id"]);
     assert.equal(app.url, new URL(`${locale}/features/`, site).href);
-    assert.equal(app.installUrl, store);
-    assert.equal(app.operatingSystem, "Android");
+    assert.deepEqual(app.installUrl, [store, appStore]);
+    assert.deepEqual(app.sameAs, [store, appStore]);
+    assert.deepEqual(app.operatingSystem, ["Android", "iOS"]);
     assert.equal(app.aggregateRating, undefined, "Do not invent reviews");
     assert.equal(app.offers, undefined, "Do not invent pricing");
   }
@@ -227,7 +230,8 @@ for (const file of ["llms.txt", "llms-full.txt"]) {
   const body = await read(file);
   assert.ok(body.includes(store));
   assert.match(body, /iOS/);
-  assert.match(body, /coming soon/);
+  assert.ok(body.includes(appStore));
+  assert.doesNotMatch(body, /coming soon|no public App Store link|not been supplied/i);
   assert.ok(!body.includes("https://example.com"));
 }
 const robots = await read("robots.txt");

@@ -10,7 +10,7 @@ import StoreLinks from "../components/StoreLinks.astro";
 import CallToAction from "../components/CallToAction.astro";
 import FAQ from "../components/FAQ.astro";
 import Icon from "../components/Icon.astro";
-import banner from "../../assets/promo-banner.png";
+import { babyPhoneCovers } from "../data/baby-phone-covers";
 import appIcon from "../../assets/app-icon.png";
 import dialer from "../../assets/screenshot-animal-dialer.png";
 import { appFacts } from "../config";
@@ -34,7 +34,7 @@ const schemaScreenshot = await getImage({
   format: "webp",
 });
 const heroBanner = await getImage({
-  src: banner,
+  src: babyPhoneCovers[locale],
   width: 1024,
   widths: [360, 560, 680, 800, 1024, 1280, 1536],
   format: "webp",
@@ -148,7 +148,7 @@ const schema = [
               <dd>{t("m214")}</dd>
             </div>
             <div>
-              <dt class="platform-fact">Android</dt>
+              <dt class="platform-fact">Android · iOS</dt>
               <dd>{t("m215")}</dd>
             </div>
           </dl>

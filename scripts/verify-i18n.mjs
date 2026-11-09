@@ -12,6 +12,19 @@ const ts = require("typescript");
 const compiler = require("@astrojs/compiler-rs");
 const postcss = require("postcss");
 const locales = ["de", "en", "fr", "it", "es", "hr", "sr"];
+const storeUrls = [
+  "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone",
+  "https://apps.apple.com/us/app/baby-phone-animal-calls/id6798003662",
+];
+const availabilityBadges = {
+  de: "Für Android und iOS verfügbar",
+  en: "Available for Android and iOS",
+  fr: "Disponible sur Android et iOS",
+  it: "Disponibile per Android e iOS",
+  es: "Disponible para Android e iOS",
+  hr: "Dostupno za Android i iOS",
+  sr: "Доступно за Android и iOS",
+};
 const productNames = {
   de: "Baby Phone: Tiergeräusche",
   en: "Baby Phone: Animal Sounds",
@@ -23,9 +36,25 @@ const productNames = {
 };
 const read = (file) => fs.readFile(path.join(root, file), "utf8");
 const catalogs = Object.fromEntries(await Promise.all(locales.map(async (locale) => [locale, JSON.parse(await read('src/i18n/locales/' + locale + '.json'))])));
+const storeSource = await read('src/components/StoreLinks.astro');
+const storeButtons = [...storeSource.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
+assert.equal(storeButtons.length, 2, 'Two clickable store buttons');
+for (const [index, button] of storeButtons.entries()) {
+  assert.ok(button[1].includes('href={siteConfig.' + (index === 0 ? 'googlePlayUrl' : 'appStoreUrl') + '}'));
+  assert.ok(button[1].includes('target="_blank"'));
+  assert.ok(button[1].includes('rel="noopener noreferrer"'));
+  assert.doesNotMatch(button[1], /aria-disabled|tabindex="-1"|\bdisabled\b/);
+  assert.match(button[2], /<svg\b/);
+}
+assert.ok(storeButtons[0][2].includes('t("m298")'));
+assert.ok(storeButtons[1][2].includes('t("m299")'));
+assert.doesNotMatch(storeSource, /siteConfig\.appStoreUrl\s*\?/);
 const keys = Object.keys(catalogs.en).sort();
 const placeholders = (copy) => [...copy.matchAll(/\{(\w+)\}/g)].map((match) => match[1]).sort();
 for (const locale of locales) {
+  assert.equal(catalogs[locale].m201, availabilityBadges[locale]);
+  assert.equal(catalogs[locale].m344, availabilityBadges[locale]);
+  assert.doesNotMatch(JSON.stringify(catalogs[locale]), /coming soon|kommt bald|bald (auch )?für iOS|bald im|bientôt|arriverà presto|presto su|próximamente|llegará pronto|uskoro|ускоро/i, locale + ': obsolete store availability');
   assert.deepEqual(Object.keys(catalogs[locale]).sort(), keys, 'Catalog coverage: ' + locale);
   for (const key of keys) {
     assert.ok(catalogs[locale][key].trim(), locale + ': empty ' + key);
@@ -93,6 +122,8 @@ for (const base of ['/', '/mini-dodo/']) {
   const urls = load(path.join(root, 'src/utils/urls.ts'));
   const data = load(path.join(root, 'src/data/app.ts'));
   const seo = load(path.join(root, 'src/utils/seo.ts'));
+  const config = load(path.join(root, 'src/config.ts'));
+  assert.deepEqual([config.siteConfig.googlePlayUrl, config.siteConfig.appStoreUrl], storeUrls);
   const { onRequest } = load(path.join(root, 'src/middleware.ts'));
   assert.equal(typeof onRequest, 'function');
   assert.equal(ui.defaultLocale, 'de');
@@ -111,6 +142,16 @@ for (const base of ['/', '/mini-dodo/']) {
     const app = seo.appSchema(new URL(base + locale + '/', 'https://example.test'), locale);
     assert.equal(app.name, productNames[locale]);
     assert.equal(app.description, t('m297'));
+    assert.deepEqual(app.operatingSystem, ['Android', 'iOS']);
+    assert.deepEqual(app.installUrl, storeUrls);
+    assert.deepEqual(app.sameAs, storeUrls);
+    for (const key of ['offers', 'aggregateRating', 'review', 'datePublished']) assert.equal(app[key], undefined);
+    const appFaqs = data.getAppData(locale).appFaqs;
+    const faq = seo.faqSchema(appFaqs, 'https://example.test/' + locale + '/features/');
+    assert.deepEqual(faq.mainEntity.map(item => ({ question: item.name, answer: item.acceptedAnswer.text })), appFaqs.map(({ question, answer }) => ({ question, answer })));
+    assert.ok(appFaqs.some(item => item.answer === t('m274')));
+    assert.match(t('m274'), /Google Play/);
+    assert.match(t('m274'), /App Store/);
     assert.ok(app.description.includes(productNames[locale]));
     for (const key of keys) t(key, Object.fromEntries(placeholders(catalogs.en[key]).map((parameter) => [parameter, parameter === 'languages' ? 'A, B' : 5])));
     for (const page of urls.pageKeys) {
@@ -144,6 +185,13 @@ for (const base of ['/', '/mini-dodo/']) {
   assert.equal(ui.getLocale(new URL(base, 'https://example.test')), 'de');
   assert.equal(ui.isLocale('__proto__'), false);
   assert.throws(() => ui.createTranslator('de')('missing'));
+  for (const file of ['llms.txt.ts', 'llms-full.txt.ts']) {
+    const reference = load(path.join(root, 'src/pages', file));
+    const body = await reference.GET({ site: new URL('https://example.test') }).text();
+    for (const url of storeUrls) assert.ok(body.includes(url), file + ': official store link');
+    assert.doesNotMatch(body, /coming soon|no public App Store link|not been supplied|or an available iOS download/i);
+    if (file === 'llms-full.txt.ts') for (const item of data.getAppData('en').appFaqs) assert.ok(body.includes(item.answer));
+  }
 }
 for (const file of ['nunito-latin.woff2', 'nunito-latin-ext.woff2', 'nunito-cyrillic.woff2']) assert.equal(readFileSync(path.join(root, 'public/fonts', file)).subarray(0, 4).toString(), 'wOF2');
-console.log('Passed: seven complete catalogs, 49 localized language labels, exact localized product names and app metadata, placeholders, Cyrillic navigation with English product branding, Astro/TypeScript syntax, CSS, localized URLs with and without a base path, app facts, legal dates, font files, and registered manual middleware behavior.');
+console.log('Passed: seven complete catalogs and Android/iOS availability badges, active store-button markup with preserved icons and external-link attributes, official store URLs, platform schema without invented commercial data, shared FAQ schema and AI references, 49 localized language labels, exact localized product names and app metadata, placeholders, Cyrillic navigation with English product branding, Astro/TypeScript syntax, CSS, localized URLs with and without a base path, app facts, legal dates, font files, and registered manual middleware behavior.');

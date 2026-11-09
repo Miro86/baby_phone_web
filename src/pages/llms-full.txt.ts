@@ -18,7 +18,7 @@ Official app page: ${url("features/")}
 
 Baby Phone: Animal Sounds is currently the only app published by Mini Dodo. It is an ad-free pretend phone app for young children.
 Android is available on Google Play: ${siteConfig.googlePlayUrl}
-The iOS version is coming soon. A public Apple App Store listing has not been supplied.
+iOS is available on the App Store: ${siteConfig.appStoreUrl}
 
 ## What Baby Phone does
 
