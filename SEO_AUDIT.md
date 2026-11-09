@@ -23,9 +23,11 @@ Changes are local. No commit, push, merge, deployment or account-setting change 
 
 ## Images, fonts and accessibility
 
-At the owner's request, mobile and tablet layouts now retain the same artwork as desktop, including the promotional covers previously hidden below 601px. Phone images are no longer suppressed for a performance score.
+The owner subsequently requested that promotional covers be hidden again on phones up to 600px wide. Both the home app card and app-page cover are hidden at that breakpoint, with an inline placeholder source that prevents downloading the cover on phones. Tablet and desktop covers, the mascot illustrations and the screenshot gallery remain visible.
 
 The covers have AVIF sources and WebP fallbacks, real fallback URLs, reserved dimensions and additional small variants. Their `sizes` account for phone padding, tablet columns, desktop grid ratios and large-screen root-font scaling. Below-fold home artwork remains lazy-loaded; the app's hero cover remains prioritized. The existing gallery layout and order are unchanged.
+
+After hiding phone covers, 120 Chrome/WebKit cases passed across all seven languages, including the 600/601px boundary and DPR 1×/2×/3×. All 60 phone cases made zero cover-image requests; larger viewports displayed and downloaded the responsive covers. The eight gallery images remain present. Build, route, metadata and localization verification also passed.
 
 Wordmarks also use AVIF with WebP fallbacks. The Latin and extended-Latin Nunito ranges no longer overlap for ı/Œ/œ: French text can use the existing Latin font without downloading an unnecessary extended subset. Croatian and Serbian preload their required subsets together with Latin to avoid late font replacement. Font files, weights and license are unchanged.
 
@@ -33,7 +35,7 @@ Accessible menu names now include their visible labels, fixing the label/name mi
 
 ## Measurements and verification
 
-The machine-readable results are in [reports/seo-lighthouse-2026-11-09.json](reports/seo-lighthouse-2026-11-09.json). They distinguish local measurements, initial samples and the currently published site. Final measurements include the restored phone artwork.
+The machine-readable results are in [reports/seo-lighthouse-2026-11-09.json](reports/seo-lighthouse-2026-11-09.json). They distinguish local measurements, initial samples and the currently published site. These measurements preceded the subsequent request to hide phone covers and include the restored phone artwork.
 
 | Final local measurement | Result |
 | --- | --- |

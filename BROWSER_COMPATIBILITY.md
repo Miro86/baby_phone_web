@@ -56,3 +56,9 @@ Horizontal overflow is constrained on the document root, with `hidden` as an old
 The final Chrome/WebKit checks cover all 49 pages at 320×568 and 375×667, at the top, after scrolling down and after scrolling back up: 588 position checks. All seven languages also exercise menu/language panels and gallery arrows; landscape dropdown bounds and touch-style diagonal gestures are checked separately. The evidence and verification limits are in [reports/mobile-scroll-2026-11-09.json](reports/mobile-scroll-2026-11-09.json). No claim of physical iPhone testing is made.
 
 After this change, mobile Lighthouse on the local home and app pages scores 100 in all four categories, with CLS 0. Changes remain local; the owner's existing dev server was left untouched.
+
+### Exact-route zoom investigation
+
+A subsequent check of `/de/features/` at 375×667 reproduced both symptoms with emulated page scale 1.05. After a touch scroll, the visual viewport moved down 31px while the sticky header stayed at the layout viewport's top. The logo's visible top became −11.55px and the right content gutter became −1.95px, despite both document width and layout viewport width remaining exactly 375px. Resetting page scale to 1 restored the logo's 20px top inset and the 16px right gutter. A small upward gesture while zoomed can leave the logo clipped.
+
+This reproduces the reported appearance but does not establish the owner's actual zoom setting. Check `window.visualViewport.scale` in the affected responsive session; reset emulated page zoom to 100% if it exceeds 1. Native pinch zoom remains enabled. No additional header or scrolling behavior was changed in this follow-up.

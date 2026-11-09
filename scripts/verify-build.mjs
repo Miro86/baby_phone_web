@@ -202,6 +202,8 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g))
     await checkLink(match[1], pageUrl);
   for (const match of html.matchAll(/srcset="([^"]+)"/g)) {
+    // Inline picture placeholders contain a comma but no local URL to check.
+    if (match[1].startsWith("data:")) continue;
     for (const candidate of match[1].split(","))
       await checkLink(candidate.trim().split(/\s+/)[0], pageUrl);
   }

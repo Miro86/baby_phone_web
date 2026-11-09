@@ -107,6 +107,10 @@ const schema = [
         </div>
         <picture class="product-banner-media">
           <source
+            media="(max-width: 600px)"
+            srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          />
+          <source
             type="image/avif"
             srcset={heroAvifBanner.srcSet.attribute}
             sizes={bannerSizes}

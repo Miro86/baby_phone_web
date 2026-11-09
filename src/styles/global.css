@@ -1737,6 +1737,10 @@ summary::-webkit-details-marker {
   }
 }
 @media (max-width: 600px) {
+  .app-card-banner,
+  .product-banner-media {
+    display: none;
+  }
   .header-inner {
     min-height: 5.25rem;
   }
