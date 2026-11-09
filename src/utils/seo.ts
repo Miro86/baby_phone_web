@@ -53,6 +53,8 @@ export function faqSchema(items: FAQ[], pageUrl: string) {
   return {
     "@type": "FAQPage",
     "@id": `${pageUrl}#faq`,
+    url: `${pageUrl}#faq`,
+    isPartOf: { "@id": `${pageUrl}#webpage` },
     mainEntity: items.map(({ question, answer }) => ({
       "@type": "Question",
       name: question,
@@ -69,9 +71,11 @@ export function appSchema(siteUrl: URL, locale: Locale = defaultLocale) {
     "@type": "MobileApplication",
     "@id": new URL("features/#baby-phone", root).href,
     name: productName(locale),
+    alternateName: [...new Set([siteConfig.shortName, siteConfig.name])]
+      .filter((name) => name !== productName(locale)),
     url: url("features/"),
     description: t("m297"),
-    applicationCategory: "EducationalApplication",
+    applicationCategory: "EntertainmentApplication",
     operatingSystem: ["Android", "iOS"],
     inLanguage: ["en", "de", "fr", "it", "es", "hr", "sr"],
     installUrl: [siteConfig.googlePlayUrl, siteConfig.appStoreUrl],

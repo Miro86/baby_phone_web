@@ -1,5 +1,5 @@
 ---
-import { createTranslator, getLocale } from "../i18n/ui";
+import { createTranslator, getLocale, productName } from "../i18n/ui";
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
@@ -20,7 +20,7 @@ const schema = appSchema(new URL(withBase(), Astro.site ?? Astro.url.origin), lo
 ---
 
 <BaseLayout
-  title={`${siteConfig.brandDisplay} | ${t("m346")}`}
+  title={`${siteConfig.brandDisplay} | ${productName(locale)}`}
   description={t("m419")}
   schema={schema}
 >

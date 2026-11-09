@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-09",
+  "environment": "Local browser iPhone SE emulation; not physical device testing",
+  "baselineExactClippingReproduced": false,
+  "changes": [
+    "Explicit block picture wrapper and automatic logo height",
+    "8px mobile padding inside the blue header, with safe-area handling",
+    "Closed menus removed from layout",
+    "Root horizontal overflow constrained while preserving gallery scrolling and pinch zoom",
+    "Landscape menu height accounts for added padding"
+  ],
+  "verification": {
+    "engines": [
+      "Chrome",
+      "WebKit"
+    ],
+    "pages": 49,
+    "viewports": [
+      {
+        "width": 320,
+        "height": 568
+      },
+      {
+        "width": 375,
+        "height": 667
+      }
+    ],
+    "scrollPositions": [
+      0,
+      1200,
+      600
+    ],
+    "positionChecks": 588,
+    "menuChecks": 56,
+    "touchGestures": 4,
+    "landscapeDropdown": "passed at 568x320",
+    "galleryScrolling": "passed in all seven languages",
+    "pinchZoom": "remains available",
+    "legacyRootOverflowFallback": "passed",
+    "issues": []
+  },
+  "lighthouse": [
+    {
+      "route": "/de/",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.45695,
+      "cls": 0,
+      "totalBlockingTimeMs": 0
+    },
+    {
+      "route": "/de/features/",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.04625,
+      "cls": 0,
+      "totalBlockingTimeMs": 0
+    }
+  ],
+  "release": "Local changes only; no commit, push or deployment"
+}

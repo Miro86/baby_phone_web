@@ -13,7 +13,7 @@ export const siteConfig = {
   email: "minidodoapps@gmail.com",
   locale: "de",
   lastUpdated: "2026-08-29",
-  contentUpdated: "October 9, 2026",
+  contentUpdated: "2026-11-09",
   googlePlayUrl:
     "https://play.google.com/store/apps/details?id=de.minidodoapps.babyphone",
   appStoreUrl:

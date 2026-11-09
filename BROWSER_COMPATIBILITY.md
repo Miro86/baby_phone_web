@@ -46,3 +46,13 @@ npm run preview -- --host 0.0.0.0
 ```
 
 Open the displayed LAN address on the iPhone while it is on the same network. After the owner releases the changes, refresh the public site and confirm the mobile header and stacked hero on iOS 15.8.8. Repeat menu/language/FAQ/gallery interactions there. The public website will continue to serve the previous CSS until that release and cache refresh.
+
+## Mobile scrolling follow-up — 9 November 2026
+
+The owner reported a partly clipped logo and slight sideways page movement in a local browser's iPhone SE responsive view. The exact upward-shifted frame was not reproduced in the initial Chrome/WebKit checks or touch gestures. The follow-up makes the picture wrapper explicitly block-level, adds 8px of padding inside the blue mobile header (including safe-area handling), and keeps closed menu panels out of layout. Dropdown height also accounts for the added padding in short landscape viewports.
+
+Horizontal overflow is constrained on the document root, with `hidden` as an older-browser fallback and `clip` where supported. Body remains outside any additional scroll container, preserving sticky positioning. The screenshot gallery retains its own horizontal scrolling, and pinch zoom is not restricted. See [MDN's overflow reference](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x).
+
+The final Chrome/WebKit checks cover all 49 pages at 320×568 and 375×667, at the top, after scrolling down and after scrolling back up: 588 position checks. All seven languages also exercise menu/language panels and gallery arrows; landscape dropdown bounds and touch-style diagonal gestures are checked separately. The evidence and verification limits are in [reports/mobile-scroll-2026-11-09.json](reports/mobile-scroll-2026-11-09.json). No claim of physical iPhone testing is made.
+
+After this change, mobile Lighthouse on the local home and app pages scores 100 in all four categories, with CLS 0. Changes remain local; the owner's existing dev server was left untouched.

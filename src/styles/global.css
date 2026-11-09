@@ -34,6 +34,10 @@
 html {
   scroll-padding-top: 7.25rem;
   -webkit-text-size-adjust: 100%;
+  /* Constrain the viewport without making body a second scroll container. */
+  overflow-x: hidden;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 body {
   margin: 0;
@@ -289,8 +293,13 @@ li {
 .brand-mark--compact {
   width: 7.5rem;
 }
+.brand-mark picture {
+  display: block;
+  width: 100%;
+}
 .brand-mark img {
   width: 100%;
+  height: auto;
 }
 .header-actions {
   display: flex;
@@ -365,6 +374,10 @@ li {
   background: var(--navy-dark);
   box-shadow: 0 10px 30px #082d6433;
 }
+.language-selector:not([open]) .language-options,
+.mobile-menu:not([open]) nav {
+  display: none;
+}
 .language-options a {
   display: flex;
   align-items: center;
@@ -385,9 +398,13 @@ li {
   .header-inner { gap: 1rem; }
 }
 @media (max-width: 800px) {
+  .site-header {
+    padding-top: 0.5rem;
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
   .header-actions { gap: 0.5rem; }
   .header-inner { gap: 0.5rem; }
-  .mobile-menu nav { max-height: calc(100dvh - 7.5rem); overflow-y: auto; }
+  .mobile-menu nav { max-height: calc(100dvh - 8.5rem); overflow-y: auto; }
 }
 
 .home-hero {
@@ -1722,10 +1739,6 @@ summary::-webkit-details-marker {
 @media (max-width: 600px) {
   .header-inner {
     min-height: 5.25rem;
-  }
-  .product-hero .product-banner-media,
-  .app-card .app-card-banner {
-    display: none;
   }
   .promise-grid,
   .promise-grid--four {

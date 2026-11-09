@@ -33,10 +33,19 @@ const schemaScreenshot = await getImage({
   width: 480,
   format: "webp",
 });
+const bannerWidths = [280, 320, 360, 480, 560, 592, 680, 720, 800, 1024, 1280, 1536];
+const bannerSizes = "(min-width: 5000px) 1311px, (min-width: 2000px) 26.22vw, (min-width: 801px) calc((min(74rem, 100vw - clamp(2rem, 6vw, 4rem)) - clamp(2rem, 5vw, 5rem)) * 0.475), (max-width: 350px) calc(100vw - 1.5rem), min(40rem, calc(100vw - clamp(2rem, 6vw, 4rem)))";
+const heroAvifBanner = await getImage({
+  src: babyPhoneCovers[locale],
+  width: 1024,
+  widths: bannerWidths,
+  format: "avif",
+  quality: 50,
+});
 const heroBanner = await getImage({
   src: babyPhoneCovers[locale],
   width: 1024,
-  widths: [360, 560, 680, 800, 1024, 1280, 1536],
+  widths: bannerWidths,
   format: "webp",
   quality: 65,
   alt: t("m205"),
@@ -98,14 +107,20 @@ const schema = [
         </div>
         <picture class="product-banner-media">
           <source
-            media="(min-width: 601px)"
+            type="image/avif"
+            srcset={heroAvifBanner.srcSet.attribute}
+            sizes={bannerSizes}
+          />
+          <source
             type="image/webp"
             srcset={heroBanner.srcSet.attribute}
-            sizes="(min-width: 2000px) 1400px, (min-width: 800px) 45vw, calc(100vw - 32px)"
+            sizes={bannerSizes}
           />
           <img
             {...heroBanner.attributes}
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            src={heroBanner.src}
+            srcset={heroBanner.srcSet.attribute}
+            sizes={bannerSizes}
           />
         </picture>
       </div>

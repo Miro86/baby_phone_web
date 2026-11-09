@@ -1,6 +1,6 @@
 ---
 import { createTranslator, getLocale } from "../i18n/ui";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import wordmark from "../../assets/brand/wordmark.png";
 import { localizedPath } from "../utils/urls";
 const locale = getLocale(Astro.url);
@@ -17,7 +17,7 @@ const { compact = false } = Astro.props;
   class:list={["brand-mark", { "brand-mark--compact": compact }]}
   aria-label={t("m377")}
 >
-  <Image
+  <Picture
     src={wordmark}
     alt="Mini Dodo"
     width={160}
@@ -27,7 +27,8 @@ const { compact = false } = Astro.props;
         ? "(min-width: 2000px) 300px, 120px"
         : "(min-width: 2000px) 340px, 136px"
     }
-    format="webp"
+    formats={["avif", "webp"]}
+    fallbackFormat="webp"
     quality={75}
     loading={compact ? "eager" : "lazy"}
   />

@@ -28,6 +28,20 @@ assert.deepEqual(
 const routeFile = (route) =>
   route === "404.html" ? route : `${route}index.html`;
 const getId = (id) => id.replace(/[.*+?^\${}()|[\]\\]/g, "\\$&");
+const decodeHtml = (value) => value.replace(/&(#x[\da-f]+|#\d+|amp|quot|apos|lt|gt);/gi, (entity, name) => {
+  if (name.startsWith("#")) return String.fromCodePoint(name[1].toLowerCase() === "x" ? parseInt(name.slice(2), 16) : Number(name.slice(1)));
+  return { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">" }[name.toLowerCase()] ?? entity;
+});
+const meta = (html, name) => {
+  const tags = [...html.matchAll(/<meta\b[^>]*>/g)].map(([tag]) =>
+    Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, value])),
+  );
+  const matches = tags.filter((tag) => tag.name === name || tag.property === name);
+  assert.equal(matches.length, 1, `Exactly one ${name} meta tag required`);
+  return decodeHtml(matches[0].content);
+};
+const localizedTitles = new Map(locales.map((locale) => [locale, new Set()]));
+const localizedDescriptions = new Map(locales.map((locale) => [locale, new Set()]));
 
 async function checkLink(value, pageUrl) {
   if (/^(mailto:|tel:|data:)/.test(value)) return;
@@ -72,6 +86,25 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
     html.includes(`<html lang="${locale === "sr" ? "sr-Cyrl" : locale}"`),
   );
   assert.match(html, /name="description" content="[^"]+"/);
+  const title = decodeHtml(html.match(/<title>([\s\S]*?)<\/title>/)[1]);
+  const description = meta(html, "description");
+  assert.equal(meta(html, "og:title"), title, `Social title mismatch: ${route}`);
+  assert.equal(meta(html, "twitter:title"), title, `Twitter title mismatch: ${route}`);
+  assert.equal(meta(html, "og:description"), description);
+  assert.equal(meta(html, "twitter:description"), description);
+  assert.equal(meta(html, "og:url"), pageUrl.href);
+  assert.equal(meta(html, "og:image"), meta(html, "twitter:image"));
+  assert.equal(meta(html, "og:image:type"), "image/jpeg");
+  assert.ok(meta(html, "og:image:alt"));
+  assert.ok(meta(html, "twitter:image:alt"));
+  await checkLink(meta(html, "og:image"), pageUrl);
+  if (!route.endsWith("/404/")) {
+    assert.ok(!localizedTitles.get(locale).has(title), `Duplicate title in ${locale}: ${route}`);
+    assert.ok(!localizedDescriptions.get(locale).has(description), `Duplicate description in ${locale}: ${route}`);
+    localizedTitles.get(locale).add(title);
+    localizedDescriptions.get(locale).add(description);
+  }
+  if (route === `${locale}/`) assert.match(title, /Mini Dodo \| Baby Phone:/);
   assert.match(
     html,
     /name="viewport" content="width=device-width, initial-scale=1"/,
@@ -143,6 +176,12 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
   );
   assert.equal(webpage.isPartOf["@id"], website["@id"]);
   assert.equal(webpage.publisher["@id"], organization["@id"]);
+  const faq = schema["@graph"].find((entity) => entity["@type"] === "FAQPage");
+  if (faq) {
+    assert.equal(webpage.hasPart["@id"], faq["@id"]);
+    assert.equal(faq.isPartOf["@id"], webpage["@id"]);
+    assert.equal(faq.url, faq["@id"]);
+  }
   const app = schema["@graph"].find(
     (entity) => entity["@type"] === "MobileApplication",
   );
@@ -153,6 +192,10 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
     assert.deepEqual(app.installUrl, [store, appStore]);
     assert.deepEqual(app.sameAs, [store, appStore]);
     assert.deepEqual(app.operatingSystem, ["Android", "iOS"]);
+    assert.equal(app.applicationCategory, "EntertainmentApplication", "Match the official store category");
+    assert.ok(app.alternateName.includes("Baby Phone"));
+    assert.equal(webpage.about["@id"], app["@id"]);
+    if (route.endsWith("/features/")) assert.equal(webpage.mainEntity["@id"], app["@id"]);
     assert.equal(app.aggregateRating, undefined, "Do not invent reviews");
     assert.equal(app.offers, undefined, "Do not invent pricing");
   }
@@ -163,6 +206,7 @@ for (const route of [...routes, ...locales.map((locale) => `${locale}/404/`)]) {
       await checkLink(candidate.trim().split(/\s+/)[0], pageUrl);
   }
   for (const match of html.matchAll(/<img\b[^>]*>/g)) {
+    assert.doesNotMatch(match[0], /src="data:image\/gif/, "Artwork must have a real fallback URL on every screen size");
     assert.match(
       match[0],
       /\balt(?:=|\s|>)/,
@@ -233,6 +277,9 @@ for (const file of ["llms.txt", "llms-full.txt"]) {
   assert.ok(body.includes(appStore));
   assert.doesNotMatch(body, /coming soon|no public App Store link|not been supplied/i);
   assert.ok(!body.includes("https://example.com"));
+  assert.ok(body.includes(new URL("en/impressum/", site).href));
+  assert.match(body, /names appear as text/);
+  for (const [url] of body.matchAll(/https?:\/\/[^\s)<]+/g)) await checkLink(url, site);
 }
 const robots = await read("robots.txt");
 assert.match(robots, /User-agent: \*\nAllow: \//);

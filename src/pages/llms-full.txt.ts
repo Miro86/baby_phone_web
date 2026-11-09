@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
 import { appFacts, siteConfig } from "../config";
 import { getAppData } from "../data/app";
-import { withBase, pagePath } from "../utils/urls";
+import { withBase, localizedPath } from "../utils/urls";
 export const GET: APIRoute = ({ site }) => {
   const { appFaqs, parentFaqs, categories } = getAppData("en");
   const origin = new URL(withBase(), site ?? "https://minidodoapps.de");
-  const url = (path: string) => new URL(["", "features/", "parents/", "contact/", "privacy/", "terms/"].includes(path) ? pagePath(path ? path.slice(0, -1) as "features" | "parents" | "contact" | "privacy" | "terms" : "home", "en") : path, origin).href;
+  const url = (path: string) => new URL(localizedPath(path, "en"), origin).href;
   const body = `# Baby Phone: Animal Sounds — official product reference
 
 Product reference updated: ${siteConfig.contentUpdated}
@@ -34,6 +34,7 @@ ${appFacts.includedAnimals} farm animals are included. Additional packs are opti
 ## Languages for animal names
 
 ${appFacts.languages.join(", ")}.
+Animal names appear as text in the selected language. Call audio plays animal sounds, not spoken animal names.
 
 ## Privacy and parent controls
 
@@ -41,6 +42,7 @@ The child-facing app does not require an account or social profile. Preferences 
 The app does not serve third-party advertising. Adult support emails are handled separately; the publisher receives the email address, message, and voluntarily supplied details. Google and Apple independently handle downloads and purchases through their respective stores. The static website has no account system, contact form, advertising pixels, or developer-controlled analytics cookies. Its host may process standard request data to provide the service. A manually selected website language is stored locally in the visitor’s browser; explicit language URLs take precedence.
 Full privacy disclosure: ${url("privacy/")}
 Terms of service: ${url("terms/")}
+Impressum and operator details: ${url("impressum/")}
 
 ## App questions
 

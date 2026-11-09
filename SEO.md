@@ -1,16 +1,17 @@
 # Search implementation and maintenance
 
-The website serves six content pages in seven languages under distinct locale prefixes. Original unprefixed URLs remain as entry redirects; original policy meanings are preserved in translation. It gives search engines and AI search systems a clear, crawlable source for Baby Phone: Animal Sounds, with Mini Dodo as the public brand, Danijela Devedlaka as the responsible operator and only one current app.
+The website serves seven content pages in seven languages under distinct locale prefixes, including Impressum. Original unprefixed URLs remain as entry redirects; original policy meanings are preserved in translation. It gives search engines and AI search systems a clear, crawlable source for Baby Phone: Animal Sounds, with Mini Dodo as the public brand, Danijela Devedlaka as the responsible operator and only one current app.
 
 ## Implemented
 
 - Static, readable HTML for all primary content, with one H1 per page and a logical heading structure.
 - Distinct page titles and descriptions covering Baby Phone, animal sounds, pretend phone play, parents, and support.
-- Self-referencing canonical URLs for all 42 localized public pages, with working internal links and preserved fragments.
+- Self-referencing canonical URLs for all 49 localized public pages, with working internal links and preserved fragments.
 - Organization and WebSite identity with stable JSON-LD identifiers, publisher contact details, and original brand artwork.
 - The domain-root entry page includes the same Mini Dodo Organization and WebSite data. IDs stay at `https://minidodoapps.de/#organization` and `https://minidodoapps.de/#website` across all locales. Baby Phone has one stable application ID, while its descriptive URL remains localized. See [Google’s site-name requirements](https://developers.google.com/search/docs/appearance/site-names).
 - WebPage / ContactPage metadata and BreadcrumbList data for inner pages.
 - MobileApplication data for Baby Phone on the home and app pages, pointing to the official Google Play and App Store listings.
+- The app category matches both stores (Entertainment). Baby Phone: Animal Sounds is the English app name; localized names retain Baby Phone and translate Animal Sounds. App and FAQ entities are explicitly linked to their containing pages.
 - FAQPage data generated from the same records as the visible app and parent questions.
 - Correct platform availability: Baby Phone is available for Android on Google Play and for iOS on the App Store.
 - Open Graph and Twitter metadata with a 1200 × 630 sharing image and descriptive alternative text.
@@ -18,6 +19,7 @@ The website serves six content pages in seven languages under distinct locale pr
 - A generated XML sitemap, crawl-permitting robots.txt, and localized noindex error pages. Entry redirects are noindex with German canonicals.
 - Existing llms.txt and llms-full.txt references, updated from shared product facts and FAQs.
 - Responsive, compressed artwork; image dimension reservation; prioritized hero imagery; locally hosted Nunito; minimal JavaScript.
+- AVIF wordmarks and promotional covers with WebP fallbacks, appropriate font preloading on Serbian/Croatian pages, and accessible menu names that include their visible labels. Phone/tablet layouts retain all artwork with smaller responsive downloads; below-fold home artwork remains lazy-loaded.
 - Clear links to the parent guide, official support email, privacy policy, and terms.
 
 The application data deliberately omits fabricated ratings, reviews, download counts, and prices. Basic application markup is still useful descriptive data. Eligibility for a Google software-app rich result depends on real supported offer and review information, as explained in [Google’s software-app documentation](https://developers.google.com/search/docs/appearance/structured-data/software-app). FAQ markup describes the visible answers and does not guarantee an enhanced search display.
@@ -25,7 +27,7 @@ The application data deliberately omits fabricated ratings, reviews, download co
 ## After the owner's production release
 
 1. Check that the active GitHub Pages variables use the intended public domain and base path. Keep the established URL identity.
-2. Verify all 42 localized public pages, /robots.txt, and /sitemap-index.xml over HTTPS.
+2. Verify all 49 localized public pages, /robots.txt, and /sitemap-index.xml over HTTPS.
    Run `npm run verify:production` for repeatable public HTTP/HTML checks; the release checklist is in [PRODUCTION_READINESS.md](PRODUCTION_READINESS.md).
 3. Submit the sitemap in the owner’s Google Search Console and Bing Webmaster Tools accounts, and inspect the localized home and app URLs.
 4. Use Google’s Rich Results Test and Schema.org Validator on the published pages. Fix genuine errors while keeping all claims accurate.
@@ -39,7 +41,9 @@ No Search Console verification token, webmaster account access, IndexNow key, pu
 
 The priority is accurate primary-source content that is accessible to crawlers, clear app identity, specific answers to parent questions, and structured data matching the visible site. Existing text-reference URLs are retained for tools that choose to consume them; they are supplementary references, rather than a promised ranking mechanism.
 
-Google says its established SEO fundamentals also apply to AI features and that there is no special AI markup requirement. See [Google’s AI search guidance](https://developers.google.com/search/docs/appearance/ai-features). Ranking and inclusion in Google, Gemini, ChatGPT, Claude, or other services cannot be guaranteed by a website implementation.
+Google says its established SEO fundamentals also apply to AI features and that there is no special AI markup requirement. See [Google’s AI search guidance](https://developers.google.com/search/docs/appearance/ai-features). The wildcard allow rule permits search crawlers including [OAI-SearchBot](https://developers.openai.com/api/docs/bots) and [Claude-SearchBot](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), without adding redundant bot-specific groups. No crawler approval or indexing is implied by allowing access. Ranking and inclusion in Google, Gemini, ChatGPT, Claude, or other services cannot be guaranteed by a website implementation.
+
+The supplementary text references link both official stores, distinguish displayed animal names from animal-sound audio, and link to operator details and all seven localized app pages. See [SEO_AUDIT.md](SEO_AUDIT.md) for the measured November 2026 results and production/source differences.
 
 ## Hosting considerations
 
@@ -47,4 +51,4 @@ The current GitHub Pages host controls production compression, cache headers, HT
 
 ## Localization validation
 
-See [MULTILINGUAL.md](MULTILINGUAL.md). The sitemap contains only the 42 indexable locale pages, with all seven language alternates and German x-default entries. Original artwork, including English text embedded in screenshots, is preserved. No language or availability claims beyond the existing app facts are added.
+See [MULTILINGUAL.md](MULTILINGUAL.md). The sitemap contains only the 49 indexable locale pages, with all seven language alternates and German x-default entries. Original artwork, including text embedded in screenshots, is preserved. No language or availability claims beyond the existing app facts are added.

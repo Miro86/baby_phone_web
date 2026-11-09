@@ -7,7 +7,7 @@ const labels = languageNames[locale];
 const page = pageKeyFromUrl(Astro.url);
 ---
 <details class="language-selector">
-  <summary aria-label={`${t("m390")}: ${labels[locale]}`}>
+  <summary aria-label={`${locale.toUpperCase()}: ${t("m390")}: ${labels[locale]}`}>
     <span>{locale.toUpperCase()}</span>
     <svg aria-hidden="true" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 6 5 5 5-5" /></svg>
   </summary>

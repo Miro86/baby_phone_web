@@ -4,13 +4,14 @@ A static Astro website for Mini Dodo and its first app, **Baby Phone: Animal Sou
 
 ## Localized URLs
 
-The six content pages are available under each locale prefix: /de/, /en/, /fr/, /it/, /es/, /hr/, and /sr/. German is the first-visit default; Serbian copy uses Cyrillic.
+The seven content pages are available under each locale prefix: /de/, /en/, /fr/, /it/, /es/, /hr/, and /sr/. German is the first-visit default; Serbian copy uses Cyrillic.
 
 - /{lang}/ — Home
 - /{lang}/features/ — Baby Phone details, screenshots, languages, and FAQ
 - /{lang}/parents/ — parent guide, safeguards, privacy summary, and FAQ
 - /{lang}/contact/ — contact and support
 - /{lang}/privacy/ and /{lang}/terms/ — localized legal pages
+- /{lang}/impressum/ — operator details and legal notice
 - /{lang}/404/ — localized, non-indexable error page
 
 The original unprefixed entry URLs remain as static language redirects, with German canonicals and a German no-JavaScript fallback. A manually selected language is remembered on those entry URLs; explicit localized URLs always take precedence. The shared header switches to the equivalent page and retains the fragment.
@@ -60,8 +61,9 @@ node scripts/verify-build.mjs /private/tmp/minidodo-base-build
 
 - **Nunito** is the site-wide font. Its licensed Latin, Latin extended, and Cyrillic variable WOFF2 files are hosted locally; the license is in `public/fonts/OFL.txt`.
 - Supplied brand artwork is in `assets/brand/`. Source colors and proportions are preserved; transparent padding was trimmed for layout.
-- Astro generates responsive image variants. The main brand illustration uses AVIF with a WebP fallback; app artwork and screenshots use WebP.
+- Astro generates responsive image variants. Brand illustrations, wordmarks and promotional covers use AVIF with WebP fallbacks; screenshots use WebP. Serbian and Croatian pages prioritize the appropriate Nunito subsets.
 - Hero imagery has high fetch priority. Images below the first screen are lazy-loaded and reserve their dimensions.
+- Mobile and tablet layouts retain the desktop artwork, including both promotional covers. Responsive sources match each rendered width instead of hiding images or sending desktop-sized files.
 - Small compiled styles are inlined. There is no client framework, third-party font service, analytics, tracking, video embed, or automatic slideshow.
 - Navigation and FAQs work without JavaScript. JavaScript adds gallery arrows, menu dismissal, language preference storage, and entry redirects. Localized pages do not depend on client-side translation.
 - Layouts stack on small screens and use bounded, readable content widths on large displays. Above 2000px, rem-based spacing and typography scale up, with a 40px root-size cap.
@@ -88,7 +90,9 @@ Product counts and language names are in `src/config.ts`. App and parent FAQs sh
 
 Pages render their complete content in HTML. Page-specific metadata includes canonical URLs, social sharing images, and seven reciprocal language alternates and a German x-default. Connected JSON-LD describes the organization, website, page, breadcrumbs, app, and visible FAQs.
 
-The XML sitemap contains the 42 indexable localized pages; the 404 page is marked noindex. `robots.txt` permits crawlers. Existing AI-readable reference URLs remain available, with accurate Android and iOS availability.
+The XML sitemap contains the 49 indexable localized pages; the 404 page is marked noindex. `robots.txt` permits crawlers. Existing AI-readable reference URLs include official store identities, localized app pages and operator details.
+
+See [SEO_AUDIT.md](SEO_AUDIT.md) for the November 2026 audit, current Lighthouse measurements and remaining production checks.
 
 ## Deployment
 

@@ -1,9 +1,10 @@
 import type { APIRoute } from "astro";
 import { appFacts, siteConfig } from "../config";
-import { withBase, pagePath } from "../utils/urls";
+import { withBase, localizedPath, pagePath } from "../utils/urls";
+import { languages, supportedLocales } from "../i18n/ui";
 export const GET: APIRoute = ({ site }) => {
   const origin = new URL(withBase(), site ?? "https://minidodoapps.de");
-  const url = (path = "") => new URL(["", "features/", "parents/", "contact/", "privacy/", "terms/"].includes(path) ? pagePath(path ? path.slice(0, -1) as "features" | "parents" | "contact" | "privacy" | "terms" : "home", "en") : path, origin).href;
+  const url = (path = "") => new URL(localizedPath(path, "en"), origin).href;
   const body = `# Mini Dodo
 
 > Mini Dodo publishes Baby Phone: Animal Sounds, an ad-free pretend phone app for young children. Baby Phone is currently the only Mini Dodo app.
@@ -18,6 +19,7 @@ export const GET: APIRoute = ({ site }) => {
 - ${appFacts.sounds} animal sounds across ${appFacts.categories} categories
 - ${appFacts.includedAnimals} farm animals included; additional packs are optional one-time purchases
 - Animal names in ${appFacts.languages.join(", ")}
+- Animal names appear as text in the selected language; call audio plays animal sounds
 - No third-party advertising and no recurring subscription
 - A parental gate separates settings and purchases from child-facing play
 - All calls are pretend; the app does not place real telephone calls
@@ -27,6 +29,9 @@ export const GET: APIRoute = ({ site }) => {
 
 German is the first-visit default. The website also offers English, French, Italian, Spanish, Croatian, and Serbian Cyrillic at distinct locale URLs. The links below point to the English pages.
 
+Localized app pages:
+${supportedLocales.map((locale) => `- [${languages[locale].name}](${new URL(pagePath("features", locale), origin).href})`).join("\n")}
+
 ## Official sources
 
 - [Mini Dodo home](${url()})
@@ -35,6 +40,7 @@ German is the first-visit default. The website also offers English, French, Ital
 - [Privacy policy](${url("privacy/")})
 - [Terms of service](${url("terms/")})
 - [Contact and support](${url("contact/")})
+- [Impressum and operator details](${url("impressum/")})
 - [Detailed product reference](${url("llms-full.txt")})
 
 ## Publisher and contact

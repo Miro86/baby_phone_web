@@ -9,13 +9,23 @@ import { localizedPath } from "../utils/urls";
 const locale = getLocale(Astro.url);
 const t = createTranslator(locale);
 const withBase = (path = "") => localizedPath(path, locale);
+const bannerWidths = [280, 320, 360, 480, 560, 592, 680, 720, 800, 1024, 1280, 1536];
+// Match the card's padding, column ratio and large-screen root-font scaling.
+const bannerSizes = "(min-width: 5000px) 1428px, (min-width: 2000px) 28.56vw, (min-width: 1051px) calc((min(74rem, 100vw - clamp(2rem, 6vw, 4rem)) - 6rem) * 0.525), (min-width: 801px) calc((100vw - clamp(2rem, 6vw, 4rem) - 4.5rem) / 2), (max-width: 350px) calc(100vw - 3.7rem), calc(100vw - clamp(2rem, 6vw, 4rem) - 3rem)";
+const appAvifBanner = await getImage({
+  src: babyPhoneCovers[locale],
+  width: 1024,
+  widths: bannerWidths,
+  format: "avif",
+  quality: 50,
+});
 const appBanner = await getImage({
   src: babyPhoneCovers[locale],
   alt: t("m385"),
   width: 1024,
-  widths: [360, 560, 680, 800, 1024, 1280, 1536],
+  widths: bannerWidths,
   format: "webp",
-  quality: 75,
+  quality: 65,
   loading: "lazy",
 });
 ---
@@ -61,14 +71,20 @@ const appBanner = await getImage({
   >
     <picture>
       <source
-        media="(min-width: 601px)"
+        type="image/avif"
+        srcset={appAvifBanner.srcSet.attribute}
+        sizes={bannerSizes}
+      />
+      <source
         type="image/webp"
         srcset={appBanner.srcSet.attribute}
-        sizes="(min-width: 2000px) 1400px, (min-width: 800px) 42vw, calc(100vw - 80px)"
+        sizes={bannerSizes}
       />
       <img
         {...appBanner.attributes}
-        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        src={appBanner.src}
+        srcset={appBanner.srcSet.attribute}
+        sizes={bannerSizes}
       />
     </picture>
   </a>

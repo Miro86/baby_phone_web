@@ -1,0 +1,1005 @@
+{
+  "date": "2026-11-09",
+  "tools": {
+    "lighthouse": "13.6.0",
+    "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+  },
+  "local": [
+    {
+      "route": "/de/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:59:38.509Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1804.15,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 188182,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.8 s"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/de/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:59:43.891Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.02,
+      "cls": 0,
+      "totalBlockingTimeMs": 3,
+      "transferBytes": 305736,
+      "diagnostics": []
+    },
+    {
+      "route": "/de/parents/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:59:49.258Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.49,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 112477,
+      "diagnostics": []
+    },
+    {
+      "route": "/de/contact/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:59:54.542Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1577.15,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 117850,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.6 s"
+        }
+      ]
+    },
+    {
+      "route": "/de/privacy/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:59:59.712Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 758.13,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 71847,
+      "diagnostics": []
+    },
+    {
+      "route": "/de/terms/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:04.953Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.99,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 72625,
+      "diagnostics": []
+    },
+    {
+      "route": "/de/impressum/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:10.275Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 600.96,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 76522,
+      "diagnostics": []
+    },
+    {
+      "route": "/en/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:15.415Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1803.73,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 188128,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.8 s"
+        }
+      ]
+    },
+    {
+      "route": "/en/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:20.632Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.56,
+      "cls": 0,
+      "totalBlockingTimeMs": 5.5,
+      "transferBytes": 303103,
+      "diagnostics": []
+    },
+    {
+      "route": "/fr/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:25.945Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1803.58,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 189179,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.8 s"
+        }
+      ]
+    },
+    {
+      "route": "/fr/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:31.218Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.45,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 309323,
+      "diagnostics": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/it/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:36.546Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1803.75,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 188079,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.8 s"
+        }
+      ]
+    },
+    {
+      "route": "/it/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:41.775Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.89,
+      "cls": 0,
+      "totalBlockingTimeMs": 2.5,
+      "transferBytes": 304617,
+      "diagnostics": []
+    },
+    {
+      "route": "/es/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:47.108Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.9,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 189265,
+      "diagnostics": []
+    },
+    {
+      "route": "/es/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:52.338Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.11,
+      "cls": 0,
+      "totalBlockingTimeMs": 0.5,
+      "transferBytes": 306950,
+      "diagnostics": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/hr/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:00:57.679Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2029.53,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 225093,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.0 s"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.1 s"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/hr/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:01:02.902Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.97,
+      "cls": 0,
+      "totalBlockingTimeMs": 2.5,
+      "transferBytes": 342787,
+      "diagnostics": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/sr/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:01:08.246Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1953.68,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 210365,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.0 s"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.0 s"
+        }
+      ]
+    },
+    {
+      "route": "/sr/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:01:13.492Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 764.91,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 329445,
+      "diagnostics": [
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/de/",
+      "mode": "desktop",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:01:18.817Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 383.87,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 165339,
+      "diagnostics": []
+    },
+    {
+      "route": "/de/features/",
+      "mode": "desktop",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T22:01:24.100Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 403.98,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 216328,
+      "diagnostics": []
+    }
+  ],
+  "initialLocal": [
+    {
+      "route": "/de/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:24:44.154Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1805.05,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 161111,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.8 s"
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        }
+      ]
+    },
+    {
+      "route": "/de/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:24:49.571Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.6,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 272481,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        }
+      ]
+    },
+    {
+      "route": "/de/parents/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:24:54.921Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 752.49,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 114230,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        }
+      ]
+    },
+    {
+      "route": "/de/contact/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:25:00.229Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1577.22,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 122573,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "1.6 s"
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 10 KiB"
+        },
+        {
+          "id": "lcp-discovery-insight",
+          "title": "LCP request discovery"
+        }
+      ]
+    },
+    {
+      "route": "/de/privacy/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:25:05.465Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.31,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 73676,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        }
+      ]
+    },
+    {
+      "route": "/de/terms/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:25:10.748Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.31,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 74452,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        }
+      ]
+    },
+    {
+      "route": "/de/impressum/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:25:16.046Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 601.09,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 81261,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 10 KiB"
+        }
+      ]
+    },
+    {
+      "route": "/sr/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:25:21.187Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1953.29,
+      "cls": 0.00001306172831613703,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 183017,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.0 s"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.0 s"
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/sr/features/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:25:26.436Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 751.65,
+      "cls": 0,
+      "totalBlockingTimeMs": 4.5,
+      "transferBytes": 295681,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    }
+  ],
+  "additionalBeforeFontCorrection": [
+    {
+      "route": "/fr/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:35:09.526Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1953.03,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 195217,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.0 s"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.0 s"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/hr/",
+      "mode": "mobile",
+      "origin": "http://127.0.0.1:4321",
+      "measuredAt": "2026-11-09T21:35:41.275Z",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1952.83,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 195118,
+      "diagnostics": [
+        {
+          "id": "largest-contentful-paint",
+          "title": "Largest Contentful Paint",
+          "value": "2.0 s"
+        },
+        {
+          "id": "interactive",
+          "title": "Time to Interactive",
+          "value": "2.0 s"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    }
+  ],
+  "published": [
+    {
+      "route": "/de/",
+      "mode": "mobile",
+      "origin": "https://minidodoapps.de",
+      "measuredAt": "2026-11-09T21:30:05.185Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1209.89,
+      "cls": 0.0004186485495203339,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 160033,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "value": "Est savings of 123 KiB"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/de/features/",
+      "mode": "mobile",
+      "origin": "https://minidodoapps.de",
+      "measuredAt": "2026-11-09T21:30:11.328Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 1076.12,
+      "cls": 0,
+      "totalBlockingTimeMs": 11,
+      "transferBytes": 260545,
+      "diagnostics": [
+        {
+          "id": "first-contentful-paint",
+          "title": "First Contentful Paint",
+          "value": "1.1 s"
+        },
+        {
+          "id": "max-potential-fid",
+          "title": "Max Potential First Input Delay",
+          "value": "70 ms"
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "value": "Est savings of 209 KiB"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    },
+    {
+      "route": "/de/parents/",
+      "mode": "mobile",
+      "origin": "https://minidodoapps.de",
+      "measuredAt": "2026-11-09T21:30:17.087Z",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 955.88,
+      "cls": 0,
+      "totalBlockingTimeMs": 0,
+      "transferBytes": 113788,
+      "diagnostics": [
+        {
+          "id": "label-content-name-mismatch",
+          "title": "Elements with visible text labels do not have matching accessible names."
+        },
+        {
+          "id": "cache-insight",
+          "title": "Use efficient cache lifetimes",
+          "value": "Est savings of 81 KiB"
+        },
+        {
+          "id": "image-delivery-insight",
+          "title": "Improve image delivery",
+          "value": "Est savings of 5 KiB"
+        },
+        {
+          "id": "network-dependency-tree-insight",
+          "title": "Network dependency tree"
+        }
+      ]
+    }
+  ],
+  "publicVerification": {
+    "checkedLocalizedPages": 49,
+    "issues": [
+      "de/",
+      "de/features/",
+      "en/features/",
+      "en/",
+      "fr/",
+      "fr/features/",
+      "it/",
+      "it/features/",
+      "es/",
+      "es/features/",
+      "hr/",
+      "hr/features/",
+      "sr/",
+      "sr/features/",
+      "llms.txt",
+      "llms-full.txt"
+    ],
+    "explanation": "The published app schemas are Android-only and the published llms references lack the App Store URL. Both store links are already present in the local source. No release was performed."
+  },
+  "localVerification": {
+    "localizedPages": 49,
+    "indexableSitemapUrls": 49,
+    "localizedNoindexErrors": 7,
+    "originalEntryUrls": 6,
+    "htmlMetadataAndSchema": "passed",
+    "safari15MediaQueryGuard": "passed",
+    "localizationAndBasePathChecks": "passed",
+    "mobileArtwork": "All main artwork is retained. Mobile and tablet use responsive sources and real image fallbacks."
+  },
+  "browserVerification": {
+    "pageCases": 245,
+    "widths": [
+      320,
+      375,
+      768,
+      1440,
+      7680
+    ],
+    "automatedAccessibilityAudits": 49,
+    "accessibilityViolations": [],
+    "webpFallbacks": 7,
+    "interactions": [
+      "de",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "hr",
+      "sr"
+    ],
+    "noJavascriptLocales": [
+      "de",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "hr",
+      "sr"
+    ],
+    "posterCases": 192,
+    "latinSubsetGlyphChecks": [
+      {
+        "character": "ı",
+        "mono": 11.145767211914062,
+        "serif": 11.145767211914062
+      },
+      {
+        "character": "Œ",
+        "mono": 50.229949951171875,
+        "serif": 50.229949951171875
+      },
+      {
+        "character": "œ",
+        "mono": 43.69096374511719,
+        "serif": 43.69096374511719
+      }
+    ],
+    "issues": []
+  },
+  "names": {
+    "en": "Baby Phone: Animal Sounds",
+    "de": "Baby Phone: Tiergeräusche",
+    "fr": "Baby Phone: Sons d'animaux",
+    "it": "Baby Phone: Versi degli animali",
+    "es": "Baby Phone: Sonidos de animales",
+    "hr": "Baby Phone: Zvukovi životinja",
+    "sr": "Baby Phone: Звукови животиња"
+  },
+  "limits": [
+    "Local Lighthouse results are lab samples; they do not establish field INP, indexing or AI citations.",
+    "Automated browser checks use installed Chrome; actual iOS 15.8.8 hardware was not available. WebP fallback and compatible CSS output were checked.",
+    "The owner controls commits, pushes, merges and release."
+  ]
+}
